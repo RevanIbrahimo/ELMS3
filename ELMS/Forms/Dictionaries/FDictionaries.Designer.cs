@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDictionaries));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.BackstageViewControl = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
             this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.DocumentTypeGridControl = new DevExpress.XtraGrid.GridControl();
@@ -1214,9 +1214,9 @@
             // CardIssuingGridControl
             // 
             this.CardIssuingGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.CardIssuingGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.CardIssuingGridControl.Location = new System.Drawing.Point(0, 29);
             this.CardIssuingGridControl.MainView = this.CardIssuingGridView;
             this.CardIssuingGridControl.MenuManager = this.CardIssuingBarManager;
@@ -1395,7 +1395,7 @@
             this.KindShipGridControl.Location = new System.Drawing.Point(0, 29);
             this.KindShipGridControl.MainView = this.KindShipGridView;
             this.KindShipGridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.KindShipGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.KindShipGridControl.MenuManager = this.KindShipBarManager;
             this.KindShipGridControl.Name = "KindShipGridControl";
             this.KindShipGridControl.Size = new System.Drawing.Size(953, 556);
             this.KindShipGridControl.TabIndex = 1;
@@ -1504,7 +1504,7 @@
             this.PhoneDescriptionGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PhoneDescriptionGridControl.Location = new System.Drawing.Point(0, 29);
             this.PhoneDescriptionGridControl.MainView = this.PhoneDescriptionGridView;
-            this.PhoneDescriptionGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.PhoneDescriptionGridControl.MenuManager = this.PhoneDescriptionBarManager;
             this.PhoneDescriptionGridControl.Name = "PhoneDescriptionGridControl";
             this.PhoneDescriptionGridControl.Size = new System.Drawing.Size(953, 556);
             this.PhoneDescriptionGridControl.TabIndex = 1;
@@ -1618,7 +1618,7 @@
             this.ProductGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProductGridControl.Location = new System.Drawing.Point(0, 29);
             this.ProductGridControl.MainView = this.ProductGridView;
-            this.ProductGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.ProductGridControl.MenuManager = this.ProductBarManager;
             this.ProductGridControl.Name = "ProductGridControl";
             this.ProductGridControl.Size = new System.Drawing.Size(953, 556);
             this.ProductGridControl.TabIndex = 1;
@@ -1730,7 +1730,7 @@
             this.BranchGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BranchGridControl.Location = new System.Drawing.Point(0, 29);
             this.BranchGridControl.MainView = this.BranchGridView;
-            this.BranchGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.BranchGridControl.MenuManager = this.BranchBarManager;
             this.BranchGridControl.Name = "BranchGridControl";
             this.BranchGridControl.Size = new System.Drawing.Size(953, 556);
             this.BranchGridControl.TabIndex = 1;
@@ -1869,7 +1869,7 @@
             this.ProfessionGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfessionGridControl.Location = new System.Drawing.Point(0, 29);
             this.ProfessionGridControl.MainView = this.ProfessionGridView;
-            this.ProfessionGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.ProfessionGridControl.MenuManager = this.ProfessionBarManager;
             this.ProfessionGridControl.Name = "ProfessionGridControl";
             this.ProfessionGridControl.Size = new System.Drawing.Size(953, 556);
             this.ProfessionGridControl.TabIndex = 1;

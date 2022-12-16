@@ -95,17 +95,33 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.PhoneStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.PhoneTab = new DevExpress.XtraTab.XtraTabPage();
-            this.NumberText = new DevExpress.XtraEditors.TextEdit();
-            this.NumberLabel = new DevExpress.XtraEditors.LabelControl();
-            this.DescriptionLookUp = new DevExpress.XtraEditors.LookUpEdit();
-            this.DescriptionLabel = new DevExpress.XtraEditors.LabelControl();
+            this.PhoneGridControl = new DevExpress.XtraGrid.GridControl();
+            this.PhoneGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CustomerPhone_SS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CustomerPhone_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CustomerPhone_Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CustomerPhone_Number = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CustomerPhone_Note = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CustomerPhone_IsSendSMS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.PhoneBarManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.PhoneBar = new DevExpress.XtraBars.Bar();
+            this.NewPhoneBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.EditPhoneBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.DeletePhoneBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.RefreshPhoneBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.WorkTab = new DevExpress.XtraTab.XtraTabPage();
             this.RelativeTab = new DevExpress.XtraTab.XtraTabPage();
             this.PanelOption = new DevExpress.XtraEditors.PanelControl();
             this.BCancel = new ManiXButton.XButton();
             this.BOK = new ManiXButton.XButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.PhonePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonalDetailsGroupBox)).BeginInit();
             this.PersonalDetailsGroupBox.SuspendLayout();
@@ -129,10 +145,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentBarManager)).BeginInit();
             this.PhoneTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberText.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DescriptionLookUp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelOption)).BeginInit();
             this.PanelOption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PhonePopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // PersonalDetailsGroupBox
@@ -630,6 +648,7 @@
             this.DocumentBarManager.DockControls.Add(this.barDockControlLeft);
             this.DocumentBarManager.DockControls.Add(this.barDockControlRight);
             this.DocumentBarManager.DockControls.Add(this.DocumentStandaloneBarDockControl);
+            this.DocumentBarManager.DockControls.Add(this.PhoneStandaloneBarDockControl);
             this.DocumentBarManager.Form = this;
             this.DocumentBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.NewDocumentBarButton,
@@ -736,58 +755,234 @@
             this.barDockControlRight.Manager = this.DocumentBarManager;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 656);
             // 
+            // PhoneStandaloneBarDockControl
+            // 
+            this.PhoneStandaloneBarDockControl.CausesValidation = false;
+            this.PhoneStandaloneBarDockControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PhoneStandaloneBarDockControl.Location = new System.Drawing.Point(0, 0);
+            this.PhoneStandaloneBarDockControl.Manager = this.DocumentBarManager;
+            this.PhoneStandaloneBarDockControl.Name = "PhoneStandaloneBarDockControl";
+            this.PhoneStandaloneBarDockControl.Size = new System.Drawing.Size(849, 25);
+            this.PhoneStandaloneBarDockControl.Text = "standaloneBarDockControl1";
+            // 
             // PhoneTab
             // 
-            this.PhoneTab.Controls.Add(this.NumberText);
-            this.PhoneTab.Controls.Add(this.NumberLabel);
-            this.PhoneTab.Controls.Add(this.DescriptionLookUp);
-            this.PhoneTab.Controls.Add(this.DescriptionLabel);
+            this.PhoneTab.Controls.Add(this.PhoneGridControl);
+            this.PhoneTab.Controls.Add(this.PhoneStandaloneBarDockControl);
             this.PhoneTab.Name = "PhoneTab";
-            this.PhoneTab.Size = new System.Drawing.Size(849, 242);
+            this.PhoneTab.Size = new System.Drawing.Size(849, 264);
             this.PhoneTab.Text = "Telefonlar";
             // 
-            // NumberText
+            // PhoneGridControl
             // 
-            this.NumberText.Location = new System.Drawing.Point(54, 52);
-            this.NumberText.Name = "NumberText";
-            this.NumberText.Size = new System.Drawing.Size(100, 20);
-            this.NumberText.TabIndex = 3;
+            this.PhoneGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PhoneGridControl.Location = new System.Drawing.Point(0, 25);
+            this.PhoneGridControl.MainView = this.PhoneGridView;
+            this.PhoneGridControl.MenuManager = this.PhoneBarManager;
+            this.PhoneGridControl.Name = "PhoneGridControl";
+            this.PhoneGridControl.Size = new System.Drawing.Size(849, 239);
+            this.PhoneGridControl.TabIndex = 1;
+            this.PhoneGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.PhoneGridView});
             // 
-            // NumberLabel
+            // PhoneGridView
             // 
-            this.NumberLabel.Location = new System.Drawing.Point(9, 55);
-            this.NumberLabel.Name = "NumberLabel";
-            this.NumberLabel.Size = new System.Drawing.Size(31, 13);
-            this.NumberLabel.TabIndex = 2;
-            this.NumberLabel.Text = "Nömrə";
+            this.PhoneGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.CustomerPhone_SS,
+            this.CustomerPhone_ID,
+            this.CustomerPhone_Description,
+            this.CustomerPhone_Number,
+            this.CustomerPhone_Note,
+            this.CustomerPhone_IsSendSMS});
+            this.PhoneGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.PhoneGridView.GridControl = this.PhoneGridControl;
+            this.PhoneGridView.Name = "PhoneGridView";
+            this.PhoneGridView.OptionsBehavior.AutoExpandAllGroups = true;
+            this.PhoneGridView.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.PhoneGridView.OptionsBehavior.Editable = false;
+            this.PhoneGridView.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.PhoneGridView.OptionsFind.FindDelay = 100;
+            this.PhoneGridView.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
+            this.PhoneGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.PhoneGridView.OptionsSelection.MultiSelect = true;
+            this.PhoneGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.PhoneGridView.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
+            this.PhoneGridView.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.PhoneGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.PhoneGridView.OptionsView.ShowGroupPanel = false;
+            this.PhoneGridView.OptionsView.ShowIndicator = false;
+            this.PhoneGridView.PaintStyleName = "Skin";
+            this.PhoneGridView.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.LiveVertScroll;
+            this.PhoneGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PhoneGridView_FocusedRowObjectChanged);
+            this.PhoneGridView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.PhoneGridView_CustomUnboundColumnData);
+            this.PhoneGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PhoneGridView_MouseUp);
+            this.PhoneGridView.DoubleClick += new System.EventHandler(this.PhoneGridView_DoubleClick);
             // 
-            // DescriptionLookUp
+            // CustomerPhone_SS
             // 
-            this.DescriptionLookUp.Location = new System.Drawing.Point(54, 18);
-            this.DescriptionLookUp.Name = "DescriptionLookUp";
-            this.DescriptionLookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DescriptionLookUp.Size = new System.Drawing.Size(100, 20);
-            this.DescriptionLookUp.TabIndex = 1;
+            this.CustomerPhone_SS.AppearanceCell.Options.UseTextOptions = true;
+            this.CustomerPhone_SS.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.CustomerPhone_SS.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.CustomerPhone_SS.Caption = "S/s";
+            this.CustomerPhone_SS.FieldName = "CustomerPhone_SS";
+            this.CustomerPhone_SS.Name = "CustomerPhone_SS";
+            this.CustomerPhone_SS.OptionsColumn.FixedWidth = true;
+            this.CustomerPhone_SS.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.CustomerPhone_SS.Visible = true;
+            this.CustomerPhone_SS.VisibleIndex = 1;
+            this.CustomerPhone_SS.Width = 40;
             // 
-            // DescriptionLabel
+            // CustomerPhone_ID
             // 
-            this.DescriptionLabel.Location = new System.Drawing.Point(9, 21);
-            this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(29, 13);
-            this.DescriptionLabel.TabIndex = 0;
-            this.DescriptionLabel.Text = "Təsvir";
+            this.CustomerPhone_ID.Caption = "ID";
+            this.CustomerPhone_ID.FieldName = "ID";
+            this.CustomerPhone_ID.Name = "CustomerPhone_ID";
+            // 
+            // CustomerPhone_Description
+            // 
+            this.CustomerPhone_Description.Caption = "Təsvir";
+            this.CustomerPhone_Description.FieldName = "DESCRIPTION_NAME";
+            this.CustomerPhone_Description.Name = "CustomerPhone_Description";
+            this.CustomerPhone_Description.Visible = true;
+            this.CustomerPhone_Description.VisibleIndex = 2;
+            // 
+            // CustomerPhone_Number
+            // 
+            this.CustomerPhone_Number.Caption = "Nömrə";
+            this.CustomerPhone_Number.FieldName = "PHONE_NUMBER";
+            this.CustomerPhone_Number.Name = "CustomerPhone_Number";
+            this.CustomerPhone_Number.Visible = true;
+            this.CustomerPhone_Number.VisibleIndex = 3;
+            // 
+            // CustomerPhone_Note
+            // 
+            this.CustomerPhone_Note.Caption = "Qeyd";
+            this.CustomerPhone_Note.FieldName = "NOTE";
+            this.CustomerPhone_Note.Name = "CustomerPhone_Note";
+            this.CustomerPhone_Note.Visible = true;
+            this.CustomerPhone_Note.VisibleIndex = 4;
+            // 
+            // CustomerPhone_IsSendSMS
+            // 
+            this.CustomerPhone_IsSendSMS.Caption = "SMS";
+            this.CustomerPhone_IsSendSMS.FieldName = "IS_SEND_SMS";
+            this.CustomerPhone_IsSendSMS.Name = "CustomerPhone_IsSendSMS";
+            // 
+            // PhoneBarManager
+            // 
+            this.PhoneBarManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.PhoneBar});
+            this.PhoneBarManager.DockControls.Add(this.barDockControl1);
+            this.PhoneBarManager.DockControls.Add(this.barDockControl2);
+            this.PhoneBarManager.DockControls.Add(this.barDockControl3);
+            this.PhoneBarManager.DockControls.Add(this.barDockControl4);
+            this.PhoneBarManager.Form = this;
+            this.PhoneBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.NewPhoneBarButton,
+            this.EditPhoneBarButton,
+            this.DeletePhoneBarButton,
+            this.RefreshPhoneBarButton});
+            this.PhoneBarManager.MainMenu = this.PhoneBar;
+            this.PhoneBarManager.MaxItemId = 4;
+            // 
+            // PhoneBar
+            // 
+            this.PhoneBar.BarName = "Main menu";
+            this.PhoneBar.DockCol = 0;
+            this.PhoneBar.DockRow = 0;
+            this.PhoneBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.PhoneBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditPhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeletePhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshPhoneBarButton)});
+            this.PhoneBar.OptionsBar.DrawBorder = false;
+            this.PhoneBar.OptionsBar.DrawDragBorder = false;
+            this.PhoneBar.OptionsBar.MultiLine = true;
+            this.PhoneBar.OptionsBar.UseWholeRow = true;
+            this.PhoneBar.StandaloneBarDockControl = this.PhoneStandaloneBarDockControl;
+            this.PhoneBar.Text = "Main menu";
+            // 
+            // NewPhoneBarButton
+            // 
+            this.NewPhoneBarButton.Caption = "Yeni";
+            this.NewPhoneBarButton.Id = 0;
+            this.NewPhoneBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.plus_16;
+            this.NewPhoneBarButton.Name = "NewPhoneBarButton";
+            this.NewPhoneBarButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.NewPhoneBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewPhoneBarButton_ItemClick);
+            // 
+            // EditPhoneBarButton
+            // 
+            this.EditPhoneBarButton.Caption = "Dəyiş";
+            this.EditPhoneBarButton.Id = 1;
+            this.EditPhoneBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.edit_16;
+            this.EditPhoneBarButton.Name = "EditPhoneBarButton";
+            this.EditPhoneBarButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.EditPhoneBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditPhoneBarButton_ItemClick);
+            // 
+            // DeletePhoneBarButton
+            // 
+            this.DeletePhoneBarButton.Caption = "Sil";
+            this.DeletePhoneBarButton.Id = 2;
+            this.DeletePhoneBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeletePhoneBarButton.ImageOptions.Image")));
+            this.DeletePhoneBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DeletePhoneBarButton.ImageOptions.LargeImage")));
+            this.DeletePhoneBarButton.Name = "DeletePhoneBarButton";
+            this.DeletePhoneBarButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.DeletePhoneBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeletePhoneBarButton_ItemClick);
+            // 
+            // RefreshPhoneBarButton
+            // 
+            this.RefreshPhoneBarButton.Caption = "Təzələ";
+            this.RefreshPhoneBarButton.Id = 3;
+            this.RefreshPhoneBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefreshPhoneBarButton.ImageOptions.Image")));
+            this.RefreshPhoneBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("RefreshPhoneBarButton.ImageOptions.LargeImage")));
+            this.RefreshPhoneBarButton.Name = "RefreshPhoneBarButton";
+            this.RefreshPhoneBarButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.RefreshPhoneBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefreshPhoneBarButton_ItemClick);
+            // 
+            // barDockControl1
+            // 
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl1.Manager = this.PhoneBarManager;
+            this.barDockControl1.Size = new System.Drawing.Size(885, 0);
+            // 
+            // barDockControl2
+            // 
+            this.barDockControl2.CausesValidation = false;
+            this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl2.Location = new System.Drawing.Point(0, 656);
+            this.barDockControl2.Manager = this.PhoneBarManager;
+            this.barDockControl2.Size = new System.Drawing.Size(885, 0);
+            // 
+            // barDockControl3
+            // 
+            this.barDockControl3.CausesValidation = false;
+            this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl3.Manager = this.PhoneBarManager;
+            this.barDockControl3.Size = new System.Drawing.Size(0, 656);
+            // 
+            // barDockControl4
+            // 
+            this.barDockControl4.CausesValidation = false;
+            this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl4.Location = new System.Drawing.Point(885, 0);
+            this.barDockControl4.Manager = this.PhoneBarManager;
+            this.barDockControl4.Size = new System.Drawing.Size(0, 656);
             // 
             // WorkTab
             // 
             this.WorkTab.Name = "WorkTab";
-            this.WorkTab.Size = new System.Drawing.Size(849, 242);
+            this.WorkTab.Size = new System.Drawing.Size(849, 264);
             this.WorkTab.Text = "İş yeri";
             // 
             // RelativeTab
             // 
             this.RelativeTab.Name = "RelativeTab";
-            this.RelativeTab.Size = new System.Drawing.Size(849, 242);
+            this.RelativeTab.Size = new System.Drawing.Size(849, 264);
             this.RelativeTab.Text = "Qohumlar";
             // 
             // PanelOption
@@ -873,6 +1068,16 @@
             this.labelControl12.TabIndex = 0;
             this.labelControl12.Text = "<color=255,0,0>*</color> - lu xanalar mütləq doldurulmalıdır";
             // 
+            // PhonePopupMenu
+            // 
+            this.PhonePopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditPhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeletePhoneBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshPhoneBarButton)});
+            this.PhonePopupMenu.Manager = this.PhoneBarManager;
+            this.PhonePopupMenu.Name = "PhonePopupMenu";
+            // 
             // FCustomerAddEdit
             // 
             this.AcceptButton = this.BOK;
@@ -887,6 +1092,10 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Controls.Add(this.barDockControl3);
+            this.Controls.Add(this.barDockControl4);
+            this.Controls.Add(this.barDockControl2);
+            this.Controls.Add(this.barDockControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -918,12 +1127,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentBarManager)).EndInit();
             this.PhoneTab.ResumeLayout(false);
-            this.PhoneTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberText.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DescriptionLookUp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelOption)).EndInit();
             this.PanelOption.ResumeLayout(false);
             this.PanelOption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PhonePopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -972,10 +1182,6 @@
         private DevExpress.XtraTab.XtraTabPage RelativeTab;
         private ManiXButton.XButton BCancel;
         private ManiXButton.XButton BOK;
-        private DevExpress.XtraEditors.LookUpEdit DescriptionLookUp;
-        private DevExpress.XtraEditors.LabelControl DescriptionLabel;
-        private DevExpress.XtraEditors.TextEdit NumberText;
-        private DevExpress.XtraEditors.LabelControl NumberLabel;
         private DevExpress.XtraBars.StandaloneBarDockControl DocumentStandaloneBarDockControl;
         private DevExpress.XtraBars.BarManager DocumentBarManager;
         private DevExpress.XtraBars.Bar bar2;
@@ -998,5 +1204,25 @@
         private DevExpress.XtraGrid.Columns.GridColumn Document_IssueDate;
         private DevExpress.XtraGrid.Columns.GridColumn Document_ReliableDate;
         private DevExpress.XtraGrid.Columns.GridColumn Document_ID;
+        private DevExpress.XtraBars.StandaloneBarDockControl PhoneStandaloneBarDockControl;
+        private DevExpress.XtraBars.BarDockControl barDockControl3;
+        private DevExpress.XtraBars.BarManager PhoneBarManager;
+        private DevExpress.XtraBars.Bar PhoneBar;
+        private DevExpress.XtraBars.BarButtonItem NewPhoneBarButton;
+        private DevExpress.XtraBars.BarButtonItem EditPhoneBarButton;
+        private DevExpress.XtraBars.BarButtonItem DeletePhoneBarButton;
+        private DevExpress.XtraBars.BarButtonItem RefreshPhoneBarButton;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarDockControl barDockControl2;
+        private DevExpress.XtraBars.BarDockControl barDockControl4;
+        private DevExpress.XtraGrid.GridControl PhoneGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView PhoneGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_SS;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_Description;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_Number;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_Note;
+        private DevExpress.XtraGrid.Columns.GridColumn CustomerPhone_IsSendSMS;
+        private DevExpress.XtraBars.PopupMenu PhonePopupMenu;
     }
 }
