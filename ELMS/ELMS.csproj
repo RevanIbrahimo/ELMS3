@@ -185,6 +185,18 @@
     <Compile Include="Forms\Dictionaries\FProfessionAddEdit.Designer.cs">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Option\FUserAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FUserAddEdit.Designer.cs">
+      <DependentUpon>FUserAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Option\FUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FUsers.Designer.cs">
+      <DependentUpon>FUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Phone\FPhoneAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +294,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dictionaries\FProfessionAddEdit.resx">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FUserAddEdit.resx">
+      <DependentUpon>FUserAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FUsers.resx">
+      <DependentUpon>FUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Phone\FPhoneAddEdit.resx">
       <DependentUpon>FPhoneAddEdit.cs</DependentUpon>
@@ -391,6 +409,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="management.ico" />
+    <None Include="Resources\mail-edit-16.png" />
+    <None Include="Resources\mail-delete-16.png" />
+    <None Include="Resources\mail-add-16.png" />
+    <None Include="Resources\phone-edit-16.png" />
+    <None Include="Resources\phone-delete-16.png" />
+    <None Include="Resources\phone-add-16.png" />
+    <None Include="Resources\user-edit-32.png" />
+    <None Include="Resources\user-delete-32.png" />
+    <None Include="Resources\user-add-32.png" />
+    <None Include="Resources\lock-off-32.png" />
+    <None Include="Resources\lock-32.png" />
     <None Include="Resources\sexsiyyet_vesiqesi.png" />
     <None Include="Resources\edit-16.png" />
     <None Include="Resources\plus-16.png" />
