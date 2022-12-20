@@ -85,6 +85,7 @@
     <Compile Include="Class\DataAccess\CountriesDAL.cs" />
     <Compile Include="Class\DataAccess\DocumentGroupDAL.cs" />
     <Compile Include="Class\DataAccess\DocumentTypeDAL.cs" />
+    <Compile Include="Class\DataAccess\ElmsUsersDAL.cs" />
     <Compile Include="Class\DataAccess\KindShipDAL.cs" />
     <Compile Include="Class\DataAccess\PersonTypeDAL.cs" />
     <Compile Include="Class\DataAccess\PhoneDAL.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Class\Tables\Branch.cs" />
     <Compile Include="Class\Tables\CardIssuing.cs" />
     <Compile Include="Class\Tables\ColumnPrintable.cs" />
+    <Compile Include="Class\Tables\ElmsUsers.cs" />
     <Compile Include="Class\Tables\Countries.cs" />
     <Compile Include="Class\Tables\DocumentGroup.cs" />
     <Compile Include="Class\Tables\DocumentType.cs" />
@@ -185,17 +187,41 @@
     <Compile Include="Forms\Dictionaries\FProfessionAddEdit.Designer.cs">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Image\FImageCrop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Image\FImageCrop.Designer.cs">
+      <DependentUpon>FImageCrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mail\FMailAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mail\FMailAddEdit.Designer.cs">
+      <DependentUpon>FMailAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Option\FUserAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Option\FUserAddEdit.Designer.cs">
       <DependentUpon>FUserAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Option\FUserGroupAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FUserGroupAddEdit.Designer.cs">
+      <DependentUpon>FUserGroupAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Option\FUsers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Option\FUsers.Designer.cs">
       <DependentUpon>FUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Option\FUsersGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FUsersGroups.Designer.cs">
+      <DependentUpon>FUsersGroups.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Phone\FPhoneAddEdit.cs">
       <SubType>Form</SubType>
@@ -259,6 +285,12 @@
     <Compile Include="UserControls\RegressionUserControl.Designer.cs">
       <DependentUpon>RegressionUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaitForms\FWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForms\FWait.Designer.cs">
+      <DependentUpon>FWait.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Customer\FCardAddEdit.resx">
       <DependentUpon>FCardAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,11 +327,23 @@
     <EmbeddedResource Include="Forms\Dictionaries\FProfessionAddEdit.resx">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Image\FImageCrop.resx">
+      <DependentUpon>FImageCrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mail\FMailAddEdit.resx">
+      <DependentUpon>FMailAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Option\FUserAddEdit.resx">
       <DependentUpon>FUserAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FUserGroupAddEdit.resx">
+      <DependentUpon>FUserGroupAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Option\FUsers.resx">
       <DependentUpon>FUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FUsersGroups.resx">
+      <DependentUpon>FUsersGroups.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Phone\FPhoneAddEdit.resx">
       <DependentUpon>FPhoneAddEdit.cs</DependentUpon>
@@ -338,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegressionUserControl.resx">
       <DependentUpon>RegressionUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForms\FWait.resx">
+      <DependentUpon>FWait.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -409,6 +456,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="management.ico" />
+    <None Include="Resources\split-vertical.png" />
+    <None Include="Resources\user-group-edit-32.png" />
+    <None Include="Resources\user-group-delete-32.png" />
+    <None Include="Resources\user-group-add-32.png" />
+    <None Include="Resources\user-group-32.png" />
+    <None Include="Resources\user-edit-16.png" />
+    <None Include="Resources\user-delete-16.png" />
+    <None Include="Resources\user-add-16.png" />
+    <None Include="Resources\check-box-16.png" />
+    <Content Include="Resources\folder_search_16.png" />
+    <Content Include="Resources\minus_16.png" />
     <None Include="Resources\mail-edit-16.png" />
     <None Include="Resources\mail-delete-16.png" />
     <None Include="Resources\mail-add-16.png" />

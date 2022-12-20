@@ -59,7 +59,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static DataTable SelectPhoneByOwnerID(int ownerID, PhoneOwnerEnum ownerType, int? id = null)
+        public static DataTable SelectPhoneByOwnerID(int? ownerID, PhoneOwnerEnum ownerType, int? id = null)
         {
             string sql = $@"SELECT P.ID,
                                    P.OWNER_TYPE,

@@ -1427,9 +1427,9 @@ namespace ELMS.Class
             try
             {
                 if (Where == null)
-                    s = $@"SELECT {DisplayID},{DisplayMember} FROM DENTAL_USER.{TableName}";
+                    s = $@"SELECT {DisplayID},{DisplayMember} FROM ELMS_USER.{TableName}";
                 else
-                    s = $@"SELECT {DisplayID},{DisplayMember} FROM DENTAL_USER.{TableName} WHERE {Where}";
+                    s = $@"SELECT {DisplayID},{DisplayMember} FROM ELMS_USER.{TableName} WHERE {Where}";
                 luk.Properties.DataSource = null;
                 luk.Properties.DataSource = GlobalFunctions.GenerateDataTable(s, "FillLookUpEdit");
                 luk.Properties.DisplayMember = DisplayMember;

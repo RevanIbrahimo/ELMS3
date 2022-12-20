@@ -8,6 +8,7 @@ namespace ELMS.Class.Tables
 {
     public class Users
     {
+        public int STATUS_ID { get; set; }
         public int ID { get; set; }    
         public int BRANCH_ID { get; set; }        
         public string FULL_NAME { get; set; }

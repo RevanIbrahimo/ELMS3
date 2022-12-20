@@ -60,7 +60,16 @@ namespace ELMS.Class
         {
             Customer = 1,
             Doctor = 2,
-            Technician = 3
+            Technician = 3,
+            User = 4
+        }
+
+        public enum MailOwnerEnum
+        {
+            Customer = 1,
+            CC = 2,
+            F =3,
+            User = 4
         }
 
         public enum CurrencyEnum

@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ELMS",
+    "\\ELMS\\Class",
+    "\\packages"
   ],
-  "SelectedNode": "\\ELMS.sln",
+  "SelectedNode": "\\ELMS\\Class\\GlobalFunctions.cs",
   "PreviewInSolutionExplorer": false
 }
