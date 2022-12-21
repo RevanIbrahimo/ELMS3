@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ELMS.Class;
+using static ELMS.Class.Enum;
 
 namespace ELMS.Forms
 {
@@ -17,10 +18,12 @@ namespace ELMS.Forms
         {
             InitializeComponent();
         }
-        public string TransactionName, GroupID;
+        
+        public int? GroupID;
+        public TransactionTypeEnum TransactionType;
         int GroupUsedUserID = -1, topindex, old_row_id;
         bool GroupUsed = false, CurrentStatus = false;
-        string UserID;
+        int? UserID;
 
         public delegate void DoEvent();
         public event DoEvent RefreshUserGroupDataGridView;
@@ -30,22 +33,22 @@ namespace ELMS.Forms
             //permision
             if (GlobalVariables.V_UserID > 0)
             {
-                NewUserBarButton.Enabled = Class.GlobalVariables.AddUser;
+                NewUserBarButton.Enabled = Class.GlobalVariables.NewUser;
                 EditUserBarButton.Enabled = Class.GlobalVariables.EditUser;
             }
 
-            if (TransactionName == "EDIT")
+            if (TransactionType == TransactionTypeEnum.Insert)
             {
-                GlobalProcedures.Lock_or_UnLock_UserID("COMS_USER.USER_GROUP", Class.GlobalVariables.V_UserID, "WHERE ID = " + GroupID + " AND USED_USER_ID = -1");
+                GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.USER_GROUP", Class.GlobalVariables.V_UserID, "WHERE ID = " + GroupID + " AND USED_USER_ID = -1");
                 InsertUserGroupPermissionTemp();
-                GroupUsedUserID = GlobalFunctions.GetID("SELECT USED_USER_ID FROM COMS_USER.USER_GROUP WHERE ID = " + GroupID);
+                GroupUsedUserID = GlobalFunctions.GetID("SELECT USED_USER_ID FROM ELMS_USER.USER_GROUP WHERE ID = " + GroupID);
                 GroupUsed = (GroupUsedUserID >= 0);
 
                 if (GroupUsed)
                 {
                     if (GlobalVariables.V_UserID != GroupUsedUserID)
                     {
-                        string used_user_name = GlobalVariables.lstUsers.Find(u => u.ID == GroupUsedUserID).FULLNAME;
+                        string used_user_name = GlobalVariables.lstUsers.Find(u => u.ID == GroupUsedUserID).FULL_NAME;
                         XtraMessageBox.Show("Qrupun məlumatları hal-hazırda " + used_user_name + " tərəfindən istifadə edilir. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.", "Seçilmiş qrupun hal-hazırkı statusu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         CurrentStatus = true;
                     }
@@ -59,7 +62,7 @@ namespace ELMS.Forms
                 LoadPermissionDataGridView();
             }
             else
-                GroupID = GlobalFunctions.GetOracleSequenceValue("USER_GROUP_SEQUENCE").ToString();
+                GroupID = Convert.ToInt32(GlobalFunctions.GetOracleSequenceValue("USER_GROUP_SEQUENCE").ToString());
         }
 
         private void ComponentEnable(bool status)
@@ -78,7 +81,7 @@ namespace ELMS.Forms
 
         private void LoadGroupDetails()
         {
-            string s = "SELECT GROUP_NAME,NOTE FROM COMS_USER.USER_GROUP WHERE ID = " + GroupID;
+            string s = "SELECT GROUP_NAME,NOTE FROM ELMS_USER.USER_GROUP WHERE ID = " + GroupID;
             try
             {
                 DataTable dt = GlobalFunctions.GenerateDataTable(s);
@@ -99,18 +102,9 @@ namespace ELMS.Forms
             string s = null;
             try
             {
-                switch (GlobalVariables.SelectedLanguage)
-                {
-                    case "AZ":
-                        s = "SELECT R.ROLE_DESCRIPTION,RD.DETAIL_NAME_AZ FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP RDT,COMS_USER.ROLES R, COMS_USER.ALL_ROLE_DETAILS RD WHERE RD.ID = RDT.ROLE_DETAIL_ID AND R.ROLE_ID = RD.ROLE_ID AND RDT.GROUP_ID = " + GroupID;
-                        break;
-                    case "EN":
-                        s = "SELECT R.ROLE_DESCRIPTION,RD.DETAIL_NAME_AZ FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP RDT,COMS_USER.ROLES R, COMS_USER.ALL_ROLE_DETAILS RD WHERE RD.ID = RDT.ROLE_DETAIL_ID AND R.ROLE_ID = RD.ROLE_ID AND RDT.GROUP_ID = " + GroupID;
-                        break;
-                    case "RU":
-                        s = "SELECT R.ROLE_DESCRIPTION,RD.DETAIL_NAME_AZ FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP RDT,COMS_USER.ROLES R, COMS_USER.ALL_ROLE_DETAILS RD WHERE RD.ID = RDT.ROLE_DETAIL_ID AND R.ROLE_ID = RD.ROLE_ID AND RDT.GROUP_ID = " + GroupID;
-                        break;
-                }
+                
+                        s = "SELECT R.DESCRIPTION,RD.DETAIL_NAME FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS UGRD,ELMS_USER.ROLES R, ELMS_USER.ALL_ROLE_DETAILS RD WHERE RD.ID = UGRD.ROLE_DETAIL_ID AND R.ID = RD.ROLE_ID AND UGRD.GROUP_ID = " + GroupID;
+               
 
                 DataTable dt = GlobalFunctions.GenerateDataTable(s, this.Name + "/LoadPermissionDataGridView");
 
@@ -149,7 +143,7 @@ namespace ELMS.Forms
                              S.STATUS_NAME,
                              E.SESSION_ID,
                              E.ID
-                        FROM COMS_USER.COMS_USERS E, COMS_USER.STATUS S
+                        FROM ELMS_USER.ELMS_USERS E, ELMS_USER.STATUS S
                        WHERE E.STATUS_ID = S.ID AND E.GROUP_ID = {GroupID}
                     ORDER BY E.FULLNAME";
 
@@ -220,14 +214,14 @@ namespace ELMS.Forms
 
         private void InsertUserGroup()
         {
-            GlobalProcedures.ExecuteQuery($@"INSERT INTO COMS_USER.USER_GROUP(ID,GROUP_NAME,NOTE)VALUES({GroupID},'{AzGroupNameText.Text.Trim()}','{NoteText.Text.Trim()}')",
+            GlobalProcedures.ExecuteQuery($@"INSERT INTO ELMS_USER.USER_GROUP(ID,GROUP_NAME,NOTE)VALUES({GroupID},'{AzGroupNameText.Text.Trim()}','{NoteText.Text.Trim()}')",
                                                 "İstifadəçi qrupu bazaya daxil edilmədi.",
                                                 this.Name + "/InsertUserGroup");
         }
 
         private void UpdateUserGroup()
         {
-            GlobalProcedures.ExecuteQuery($@"UPDATE COMS_USER.USER_GROUP SET GROUP_NAME = '{AzGroupNameText.Text.Trim()}',NOTE = '{NoteText.Text.Trim()}' WHERE ID = {GroupID}",
+            GlobalProcedures.ExecuteQuery($@"UPDATE ELMS_USER.USER_GROUP SET GROUP_NAME = '{AzGroupNameText.Text.Trim()}',NOTE = '{NoteText.Text.Trim()}' WHERE ID = {GroupID}",
                                                 "İstifadəçi qrupu bazada dəyişdirilmədi.",
                                                 this.Name + "/InsertUserGroup");
         }
@@ -236,7 +230,7 @@ namespace ELMS.Forms
         {
             if (ControlGroupDetails())
             {
-                if (TransactionName == "INSERT")
+                if (TransactionType == TransactionTypeEnum.Insert)
                     InsertUserGroup();
                 else
                     UpdateUserGroup();
@@ -250,7 +244,7 @@ namespace ELMS.Forms
             LoadPermissionDataGridView();
         }
 
-        private void LoadFPermissionAddEdit(string groupID)
+        private void LoadFPermissionAddEdit(int? groupID)
         {
             FPermissionAddEdit fc = new FPermissionAddEdit();
             fc.GroupID = groupID;
@@ -272,34 +266,34 @@ namespace ELMS.Forms
 
         private void InsertUserGroupPermission()
         {
-            GlobalProcedures.ExecuteProcedureWithParametr("COMS_USER.PROC_INSERT_GROUP_PERMISSION", "P_GROUP_ID", GroupID, "İstifadəçi qrupunun hüquqları əsas cədvələ daxil edilmədi.");
+            GlobalProcedures.ExecuteProcedureWithParametr("ELMS_USER.PROC_INSERT_GROUP_PERMISSION", "P_GROUP_ID", GroupID, "İstifadəçi qrupunun hüquqları əsas cədvələ daxil edilmədi.");
 
-            //GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM COMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
-            //                                 $@"INSERT INTO COMS_USER.ALL_USER_GROUP_ROLE_DETAILS(ID,GROUP_ID,ROLE_DETAIL_ID)SELECT ID,GROUP_ID,ROLE_DETAIL_ID FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
+            //GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
+            //                                 $@"INSERT INTO ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS(ID,GROUP_ID,ROLE_DETAIL_ID)SELECT ID,GROUP_ID,ROLE_DETAIL_ID FROM ELMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
             //                                        "İstifadəçi qrupunun hüquqları əsas cədvələ daxil edilmədi.",
             //                                 this.Name + "/InsertUserGroupPermission");
         }
 
         private void DeleteUserGroupPermissionTemp()
         {
-            GlobalProcedures.ExecuteQuery($@"DELETE FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
+            GlobalProcedures.ExecuteQuery($@"DELETE FROM ELMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
                                               "İstifadəçi qrupunun hüquqları üçün olan temp məlumatlar silinmədi.",
                                               this.Name + "/DeleteUserGroupPermissionTemp");
         }
 
         private void InsertUserGroupPermissionTemp()
         {
-            GlobalProcedures.ExecuteProcedureWithParametr("COMS_USER_TEMP.PROC_INS_GROUP_PERMISSION_TEMP", "P_GROUP_ID", GroupID, "İstifadəçi qrupunun hüquqları temp cədvələ daxil edilmədi.");
+            GlobalProcedures.ExecuteProcedureWithParametr("ELMS_USER_TEMP.PROC_INS_GROUP_PERMISSION_TEMP", "P_GROUP_ID", GroupID, "İstifadəçi qrupunun hüquqları temp cədvələ daxil edilmədi.");
 
-            //GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
-            //                                 $@"INSERT INTO COMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP(ID,GROUP_ID,ROLE_DETAIL_ID)SELECT ID,GROUP_ID,ROLE_DETAIL_ID FROM COMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
+            //GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM ELMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP WHERE GROUP_ID = {GroupID}",
+            //                                 $@"INSERT INTO ELMS_USER_TEMP.USER_GROUP_ROLE_DETAILS_TEMP(ID,GROUP_ID,ROLE_DETAIL_ID)SELECT ID,GROUP_ID,ROLE_DETAIL_ID FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
             //                                        "İstifadəçi qrupunun hüquqları temp cədvələ daxil edilmədi.",
             //                                        this.Name + "/InsertUserGroupPermissionTemp");
         }
 
         private void FUserGroupAddEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GlobalProcedures.Lock_or_UnLock_UserID("COMS_USER.USER_GROUP", -1, "WHERE ID = " + GroupID + " AND USED_USER_ID = " + GlobalVariables.V_UserID);
+            GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.USER_GROUP", -1, "WHERE ID = " + GroupID + " AND USED_USER_ID = " + GlobalVariables.V_UserID);
             DeleteUserGroupPermissionTemp();
             this.RefreshUserGroupDataGridView();
         }
@@ -329,10 +323,10 @@ namespace ELMS.Forms
             LoadUsersDataGridView();
         }
 
-        private void LoadFUserAddEdit(string transaction, string UserID, string group_id)
+        private void LoadFUserAddEdit(TransactionTypeEnum transaction, int? UserID, int? group_id)
         {
             FUserAddEdit fc = new FUserAddEdit();
-            fc.TransactionName = transaction;
+            fc.TransactionType = transaction;
             fc.UserID = UserID;
             fc.GroupID = group_id;
             fc.RefreshUserDataGridView += new FUserAddEdit.DoEvent(RefreshUser);
@@ -341,25 +335,25 @@ namespace ELMS.Forms
 
         private void NewUserBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadFUserAddEdit("INSERT", null, GroupID);
+            LoadFUserAddEdit(TransactionTypeEnum.Insert, null, GroupID);
         }
 
         private void EditUserBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadFUserAddEdit("EDIT", UserID, GroupID);
+            LoadFUserAddEdit(TransactionTypeEnum.Update, UserID, GroupID);
         }
 
         private void UsersGridView_DoubleClick(object sender, EventArgs e)
         {
             if (EditUserBarButton.Enabled && UsersStandaloneBarDockControl.Enabled)
-                LoadFUserAddEdit("EDIT", UserID, GroupID);
+                LoadFUserAddEdit(TransactionTypeEnum.Update, UserID, GroupID);
         }
 
         private void UsersGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DataRow row = UsersGridView.GetFocusedDataRow();
             if (row != null)
-                UserID = row["ID"].ToString();
+                UserID = Convert.ToInt32(row["ID"].ToString());
         }
 
         private void UsersGridView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -371,13 +365,13 @@ namespace ELMS.Forms
         {
             if (EditUserBarButton.Enabled)
             {
-                if (GlobalFunctions.GetID($@"SELECT SESSION_ID FROM COMS_USER.COMS_USERS WHERE ID = {UserID}") != 0)
+                if (GlobalFunctions.GetID($@"SELECT SESSION_ID FROM ELMS_USER.ELMS_USERS WHERE ID = {UserID}") != 0)
                     XtraMessageBox.Show("İstifadəçi sistemə daxil olduğu üçün onu bu qrupdan silmək olmaz. İstifadəçini qrupdan silmək üçün onu sistemdən çıxmaq lazımdır.", "Seçilmiş istifadəçinin hal-hazırkı statusu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     DialogResult dialogResult = XtraMessageBox.Show("Seçilmiş istifadəçini qrupdan silmək üçün bu istifadəçinin qrupunu dəyişmək lazımdır. Buna razısınız?", "İstifadəçinin silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
-                        LoadFUserAddEdit("EDIT", UserID, GroupID);
+                        LoadFUserAddEdit(TransactionTypeEnum.Update, UserID, GroupID);
                 }
             }
         }
@@ -388,7 +382,7 @@ namespace ELMS.Forms
             RefreshUser();
         }
 
-        private void LoadFListOfAutomaticAdd(string transaction, string GroupID, string GroupName)
+        private void LoadFListOfAutomaticAdd(TransactionTypeEnum transaction, int? GroupID, string GroupName)
         {
             FListOfAutomaticAdd fc = new FListOfAutomaticAdd();
             fc.TransactionType = transaction;
@@ -405,7 +399,7 @@ namespace ELMS.Forms
 
         private void AddUserBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadFListOfAutomaticAdd("U", GroupID, AzGroupNameText.Text);
+            LoadFListOfAutomaticAdd(TransactionTypeEnum.Update, GroupID, AzGroupNameText.Text);
         }
 
         private void OtherInfoXtraTabControl_Click(object sender, EventArgs e)

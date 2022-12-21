@@ -18,7 +18,7 @@ namespace ELMS.Forms
         {
             InitializeComponent();
         }
-        public TransactionTypeEnum TransactionName;
+        public TransactionTypeEnum TransactionType;
         public MailOwnerEnum OwnerType;
         public int? MailID;
         public int? OwnerID;
@@ -28,7 +28,7 @@ namespace ELMS.Forms
 
         private void FMailAddEdit_Load(object sender, EventArgs e)
         {
-            if (TransactionName == TransactionTypeEnum.Update)  
+            if (TransactionType == TransactionTypeEnum.Update)  
                 LoadMailDetails();                
         }
 
@@ -149,7 +149,7 @@ namespace ELMS.Forms
         {
             if (ControlEmailDetails())
             {
-                if (TransactionName == TransactionTypeEnum.Insert)
+                if (TransactionType == TransactionTypeEnum.Insert)
                     InsertMail();
                 else
                     UpdateMail();

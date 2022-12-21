@@ -199,6 +199,18 @@
     <Compile Include="Forms\Mail\FMailAddEdit.Designer.cs">
       <DependentUpon>FMailAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Option\FListOfAutomaticAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FListOfAutomaticAdd.Designer.cs">
+      <DependentUpon>FListOfAutomaticAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Option\FPermissionAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Option\FPermissionAddEdit.Designer.cs">
+      <DependentUpon>FPermissionAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Option\FUserAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +345,12 @@
     <EmbeddedResource Include="Forms\Mail\FMailAddEdit.resx">
       <DependentUpon>FMailAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FListOfAutomaticAdd.resx">
+      <DependentUpon>FListOfAutomaticAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Option\FPermissionAddEdit.resx">
+      <DependentUpon>FPermissionAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Option\FUserAddEdit.resx">
       <DependentUpon>FUserAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +474,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="management.ico" />
+    <Content Include="Resources\webcamera-16.png" />
     <None Include="Resources\split-vertical.png" />
     <None Include="Resources\user-group-edit-32.png" />
     <None Include="Resources\user-group-delete-32.png" />

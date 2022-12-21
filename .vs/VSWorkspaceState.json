@@ -3,8 +3,11 @@
     "",
     "\\ELMS",
     "\\ELMS\\Class",
+    "\\ELMS\\Forms",
+    "\\ELMS\\Forms\\Image",
+    "\\ELMS\\Forms\\Mail",
     "\\packages"
   ],
-  "SelectedNode": "\\ELMS\\Class\\GlobalFunctions.cs",
+  "SelectedNode": "\\ELMS\\Forms\\Image",
   "PreviewInSolutionExplorer": false
 }

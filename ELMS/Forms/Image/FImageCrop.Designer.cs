@@ -62,7 +62,7 @@
             // 
             // BCamera
             // 
-            this.BCamera.Image = global::CRS.Properties.Resources.webcamera_16;
+            this.BCamera.Image = global::ELMS.Properties.Resources.webcamera_16;
             this.BCamera.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.BCamera.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.BCamera.Location = new System.Drawing.Point(174, 14);

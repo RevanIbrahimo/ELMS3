@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using ELMS.Class;
+using static ELMS.Class.Enum;
 
 namespace ELMS.Forms
 {
@@ -18,8 +19,8 @@ namespace ELMS.Forms
         {
             InitializeComponent();
         }
-        string GroupID, GroupName;
-        int topindex, old_row_id;
+        string  GroupName;
+        int topindex, old_row_id, GroupID;
 
         public delegate void DoEvent();
         public event DoEvent RefreshUserGroup;
@@ -157,18 +158,18 @@ namespace ELMS.Forms
             DataRow row = GroupGridView.GetFocusedDataRow();
             if (row != null)
             {
-                GroupID = row["ID"].ToString();
+                GroupID = Convert.ToInt32(row["ID"].ToString());
                 GroupName = row["GROUP_NAME"].ToString();
                 LoadUsersDataGridView();
             }
         }
 
-        private void LoadFUserGroupAddEdit(string transaction, string groupID)
+        private void LoadFUserGroupAddEdit(TransactionTypeEnum transaction, int? groupID)
         {
             topindex = GroupGridView.TopRowIndex;
             old_row_id = GroupGridView.FocusedRowHandle;
             FUserGroupAddEdit fc = new FUserGroupAddEdit();
-            fc.TransactionName = transaction;
+            fc.TransactionType = transaction;
             fc.GroupID = groupID;
             fc.RefreshUserGroupDataGridView += new FUserGroupAddEdit.DoEvent(LoadUsersDataGridView);
             fc.ShowDialog();
@@ -178,7 +179,7 @@ namespace ELMS.Forms
 
         private void NewBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadFUserGroupAddEdit("INSERT", null);
+            LoadFUserGroupAddEdit(TransactionTypeEnum.Insert, null);
         }
 
         private void RefreshBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -188,7 +189,7 @@ namespace ELMS.Forms
 
         private void EditBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadFUserGroupAddEdit("EDIT", GroupID);
+            LoadFUserGroupAddEdit(TransactionTypeEnum.Update, GroupID);
         }
 
         private void DeleteGroup()
@@ -217,7 +218,7 @@ namespace ELMS.Forms
         private void GroupGridView_DoubleClick(object sender, EventArgs e)
         {
             if (EditBarButton.Enabled)
-                LoadFUserGroupAddEdit("EDIT", GroupID);
+                LoadFUserGroupAddEdit(TransactionTypeEnum.Update, GroupID);
         }
 
         private void FUsersGroups_FormClosing(object sender, FormClosingEventArgs e)

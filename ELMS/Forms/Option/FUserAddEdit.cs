@@ -28,8 +28,7 @@ namespace ELMS.Forms
             InitializeComponent();
         }
         public TransactionTypeEnum TransactionType;
-        public string TransactionName, GroupID;
-        public int? UserID;
+        public int? UserID,GroupID;
 
         string PhoneNumber,
             UserImage,
@@ -71,12 +70,12 @@ namespace ELMS.Forms
             GlobalProcedures.FillLookUpEdit(GroupNameLookUp, "USER_GROUP", "ID", "GROUP_NAME", null);
             if (TransactionType == TransactionTypeEnum.Update)
             {
-                GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.ELMS_USERS", GlobalVariables.V_UserID, "WHERE ID = " + UserID + " AND USED_USER_ID = -1");
+                GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.SYSTEM_USER", GlobalVariables.V_UserID, "WHERE ID = " + UserID + " AND USED_USER_ID = -1");
                 
                 List<Users> lstComsUser = UserDAL.SelectUserByID(UserID).ToList<Users>();
                 var user = lstComsUser.First();
 
-                if (user.STATUS_ID == 2)
+                if (user.IS_ACTIVE == 2)
                     UserClosed = true;
                 else
                 {
@@ -172,7 +171,7 @@ namespace ELMS.Forms
                                U.INSERT_DATE,
                                UI.IMAGE,
                                U.GROUP_ID
-                          FROM ELMS_USER.ELMS_USERS U,
+                          FROM ELMS_USER.SYSTEM_USER U,
                                ELMS_USER.STATUS S,
                                ELMS_USER.SEX SE,
                                ELMS_USER.USER_GROUP G,
@@ -363,7 +362,7 @@ namespace ELMS.Forms
                 UserNameText.BackColor = GlobalFunctions.ElementColor();
                 return false;
             }
-            else if (TransactionName == "INSERT" && GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM ELMS_USER.ELMS_USERS WHERE NIKNAME = '{GlobalFunctions.Encrypt(UserNameText.Text)}'") > 0)
+            else if (TransactionType == TransactionTypeEnum.Insert && GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM ELMS_USER.SYSTEM_USER WHERE NIKNAME = '{GlobalFunctions.Encrypt(UserNameText.Text)}'") > 0)
             {
                 UserTabControl.SelectedTabPageIndex = 0;
                 UserNameText.BackColor = Color.Red;
@@ -479,7 +478,7 @@ namespace ELMS.Forms
         {
             status_id = 1;
 
-            string sqlUser = $@"INSERT INTO ELMS_USER.ELMS_USERS(ID,
+            string sqlUser = $@"INSERT INTO ELMS_USER.SYSTEM_USER(ID,
                                                                 FULLNAME,
                                                                 BRANCH_ID,
                                                                 NIKNAME,
@@ -520,7 +519,7 @@ namespace ELMS.Forms
 
             if (status_id == 1)
             {
-                sqlUser = $@"UPDATE ELMS_USER.ELMS_USERS SET                                                
+                sqlUser = $@"UPDATE ELMS_USER.SYSTEM_USER SET                                                
                                                 FULLNAME = '{FullNameText.Text.Trim()}',
                                                 BRANCH_ID = {branch_id},
                                                 NIKNAME = '{GlobalFunctions.Encrypt(UserNameText.Text.Trim())}',
@@ -536,7 +535,7 @@ namespace ELMS.Forms
             }
             else
             {
-                sqlUser = $@"UPDATE ELMS_USER.ELMS_USERS SET 
+                sqlUser = $@"UPDATE ELMS_USER.SYSTEM_USER SET 
                                                 STATUS_ID = {status_id},
                                                 CLOSED_DATE = TO_DATE('{CloseDateValue.Text}','DD/MM/YYYY'),
                                                 NOTE = '{NoteText.Text}' 
@@ -578,7 +577,7 @@ namespace ELMS.Forms
 
         private void FUserAddEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.ELMS_USERS", -1, "WHERE ID = " + UserID + " AND USED_USER_ID = " + GlobalVariables.V_UserID);
+            GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.SYSTEM_USER", -1, "WHERE ID = " + UserID + " AND USED_USER_ID = " + GlobalVariables.V_UserID);
             GlobalProcedures.DeleteAllFilesInDirectory(UserImagePath);
             DeleteAllTemp();
             this.RefreshUserDataGridView();
@@ -715,7 +714,7 @@ namespace ELMS.Forms
 
         private void InsertTemps()
         {
-            if (TransactionName == "INSERT")
+            if (TransactionType == TransactionTypeEnum.Insert)
                 return;
 
             GlobalProcedures.ExecuteProcedureWithUser("ELMS_USER_TEMP.PROC_INSERT_USER_TEMP", "P_USER_ID", UserID, "İstifadəçinin məlumatları temp cədvələ daxil edilmədi.");
@@ -839,7 +838,7 @@ namespace ELMS.Forms
         public void LoadFMailAddEdit(TransactionTypeEnum transaction, int? OwnerID, MailOwnerEnum OwnerType, int? MailID)
         {
             FMailAddEdit fp = new FMailAddEdit();
-            fp.TransactionName = transaction;
+            fp.TransactionType = transaction;
             fp.OwnerID = OwnerID;
             fp.OwnerType = OwnerType;
             fp.MailID = MailID;
