@@ -42,7 +42,7 @@ namespace ELMS.Forms
 
         private void LoadUsersGroupDataGridView()
         {
-            string s = "SELECT 1 SS,ID,GROUP_NAME,GROUP_NAME_EN,GROUP_NAME_RU,NOTE,G.USED_USER_ID FROM COMS_USER.USER_GROUP G";
+            string s = "SELECT 1 SS,ID,GROUP_NAME,GROUP_NAME_EN,GROUP_NAME_RU,NOTE,G.USED_USER_ID FROM ELMS_USER.USER_GROUP G";
             try
             {
                 GroupGridControl.DataSource = GlobalFunctions.GenerateDataTable(s, this.Name + "/LoadUsersGroupDataGridView");
@@ -71,14 +71,14 @@ namespace ELMS.Forms
 
         private void LoadUsersDataGridView()
         {
-            string s = $@"SELECT FULLNAME,
+            string s = $@"SELECT FULL_NAME,
                                  ID,
                                  USED_USER_ID,
                                  SEX_ID,
                                  SESSION_ID
-                            FROM COMS_USER.COMS_USERS
-                           WHERE STATUS_ID = 1 AND GROUP_ID = {GroupID}
-                        ORDER BY FULLNAME";
+                            FROM ELMS_USER.SYSTEM_USER
+                           WHERE IS_ACTIVE = 1 AND GROUP_ID = {GroupID}
+                        ORDER BY FULL_NAME";
             UserGridControl.DataSource = GlobalFunctions.GenerateDataTable(s, this.Name + "/LoadUsersDataGridView", "Qrupa daxil olan istifadəçilərin siyahısı cədvələ yüklənmədi.");            
         }
 
@@ -194,13 +194,13 @@ namespace ELMS.Forms
 
         private void DeleteGroup()
         {
-            if (GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM COMS_USER.COMS_USERS WHERE GROUP_ID = {GroupID}") == 0)
+            if (GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM ELMS_USER.SYSTEM_USER WHERE GROUP_ID = {GroupID}") == 0)
             {
                 DialogResult dialogResult = XtraMessageBox.Show("Seçilmiş qrupu silmək istəyirsiniz?", "Qrupun silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM COMS_USER.USER_GROUP WHERE ID = {GroupID}",
-                                                     $@"DELETE FROM COMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
+                    GlobalProcedures.ExecuteTwoQuery($@"DELETE FROM ELMS_USER.USER_GROUP WHERE ID = {GroupID}",
+                                                     $@"DELETE FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS WHERE GROUP_ID = {GroupID}",
                                                      "Seçilmiş qrup bazadan silinmədi.",
                                                      this.Name + "/DeleteGroup");
                 }
@@ -237,7 +237,7 @@ namespace ELMS.Forms
             if (dialogResult == DialogResult.Yes)
             {
                 int newGroupID = GlobalFunctions.GetOracleSequenceValue("USER_GROUP_SEQUENCE");
-                GlobalProcedures.ExecuteTwoQuery($@"INSERT INTO COMS_USER.USER_GROUP (ID,
+                GlobalProcedures.ExecuteTwoQuery($@"INSERT INTO ELMS_USER.USER_GROUP (ID,
                                                                                      GROUP_NAME,
                                                                                      GROUP_NAME_EN,
                                                                                      GROUP_NAME_RU)
@@ -245,13 +245,13 @@ namespace ELMS.Forms
                                                               'Copy ' || GROUP_NAME GROUP_NAME,
                                                               'Copy ' || GROUP_NAME_EN GROUP_NAME_EN,
                                                               'Copy ' || GROUP_NAME_RU GROUP_NAME_RU
-                                                         FROM COMS_USER.USER_GROUP
+                                                         FROM ELMS_USER.USER_GROUP
                                                         WHERE ID = {GroupID}",
-                                                 $@"INSERT INTO COMS_USER.ALL_USER_GROUP_ROLE_DETAILS (ID,
+                                                 $@"INSERT INTO ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS (ID,
                                                                                                       GROUP_ID,
                                                                                                       ROLE_DETAIL_ID)
                                                        SELECT USER_GROUP_PERMISSION_SEQUENCE.NEXTVAL ID, {newGroupID}, ROLE_DETAIL_ID
-                                                         FROM COMS_USER.ALL_USER_GROUP_ROLE_DETAILS
+                                                         FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS
                                                         WHERE GROUP_ID = {GroupID}",
                                                  "Seçilmiş qrupun surəti çıxarılmadı.",
                                                  this.Name + "/CopyBarButton_ItemClick");

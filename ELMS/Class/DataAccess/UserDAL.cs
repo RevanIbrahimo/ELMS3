@@ -48,7 +48,7 @@ namespace ELMS.Class.DataAccess
                                                                           DOCTOR_ID,
                                                                           INSERT_USER)
                                                     VALUES(:inBRANCHID,
-                                                           :inFULLNAME,
+                                                           :inFULL_NAME,
                                                            :inLOGINNAME,
                                                            :inPASSWORD, 
                                                            :inBIRTHDAY,
@@ -61,7 +61,7 @@ namespace ELMS.Class.DataAccess
                                                            :inINSERTUSER) RETURNING ID INTO :outID";
             
             command.Parameters.Add(new OracleParameter("inBRANCHID", user.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inFULLNAME", user.FULL_NAME));
+            command.Parameters.Add(new OracleParameter("inFULL_NAME", user.FULL_NAME));
             command.Parameters.Add(new OracleParameter("inLOGINNAME", user.LOGIN_NAME));
             command.Parameters.Add(new OracleParameter("inPASSWORD", user.PASSWORD));            
             command.Parameters.Add(new OracleParameter("inBIRTHDAY", user.BIRTHDAY));
@@ -89,7 +89,7 @@ namespace ELMS.Class.DataAccess
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"UPDATE ELMS_USER.SYSTEM_USER SET BRANCH_ID = :inBRANCHID,
-                                                                          FULL_NAME = :inFULLNAME,
+                                                                          FULL_NAME = :inFULL_NAME,
                                                                           LOGIN_NAME = :inLOGINNAME,
                                                                           PASSWORD = :inPASSWORD, 
                                                                           BIRTHDAY = :inBIRTHDAY,
@@ -104,7 +104,7 @@ namespace ELMS.Class.DataAccess
                                         WHERE ID = :inID";
 
             command.Parameters.Add(new OracleParameter("inBRANCHID", user.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inFULLNAME", user.FULL_NAME));
+            command.Parameters.Add(new OracleParameter("inFULL_NAME", user.FULL_NAME));
             command.Parameters.Add(new OracleParameter("inLOGINNAME", user.LOGIN_NAME));
             command.Parameters.Add(new OracleParameter("inPASSWORD", user.PASSWORD));
             command.Parameters.Add(new OracleParameter("inBIRTHDAY", user.BIRTHDAY));

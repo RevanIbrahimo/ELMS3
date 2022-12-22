@@ -269,7 +269,7 @@
             // Phone_Description
             // 
             this.Phone_Description.Caption = "Təsvir";
-            this.Phone_Description.FieldName = "DESCRIPTION";
+            this.Phone_Description.FieldName = "DESCRIPTION_NAME";
             this.Phone_Description.Name = "Phone_Description";
             this.Phone_Description.Visible = true;
             this.Phone_Description.VisibleIndex = 2;
@@ -281,7 +281,7 @@
             this.Phone_Number.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Phone_Number.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Phone_Number.Caption = "Nömrə";
-            this.Phone_Number.FieldName = "PHONENUMBER";
+            this.Phone_Number.FieldName = "PHONE_NUMBER";
             this.Phone_Number.Name = "Phone_Number";
             this.Phone_Number.OptionsColumn.FixedWidth = true;
             this.Phone_Number.Visible = true;

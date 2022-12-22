@@ -139,13 +139,12 @@ namespace ELMS.Forms
 
         private void LoadUsersDataGridView()
         {
-            string s = $@"SELECT E.FULLNAME,
-                             S.STATUS_NAME,
+            string s = $@"SELECT E.FULL_NAME,
                              E.SESSION_ID,
                              E.ID
-                        FROM ELMS_USER.ELMS_USERS E, ELMS_USER.STATUS S
-                       WHERE E.STATUS_ID = S.ID AND E.GROUP_ID = {GroupID}
-                    ORDER BY E.FULLNAME";
+                        FROM ELMS_USER.SYSTEM_USER E
+                       WHERE E.GROUP_ID = {GroupID}
+                    ORDER BY E.FULL_NAME";
 
             DataTable dt = GlobalFunctions.GenerateDataTable(s, this.Name + "/LoadUsersDataGridView", "Qrupa daxil olan istifadəçilərin siyahısı cədvələ yüklənmədi.");
 

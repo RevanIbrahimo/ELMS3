@@ -18,7 +18,7 @@ namespace ELMS.Class.DataAccess
                                  U.SURNAME,
                                  U.NAME,
                                  U.PATRONYMIC,
-                                 U.SURNAME || ' ' || U.NAME || ' ' || U.PATRONYMIC FULLNAME,
+                                 U.SURNAME || ' ' || U.NAME || ' ' || U.PATRONYMIC FULL_NAME,
                                  U.NIKNAME,
                                  U.PASSWORD,
                                  U.STATUS_ID,
@@ -28,7 +28,7 @@ namespace ELMS.Class.DataAccess
                                  BIRTHDAY,
                                  NOTE,
                                  USED_USER_ID
-                            FROM ELMS_USER.ELMS_USERS U, ELMS_USER.SEX S
+                            FROM ELMS_USER.SYSTEM_USER U, ELMS_USER.SEX S
                            WHERE U.SEX_ID = S.ID
                         ORDER BY SURNAME";
             else
@@ -36,7 +36,7 @@ namespace ELMS.Class.DataAccess
                                  U.SURNAME,
                                  U.NAME,
                                  U.PATRONYMIC,
-                                 U.SURNAME || ' ' || U.NAME || ' ' || U.PATRONYMIC FULLNAME,
+                                 U.SURNAME || ' ' || U.NAME || ' ' || U.PATRONYMIC FULL_NAME,
                                  U.NIKNAME,
                                  U.PASSWORD,
                                  U.STATUS_ID,

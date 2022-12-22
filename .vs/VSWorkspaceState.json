@@ -6,8 +6,9 @@
     "\\ELMS\\Forms",
     "\\ELMS\\Forms\\Image",
     "\\ELMS\\Forms\\Mail",
+    "\\ELMS\\Forms\\Option",
     "\\packages"
   ],
-  "SelectedNode": "\\ELMS\\Forms\\Image",
+  "SelectedNode": "\\ELMS\\Forms\\Option\\FListOfAutomaticAdd.cs",
   "PreviewInSolutionExplorer": false
 }

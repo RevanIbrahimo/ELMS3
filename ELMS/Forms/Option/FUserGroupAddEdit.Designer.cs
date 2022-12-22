@@ -86,7 +86,6 @@
             this.UsersGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.User_SS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.User_FullName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.User_StatusName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.User_SessionID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.User_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UserBarManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -137,7 +136,7 @@
             this.labelControl15.Appearance.Options.UseFont = true;
             this.labelControl15.Location = new System.Drawing.Point(17, 22);
             this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(219, 17);
+            this.labelControl15.Size = new System.Drawing.Size(170, 13);
             this.labelControl15.TabIndex = 135;
             this.labelControl15.Text = "* - lu xanalar mütləq doldurulmalıdır";
             // 
@@ -207,7 +206,7 @@
             // 
             this.NoteLabel.Location = new System.Drawing.Point(14, 43);
             this.NoteLabel.Name = "NoteLabel";
-            this.NoteLabel.Size = new System.Drawing.Size(29, 16);
+            this.NoteLabel.Size = new System.Drawing.Size(26, 13);
             this.NoteLabel.TabIndex = 65;
             this.NoteLabel.Text = "Qeyd";
             // 
@@ -215,14 +214,14 @@
             // 
             this.NoteText.Location = new System.Drawing.Point(91, 40);
             this.NoteText.Name = "NoteText";
-            this.NoteText.Size = new System.Drawing.Size(490, 22);
+            this.NoteText.Size = new System.Drawing.Size(490, 20);
             this.NoteText.TabIndex = 3;
             // 
             // AzGroupNameLabel
             // 
             this.AzGroupNameLabel.Location = new System.Drawing.Point(14, 15);
             this.AzGroupNameLabel.Name = "AzGroupNameLabel";
-            this.AzGroupNameLabel.Size = new System.Drawing.Size(18, 16);
+            this.AzGroupNameLabel.Size = new System.Drawing.Size(15, 13);
             this.AzGroupNameLabel.TabIndex = 64;
             this.AzGroupNameLabel.Text = "Adı";
             // 
@@ -232,7 +231,7 @@
             this.AzGroupNameText.Name = "AzGroupNameText";
             this.AzGroupNameText.Properties.NullValuePrompt = "Qurupun adını daxil edin";
             this.AzGroupNameText.Properties.NullValuePromptShowForEmptyValue = true;
-            this.AzGroupNameText.Size = new System.Drawing.Size(490, 22);
+            this.AzGroupNameText.Size = new System.Drawing.Size(490, 20);
             this.AzGroupNameText.TabIndex = 0;
             // 
             // OtherInfoXtraTabControl
@@ -243,10 +242,10 @@
             this.OtherInfoXtraTabControl.AppearancePage.HeaderActive.Options.UseForeColor = true;
             this.OtherInfoXtraTabControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OtherInfoXtraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OtherInfoXtraTabControl.Location = new System.Drawing.Point(2, 25);
+            this.OtherInfoXtraTabControl.Location = new System.Drawing.Point(2, 20);
             this.OtherInfoXtraTabControl.Name = "OtherInfoXtraTabControl";
             this.OtherInfoXtraTabControl.SelectedTabPage = this.PermissionTab;
-            this.OtherInfoXtraTabControl.Size = new System.Drawing.Size(563, 483);
+            this.OtherInfoXtraTabControl.Size = new System.Drawing.Size(563, 488);
             this.OtherInfoXtraTabControl.TabIndex = 70;
             this.OtherInfoXtraTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.PermissionTab,
@@ -259,7 +258,7 @@
             this.PermissionTab.Controls.Add(this.PermissionGridControl);
             this.PermissionTab.Controls.Add(this.StandaloneBarDockControl);
             this.PermissionTab.Name = "PermissionTab";
-            this.PermissionTab.Size = new System.Drawing.Size(556, 449);
+            this.PermissionTab.Size = new System.Drawing.Size(557, 460);
             this.PermissionTab.Text = "Qrupa verilmiş hüquqlar";
             // 
             // PermissionGridControl
@@ -268,7 +267,7 @@
             this.PermissionGridControl.Location = new System.Drawing.Point(39, 0);
             this.PermissionGridControl.MainView = this.PermissionGridView;
             this.PermissionGridControl.Name = "PermissionGridControl";
-            this.PermissionGridControl.Size = new System.Drawing.Size(517, 449);
+            this.PermissionGridControl.Size = new System.Drawing.Size(518, 460);
             this.PermissionGridControl.TabIndex = 57;
             this.PermissionGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.PermissionGridView});
@@ -311,7 +310,7 @@
             this.StandaloneBarDockControl.Location = new System.Drawing.Point(0, 0);
             this.StandaloneBarDockControl.Manager = this.PermissionBarManager;
             this.StandaloneBarDockControl.Name = "StandaloneBarDockControl";
-            this.StandaloneBarDockControl.Size = new System.Drawing.Size(39, 449);
+            this.StandaloneBarDockControl.Size = new System.Drawing.Size(39, 460);
             this.StandaloneBarDockControl.Text = "standaloneBarDockControl1";
             // 
             // PermissionBarManager
@@ -422,7 +421,7 @@
             this.UsersStandaloneBarDockControl.Location = new System.Drawing.Point(0, 0);
             this.UsersStandaloneBarDockControl.Manager = this.PermissionBarManager;
             this.UsersStandaloneBarDockControl.Name = "UsersStandaloneBarDockControl";
-            this.UsersStandaloneBarDockControl.Size = new System.Drawing.Size(39, 449);
+            this.UsersStandaloneBarDockControl.Size = new System.Drawing.Size(39, 460);
             this.UsersStandaloneBarDockControl.Text = "standaloneBarDockControl1";
             // 
             // AddUserBarButton
@@ -504,7 +503,7 @@
             this.UsersTab.Controls.Add(this.UsersGridControl);
             this.UsersTab.Controls.Add(this.UsersStandaloneBarDockControl);
             this.UsersTab.Name = "UsersTab";
-            this.UsersTab.Size = new System.Drawing.Size(556, 449);
+            this.UsersTab.Size = new System.Drawing.Size(557, 460);
             this.UsersTab.Text = "Qrupa daxil olan istifadəçilər";
             // 
             // UsersGridControl
@@ -513,7 +512,7 @@
             this.UsersGridControl.Location = new System.Drawing.Point(39, 0);
             this.UsersGridControl.MainView = this.UsersGridView;
             this.UsersGridControl.Name = "UsersGridControl";
-            this.UsersGridControl.Size = new System.Drawing.Size(517, 449);
+            this.UsersGridControl.Size = new System.Drawing.Size(518, 460);
             this.UsersGridControl.TabIndex = 58;
             this.UsersGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UsersGridView});
@@ -537,7 +536,6 @@
             this.UsersGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.User_SS,
             this.User_FullName,
-            this.User_StatusName,
             this.User_SessionID,
             this.User_ID});
             this.UsersGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
@@ -585,20 +583,11 @@
             // User_FullName
             // 
             this.User_FullName.Caption = "İstifadəçinin adı";
-            this.User_FullName.FieldName = "FULLNAME";
+            this.User_FullName.FieldName = "FULL_NAME";
             this.User_FullName.Name = "User_FullName";
             this.User_FullName.Visible = true;
             this.User_FullName.VisibleIndex = 1;
             this.User_FullName.Width = 411;
-            // 
-            // User_StatusName
-            // 
-            this.User_StatusName.Caption = "Statusu";
-            this.User_StatusName.FieldName = "STATUS_NAME";
-            this.User_StatusName.Name = "User_StatusName";
-            this.User_StatusName.Visible = true;
-            this.User_StatusName.VisibleIndex = 2;
-            this.User_StatusName.Width = 150;
             // 
             // User_SessionID
             // 
@@ -736,7 +725,7 @@
             this.labelControl18.Appearance.Options.UseForeColor = true;
             this.labelControl18.Location = new System.Drawing.Point(77, 15);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(8, 16);
+            this.labelControl18.Size = new System.Drawing.Size(6, 13);
             this.labelControl18.TabIndex = 174;
             this.labelControl18.Text = "*";
             // 
@@ -838,7 +827,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraGrid.Columns.GridColumn User_SS;
         private DevExpress.XtraGrid.Columns.GridColumn User_FullName;
-        private DevExpress.XtraGrid.Columns.GridColumn User_StatusName;
         private DevExpress.XtraGrid.Columns.GridColumn User_SessionID;
         private DevExpress.XtraGrid.Columns.GridColumn User_ID;
     }

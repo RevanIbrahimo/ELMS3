@@ -208,7 +208,7 @@ namespace ELMS.Forms.Customer
             else
                 b = true;            
 
-            int card_count = GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM (SELECT CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM COMS_USER_TEMP.CUSTOMER_CARDS_TEMP UNION ALL SELECT CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM COMS_USER.CUSTOMER_CARDS) WHERE CARD_NUMBER = '{NumberText.Text.Trim()}' AND DOCUMENT_GROUP_ID = {documentGroupID} AND DOCUMENT_TYPE_ID = {documentTypeID}"); ;
+            int card_count = GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM (SELECT CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM ELMS_USER_TEMP.CUSTOMER_CARDS_TEMP UNION ALL SELECT CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM ELMS_USER.CUSTOMER_CARDS) WHERE CARD_NUMBER = '{NumberText.Text.Trim()}' AND DOCUMENT_GROUP_ID = {documentGroupID} AND DOCUMENT_TYPE_ID = {documentTypeID}"); ;
             
             if (card_count > 0 && TransactionType == TransactionTypeEnum.Insert)
             {
@@ -221,7 +221,7 @@ namespace ELMS.Forms.Customer
             else
                 b = true;
 
-            int card_code = GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM (SELECT PINCODE,CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM COMS_USER_TEMP.CUSTOMER_CARDS_TEMP UNION ALL SELECT PINCODE,CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM COMS_USER.CUSTOMER_CARDS) WHERE PINCODE = '{PinCodeText.Text.Trim()}' AND CARD_NUMBER = '{NumberText.Text.Trim()}' AND DOCUMENT_GROUP_ID = {documentGroupID} AND DOCUMENT_TYPE_ID = {documentTypeID}");
+            int card_code = GlobalFunctions.GetCount($@"SELECT COUNT(*) FROM (SELECT PINCODE,CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM ELMS_USER_TEMP.CUSTOMER_CARDS_TEMP UNION ALL SELECT PINCODE,CARD_NUMBER,DOCUMENT_GROUP_ID,DOCUMENT_TYPE_ID FROM ELMS_USER.CUSTOMER_CARDS) WHERE PINCODE = '{PinCodeText.Text.Trim()}' AND CARD_NUMBER = '{NumberText.Text.Trim()}' AND DOCUMENT_GROUP_ID = {documentGroupID} AND DOCUMENT_TYPE_ID = {documentTypeID}");
             
             if (card_code > 0 && TransactionType == TransactionTypeEnum.Insert)
             {

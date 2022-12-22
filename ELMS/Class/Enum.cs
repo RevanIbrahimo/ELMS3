@@ -58,18 +58,19 @@ namespace ELMS.Class
 
         public enum PhoneOwnerEnum
         {
-            Customer = 1,
-            Doctor = 2,
-            Technician = 3,
-            User = 4
+            User = 1,
+            Customer = 2,
+            Doctor = 3,
+            Technician = 4
+            
         }
 
         public enum MailOwnerEnum
         {
-            Customer = 1,
+            User = 1,
             CC = 2,
             F =3,
-            User = 4
+            Customer = 4
         }
 
         public enum CurrencyEnum

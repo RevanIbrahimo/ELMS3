@@ -417,7 +417,7 @@
             // User_FullName
             // 
             this.User_FullName.Caption = "İstifadəçilərin adı";
-            this.User_FullName.FieldName = "FULLNAME";
+            this.User_FullName.FieldName = "FULL_NAME";
             this.User_FullName.Name = "User_FullName";
             this.User_FullName.Visible = true;
             this.User_FullName.VisibleIndex = 1;

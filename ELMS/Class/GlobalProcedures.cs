@@ -52,7 +52,7 @@ namespace ELMS.Class
             {
                 string message = ("Message:" + ex.Message + ((ex.InnerException != null) ? "\r\nInnerException:\r\n" + ex.InnerException : null) + ((ex.StackTrace != null) ? "\r\nStack Trace:\r\n" + ex.StackTrace : null)).Trim(),
                             error_text = (message.Length > 4000) ? message.ToString().Substring(0, 3999) : message,
-                sql = $@"INSERT INTO DENTAL_USER.COMS_ERRORS(USER_NAME,FORM_NAME,PROCEDURE_NAME,ERROR_TEXT,SQL)
+                sql = $@"INSERT INTO DENTAL_USER.ELMS_ERRORS(USER_NAME,FORM_NAME,PROCEDURE_NAME,ERROR_TEXT,SQL)
                                     VALUES('{UserName}','{FormName}','{ProcedureName}','{error_text}',:SQL)";
 
                 OracleTransaction transaction = null;

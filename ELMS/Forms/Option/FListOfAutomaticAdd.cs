@@ -47,7 +47,7 @@ namespace ELMS.Forms
             try
             {
                 if (TransactionType == TransactionTypeEnum.Update)
-                    s = "SELECT 1 SS,ID,SURNAME||' '||NAME||' '||PATRONYMIC||' '||DECODE(SEX_ID,1,'oğlu','qızı') FULLNAME FROM COMS_USER.COMS_USERS WHERE STATUS_ID = 1 AND SESSION_ID = 0 AND USED_USER_ID = -1 AND GROUP_ID <> " + GroupID;
+                    s = "SELECT 1 SS,ID,SURNAME||' '||NAME||' '||PATRONYMIC||' '||DECODE(SEX_ID,1,'oğlu','qızı') FULL_NAME FROM ELMS_USER.SYSTEM_USER WHERE STATUS_ID = 1 AND SESSION_ID = 0 AND USED_USER_ID = -1 AND GROUP_ID <> " + GroupID;
                 else
                     s = "";
 
@@ -95,8 +95,8 @@ namespace ELMS.Forms
                 for (int i = 0; i < rows.Count; i++)
                 {
                     DataRow row = rows[i] as DataRow;
-                    GlobalProcedures.ExecuteTwoQuery($@"UPDATE COMS_USER.COMS_USERS SET GROUP_ID = {GroupID} WHERE ID = {row["ID"]}",
-                                                     $@"UPDATE COMS_USER.USER_GROUP_PERMISSION SET GROUP_ID = {GroupID} WHERE USER_ID = {row["ID"]}",
+                    GlobalProcedures.ExecuteTwoQuery($@"UPDATE ELMS_USER.SYSTEM_USER SET GROUP_ID = {GroupID} WHERE ID = {row["ID"]}",
+                                                     $@"UPDATE ELMS_USER.USER_GROUP_PERMISSION SET GROUP_ID = {GroupID} WHERE USER_ID = {row["ID"]}",
                                                         "İstifadəçinin qrupu dəyişdirilmədi.",
                                                         this.Name + "/UpdateUser");
                 }

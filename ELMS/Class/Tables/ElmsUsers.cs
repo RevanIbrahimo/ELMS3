@@ -12,8 +12,8 @@ namespace ELMS.Class.Tables
         public string SURNAME { get; set; }
         public string NAME { get; set; }
         public string PATRONYMIC { get; set; }
-        public string FULLNAME { get; set; }
-        public string NIKNAME { get; set; }
+        public string FULL_NAME { get; set; }
+        public string LOGIN_NAME { get; set; }
         public string PASSWORD { get; set; }
         public int STATUS_ID { get; set; }
         public string SEX_NAME { get; set; }
