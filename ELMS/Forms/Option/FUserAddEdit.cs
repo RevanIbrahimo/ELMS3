@@ -39,7 +39,6 @@ namespace ELMS.Forms
             MailID,
             status_id = 1,
             sex_id,
-            group_id,
             UsedUserID = -1,
             crop_image_count = 0,
             mail_selected_count = 0,
@@ -62,7 +61,6 @@ namespace ELMS.Forms
             if (GlobalVariables.V_UserID > 0)
             {
                 GroupNameLookUp.Properties.Buttons[1].Visible = GlobalVariables.UsersGroup;
-                
             }
 
             GlobalProcedures.FillLookUpEdit(SexLookUp, "SEX", "ID", "NAME", "1 = 1 ORDER BY ID");
@@ -71,7 +69,7 @@ namespace ELMS.Forms
             if (TransactionType == TransactionTypeEnum.Update)
             {
                 GlobalProcedures.Lock_or_UnLock_UserID("ELMS_USER.SYSTEM_USER", GlobalVariables.V_UserID, "WHERE ID = " + UserID + " AND USED_USER_ID = -1");
-                
+
                 List<Users> lstComsUser = UserDAL.SelectUserByID(UserID).ToList<Users>();
                 var user = lstComsUser.First();
 
@@ -89,9 +87,9 @@ namespace ELMS.Forms
                 UsedUserID = user.USED_USER_ID;
                 UserUsed = (user.USED_USER_ID > 0);
 
-                if (((UserClosed) && (UserUsed)) || ((UserClosed) && (!UserUsed)))
+                if ((UserClosed && UserUsed) || (UserClosed && !UserUsed))
                 {
-                    XtraMessageBox.Show("İstifadəçi sistemdə bağlanılıb. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.", "Seçilmiş istifadəçinin hal-hazırkı statusu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    GlobalProcedures.ShowWarningMessage("İstifadəçi sistemdə bağlanılıb. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.");
                     CurrentStatus = true;
                 }
                 else if ((!UserClosed) && (UserUsed))
@@ -99,12 +97,12 @@ namespace ELMS.Forms
                     if (GlobalVariables.V_UserID != UsedUserID)
                     {
                         string used_user_name = GlobalVariables.lstUsers.Find(u => u.ID == UsedUserID).FULL_NAME;
-                        XtraMessageBox.Show("İstifadəçinin məlumatları hal-hazırda " + used_user_name + " tərəfindən istifadə edilir. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.", "Seçilmiş istifadəçinin hal-hazırkı statusu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        GlobalProcedures.ShowWarningMessage("İstifadəçinin məlumatları hal-hazırda " + used_user_name + " tərəfindən istifadə edilir. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.");
                         CurrentStatus = true;
                     }
                     else if (UserConnected)
                     {
-                        XtraMessageBox.Show("İstifadəçi sistemə daxil olub. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.", "Seçilmiş istifadəçinin hal-hazırkı statusu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        GlobalProcedures.ShowWarningMessage("İstifadəçi sistemə daxil olub. Onun məlumatları dəyişdirilə bilməz. Siz yalnız məlumatlara baxa bilərsiniz.");
                         CurrentStatus = true;
                     }
                     else
@@ -113,39 +111,27 @@ namespace ELMS.Forms
                 else
                     CurrentStatus = false;
 
-                
                 ComponentEnable(CurrentStatus);
-                InsertTemps();
                 LoadUserDetails();
+                InsertTemps();
             }
             else
             {
                 maildetails = permissiondetails = true;
                 UserID = GlobalFunctions.GetOracleSequenceValue("SYSTEM_USER_SEQUENCE");
                 RegistrationIDText.EditValue = UserID;
-                //switch (GlobalVariables.SelectedLanguage)
-                //{
-                //    case "RU":
-                //        UserPictureBox.Properties.NullText = "Пользователь фото";
-                //        break;
-                //    case "EN":
-                //        UserPictureBox.Properties.NullText = "User picture";
-                //        break;
-                //}
             }
         }
 
         private void ComponentEnable(bool status)
         {
-
-                BLoadPicture.Enabled =
+            BLoadPicture.Enabled =
                 PhoneStandaloneBarDockControl.Enabled =
                 MailStandaloneBarDockControl.Enabled =
                 GroupNameLookUp.Enabled =
                 BranchLookUp.Enabled =
                 UserNameText.Enabled =
                 PasswordValue.Enabled =
-                BLoadPicture.Enabled =
                 FullNameText.Enabled =
                 BirthdayDate.Enabled =
                 AddressText.Enabled =
@@ -184,15 +170,12 @@ namespace ELMS.Forms
             {
                 DataTable dt = GlobalFunctions.GenerateDataTable(s);
 
-
                 foreach (DataRow dr in dt.Rows)
                 {
                     RegistrationIDText.Text = dr["ID"].ToString();
                     FullNameText.Text = dr["FULL_NAME"].ToString();
                     UserNameText.Text = GlobalFunctions.Decrypt(dr["LOGIN_NAME"].ToString());
                     PasswordValue.Text = GlobalFunctions.Decrypt(dr["PASSWORD"].ToString());
-                   
-                    CloseDateValue.Enabled = !(status_id == 2);
                     BOK.Enabled = !(status_id == 2);
                     NoteText.Enabled = !(status_id == 2);
                     BLoadPicture.Enabled = !(status_id == 2);
@@ -202,16 +185,8 @@ namespace ELMS.Forms
                     SexLookUp.EditValue = SexLookUp.Properties.GetKeyValueByDisplayText(dr["SEX_NAME"].ToString());
                     AddressText.Text = dr["ADDRESS"].ToString();
                     group_name = dr["GROUP_NAME"].ToString();
-                    group_id = Convert.ToInt32(dr["GROUP_ID"].ToString());
-                    if (!String.IsNullOrEmpty(dr["CLOSED_DATE"].ToString()))
-                        CloseDateValue.EditValue = DateTime.Parse(dr["CLOSED_DATE"].ToString());
-                    else
-                        CloseDateValue.EditValue = DateTime.Today;
-
-                    CloseDateValue.Properties.MinValue = DateTime.Parse(dr["INSERT_DATE"].ToString());
-
+                    GroupID = Convert.ToInt32(dr["GROUP_ID"].ToString());
                     NoteText.Text = dr["NOTE"].ToString();
-
                     if (!DBNull.Value.Equals(dr["IMAGE"]))
                     {
                         existsImage = true;
@@ -240,15 +215,6 @@ namespace ELMS.Forms
                             BLoadPicture.Enabled = !CurrentStatus;
                         BDeletePicture.Enabled = false;
                         UserImage = null;
-                        //switch (GlobalVariables.SelectedLanguage)
-                        //{
-                        //    case "RU":
-                        //        UserPictureBox.Properties.NullText = "Пользователь фото";
-                        //        break;
-                        //    case "EN":
-                        //        UserPictureBox.Properties.NullText = "User picture";
-                        //        break;
-                        //}
                     }
                 }
             }
@@ -473,6 +439,10 @@ namespace ELMS.Forms
 
         private void InsertUser(OracleTransaction tran)
         {
+            if(GroupID == 0)
+            {
+                GroupID = 2;
+            }
             status_id = 1;
 
             string sqlUser = $@"INSERT INTO ELMS_USER.SYSTEM_USER(ID,
@@ -496,7 +466,7 @@ namespace ELMS.Forms
                                     TO_DATE('{BirthdayDate.Text}','DD/MM/YYYY'),
                                     {sex_id},
                                     '{AddressText.Text.Trim()}',
-                                    {group_id},
+                                    {GroupID},
                                     '{NoteText.Text.Trim()}',
                                     {GlobalVariables.V_UserID})",
                        sqlImage = null;
@@ -525,7 +495,7 @@ namespace ELMS.Forms
                                                 SEX_ID = {sex_id},
                                                 NOTE = '{NoteText.Text}',
                                                 ADDRESS = '{AddressText.Text}',
-                                                GROUP_ID = {group_id},
+                                                GROUP_ID = {GroupID},
                                                 UPDATE_USER = {GlobalVariables.V_UserID},
                                                 UPDATE_DATE = SYSDATE
                                         WHERE ID = {UserID}";
@@ -534,7 +504,6 @@ namespace ELMS.Forms
             {
                 sqlUser = $@"UPDATE ELMS_USER.SYSTEM_USER SET 
                                                 IS_ACTIVE = {status_id},
-                                                CLOSED_DATE = TO_DATE('{CloseDateValue.Text}','DD/MM/YYYY'),
                                                 NOTE = '{NoteText.Text}' 
                             WHERE ID = {UserID}";
             }
@@ -557,19 +526,21 @@ namespace ELMS.Forms
 
         private void LoadUserGroupPermissionDataGridView()
         {
-            string s = $@"SELECT R.DESCRIPTION, RD.DETAIL_NAME, RD.ID
-                                  FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS RDT,
-                                       ELMS_USER.ROLES R,
-                                       ELMS_USER.ALL_ROLE_DETAILS RD
-                                 WHERE     RD.ID = RDT.ROLE_DETAIL_ID
-                                       AND R.ID = RD.ROLE_ID
-                                       AND RDT.GROUP_ID = {group_id}";
-            PermissionGridControl.DataSource = GlobalFunctions.GenerateDataTable(s);
+            PermissionGridControl.DataSource = PermissionDAL.SelectPermissionByID(GroupID).ToList<Permission>();
+
+            //string s = $@"SELECT R.DESCRIPTION ROLES_DESCRIPTION, RD.DETAIL_NAME ROLE_DETAIL_NAME, RD.ID
+            //                      FROM ELMS_USER.ALL_USER_GROUP_ROLE_DETAILS RDT,
+            //                           ELMS_USER.ROLES R,
+            //                           ELMS_USER.ALL_ROLE_DETAILS RD
+            //                     WHERE     RD.ID = RDT.ROLE_DETAIL_ID
+            //                           AND R.ID = RD.ROLE_ID
+            //                           AND RDT.GROUP_ID = {GroupID}";
+            //PermissionGridControl.DataSource = GlobalFunctions.GenerateDataTable(s);
         }
 
         private void DeleteAllTemp()
         {
-            GlobalProcedures.ExecuteProcedureWithParametr("ELMS_USER_TEMP.PROC_USER_DELETE_ALL_TEMP", "P_USED_USER_ID", GlobalVariables.V_UserID, "İstifadəçinin məlumatları temp cədvəldən silinmədi.");
+            GlobalProcedures.ExecuteProcedureWithTwoParametr("ELMS_USER_TEMP.PROC_USER_DELETE_ALL_TEMP", "P_USED_USER_ID", GlobalVariables.V_UserID, "P_OWNER_TYPE", MailOwnerEnum.User, "İstifadəçinin məlumatları temp cədvəldən silinmədi.");
         }
 
         private void FUserAddEdit_FormClosing(object sender, FormClosingEventArgs e)
@@ -582,6 +553,12 @@ namespace ELMS.Forms
 
         private void LoadPhoneDataGridView()
         {
+            if (!UserID.HasValue)
+                UserID = 0;
+
+            PhoneGridControl.DataSource = PhoneDAL.SelectPhoneByOwnerID(UserID.Value, PhoneOwnerEnum.User);
+
+            EditPhoneBarButton.Enabled = DeletePhoneBarButton.Enabled = PhoneGridView.RowCount > 0;
             //string s = $@"SELECT P.ID,
             //                     PD.NAME DESCRIPTION_NAME,
             //                     P.PHONE_NUMBER PHONE_NUMBER,
@@ -624,12 +601,7 @@ namespace ELMS.Forms
             //    GlobalProcedures.LogWrite("Telefon nömrələri cədvələ yüklənmədi.", s, GlobalVariables.V_UserName, this.Name, this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, exx);
             //}
 
-            if (!UserID.HasValue)
-                UserID = 0;
 
-            PhoneGridControl.DataSource = PhoneDAL.SelectPhoneByOwnerID(UserID.Value, PhoneOwnerEnum.User);
-
-            EditPhoneBarButton.Enabled = DeletePhoneBarButton.Enabled = PhoneGridView.RowCount > 0;
         }
 
         private void LoadMailDataGridView()
@@ -637,7 +609,7 @@ namespace ELMS.Forms
             if (!UserID.HasValue)
                 UserID = 0;
 
-            MailGridControl.DataSource = MailDAL.SelectMailByOwnerID(UserID.Value, MailOwnerEnum.User);
+            MailGridControl.DataSource = MailDAL.SelectMailByOwnerID(UserID, MailOwnerEnum.User);
 
             EditMailBarButton.Enabled = DeleteMailBarButton.Enabled = MailGridView.RowCount > 0;
 
@@ -716,8 +688,8 @@ namespace ELMS.Forms
             if (listID != null)
             {
                 listID = listID.TrimEnd(',');
-                GlobalProcedures.ExecuteTwoQuery(tran, $@"UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_SEND = 0, IS_CHANGE = 1 WHERE IS_SEND = 1 AND OWNER_ID = {UserID} AND OWNER_TYPE = {PhoneOwnerEnum.User} AND USED_USER_ID = {GlobalVariables.V_UserID}",
-                                                       $@"UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_SEND = 1, IS_CHANGE = 1 WHERE ID IN ({listID}) AND OWNER_TYPE = {PhoneOwnerEnum.User} AND USED_USER_ID = {GlobalVariables.V_UserID}");
+                GlobalProcedures.ExecuteTwoQuery(tran, $@"UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_SEND = 0, IS_CHANGE = 1 WHERE IS_SEND = 1 AND OWNER_ID = {UserID} AND OWNER_TYPE = {MailOwnerEnum.User} AND USED_USER_ID = {GlobalVariables.V_UserID}",
+                                                       $@"UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_SEND = 1, IS_CHANGE = 1 WHERE ID IN ({listID}) AND OWNER_TYPE = {MailOwnerEnum.User} AND USED_USER_ID = {GlobalVariables.V_UserID}");
             }
         }
 
@@ -725,8 +697,11 @@ namespace ELMS.Forms
         {
             if (TransactionType == TransactionTypeEnum.Insert)
                 return;
-            GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser("ELMS_USER_TEMP.PROC_INSERT_USER_TEMP", "P_USER_ID", UserID.Value, "P_OWNER_TYPE", (int)PhoneOwnerEnum.User, "İstifadəçinin məlumatları temp cədvələ daxil edilmədi.");
+            GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser("ELMS_USER_TEMP.PROC_INSERT_USER_PHONE_TEMP", "P_OWNER_ID", UserID, "P_OWNER_TYPE", PhoneOwnerEnum.User, "İstifadəçinin məlumatları temp cədvələ daxil edilmədi.");
+
+            GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser("ELMS_USER_TEMP.PROC_INSERT_MAILS_TEMP", "P_OWNER_ID", UserID, "P_OWNER_TYPE", MailOwnerEnum.User, "İstifadəçinin məlumatları temp cədvələ daxil edilmədi.");
             
+
         }
 
         private void BirthdayDate_EditValueChanged(object sender, EventArgs e)
@@ -738,7 +713,7 @@ namespace ELMS.Forms
         {
             if (permissiondetails)
                 GlobalProcedures.ExecuteTwoQuery(tran, "DELETE FROM ELMS_USER.USER_GROUP_PERMISSION WHERE USER_ID = " + UserID,
-                                                       $@"INSERT INTO ELMS_USER.USER_GROUP_PERMISSION(ID,USER_ID,GROUP_ID) VALUES(USER_GROUP_ROLE_SEQUENCE.NEXTVAL,{UserID},{group_id})");
+                                                       $@"INSERT INTO ELMS_USER.USER_GROUP_PERMISSION(ID,USER_ID,GROUP_ID) VALUES(USER_GROUP_PERMISSION_SEQUENCE.NEXTVAL,{UserID},{GroupID})");
         }
 
         private void BOK_Click(object sender, EventArgs e)
@@ -753,9 +728,9 @@ namespace ELMS.Forms
                     else
                         UppdateUser(tran);
 
-                    InsertUserGroupPermission(tran);
-                    UpdatePhoneSendSms(tran);
-                    UpdateMailSend(tran);
+                    //InsertUserGroupPermission(tran);
+                    //UpdatePhoneSendSms(tran);
+                    //UpdateMailSend(tran);
                     InsertUserDetails(tran);
                     return 1;
                 }, TransactionType == TransactionTypeEnum.Insert ? "İstifadəçinin məlumatları bazaya daxil edilmədi." : "İstifadəçinin məlumatları bazada dəyişdirilmədi.");
@@ -767,7 +742,7 @@ namespace ELMS.Forms
 
         private void InsertUserDetails(OracleTransaction tran)
         {
-            GlobalProcedures.ExecuteProcedureWithUser(tran, "ELMS_USER.PROC_INSERT_USER_DETAILS", "P_CUSTOMER_ID", UserID);
+            GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser(tran, "ELMS_USER.PROC_INSERT_USER_DETAILS", "P_USER_ID", UserID,"P_OWNER_TYPE",1);
         }
 
         void RefreshPhone()
@@ -816,11 +791,13 @@ namespace ELMS.Forms
 
         private void DeletePhone()
         {
-            DialogResult dialogResult = XtraMessageBox.Show(PhoneNumber + " nömrəsini silmək istəyirsiniz?", "Telefon nömrəsinin silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                GlobalProcedures.ExecuteQuery("UPDATE ELMS_USER_TEMP.PHONE_TEMP SET IS_CHANGE = 2 WHERE OWNER_TYPE = "+ PhoneOwnerEnum.User + " AND OWNER_ID = " + UserID + " AND ID = " + PhoneID, "Telefon nömrəsi temp cədvəldən silinmədi.");
-            }
+            if (GlobalFunctions.CallDialogResult("Seçilmiş nömrəni silmək istəyirsiniz?", "Nömrənin silinməsi") == DialogResult.Yes)
+                PhoneDAL.DeletePhone(PhoneID,UserID,PhoneOwnerEnum.User);
+            //DialogResult dialogResult = XtraMessageBox.Show(PhoneNumber + " nömrəsini silmək istəyirsiniz?", "Telefon nömrəsinin silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    GlobalProcedures.ExecuteQuery("UPDATE ELMS_USER_TEMP.PHONE_TEMP SET IS_CHANGE = 2 WHERE OWNER_TYPE = " + PhoneOwnerEnum.User + " AND OWNER_ID = " + UserID + " AND ID = " + PhoneID, "Telefon nömrəsi temp cədvəldən silinmədi.");
+            //}
         }
 
         private void DeletePhoneBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -844,14 +821,14 @@ namespace ELMS.Forms
             LoadMailDataGridView();
         }
 
-        public void LoadFMailAddEdit(TransactionTypeEnum transaction,  int? id)
+        public void LoadFMailAddEdit(TransactionTypeEnum transaction, int? id)
         {
-            FMailAddEdit fp = new FMailAddEdit();
+            Mail.FMailAddEdit fp = new Mail.FMailAddEdit();
             fp.TransactionType = transaction;
-            fp.OwnerID = UserID.Value;
-            fp.OwnerType = MailOwnerEnum.User;
+            fp.OwnerID = UserID;
+            fp.MailOwner = MailOwnerEnum.User;
             fp.MailID = id;
-            fp.RefreshEmailDataGridView += new FMailAddEdit.DoEvent(RefreshMail);
+            fp.RefreshEmailDataGridView += new Mail.FMailAddEdit.DoEvent(RefreshMail);
             fp.ShowDialog();
         }
 
@@ -871,7 +848,7 @@ namespace ELMS.Forms
             PhoneGridView.FocusedRowHandle = orderid - 1;
         }
 
-        
+
 
         private void BranchLookUp_EditValueChanged(object sender, EventArgs e)
         {
@@ -904,7 +881,7 @@ namespace ELMS.Forms
 
         }
 
-        
+
         private void FullNameText_EditValueChanged(object sender, EventArgs e)
         {
             if (FullNameText.EditorContainsFocus)
@@ -941,7 +918,7 @@ namespace ELMS.Forms
             if (GroupNameLookUp.EditValue == null)
                 return;
 
-            group_id = Convert.ToInt32(GroupNameLookUp.EditValue);
+            GroupID = Convert.ToInt32(GroupNameLookUp.EditValue);
             LoadUserGroupPermissionDataGridView();
         }
 
@@ -971,11 +948,15 @@ namespace ELMS.Forms
 
         private void DeleteMail()
         {
-            DialogResult dialogResult = XtraMessageBox.Show("Seçilmiş elektron ünvanları silmək istəyirsiniz?", "Elektron ünvanların silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                GlobalProcedures.ExecuteQuery("UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_CHANGE = 2 WHERE OWNER_TYPE = " + PhoneOwnerEnum.User + " AND OWNER_ID = " + UserID + " AND ID = " + MailID, "Elektron ünvanlar temp cədvəldən silinmədi.");
-            }
+            if (GlobalFunctions.CallDialogResult("Seçilmiş elektron ünvanları silmək istəyirsiniz?", "Nömrənin silinməsi") == DialogResult.Yes)
+                MailDAL.DeleteMail(MailID, UserID, MailOwnerEnum.User);
+
+
+            //DialogResult dialogResult = XtraMessageBox.Show("Seçilmiş elektron ünvanları silmək istəyirsiniz?", "Elektron ünvanların silinməsi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //     //GlobalProcedures.ExecuteQuery("UPDATE ELMS_USER_TEMP.MAILS_TEMP SET IS_CHANGE = 2 WHERE OWNER_TYPE = " + PhoneOwnerEnum.User + " AND OWNER_ID = " + UserID + " AND ID = " + MailID, "Elektron ünvanlar temp cədvəldən silinmədi.");
+            //}
         }
 
         private void DeleteMailBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -999,13 +980,9 @@ namespace ELMS.Forms
             DataRow row = MailGridView.GetFocusedDataRow();
             if (row != null)
                 MailID = Convert.ToInt32(row["ID"].ToString());
-                
+
         }
-
         
-
-        
-
         void SelectionImage(string a, int count)
         {
             if (!String.IsNullOrEmpty(a) && File.Exists(a))

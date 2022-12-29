@@ -31,6 +31,33 @@ namespace ELMS.Class.DataAccess
             }
         }
 
+
+        public static DataSet SelectUserByGroupID(int? GroupID)
+        {
+            string sql = $@"SELECT FULL_NAME,
+                                 ID,
+                                 USED_USER_ID,
+                                 SEX_ID,
+                                 SESSION_ID
+                            FROM ELMS_USER.SYSTEM_USER
+                           WHERE IS_ACTIVE = 1 AND GROUP_ID = {GroupID}
+                        ORDER BY FULL_NAME";
+            try
+            {
+                using (OracleDataAdapter adapter = new OracleDataAdapter(sql, GlobalFunctions.GetConnectionString()))
+                {
+                    DataSet dsAdapter = new DataSet();
+                    adapter.Fill(dsAdapter);
+                    return dsAdapter;
+                }
+            }
+            catch (Exception exx)
+            {
+                GlobalProcedures.LogWrite("Qrupa daxil olan istifadəçilərin siyahısı cədvələ yüklənmədi.", sql, GlobalVariables.V_UserName, "UserDAL", "SelectUserByGroupID", exx);
+                return null;
+            }
+        }
+
         public static Int32 InsertUser(OracleTransaction tran, Users user)
         {
             Int32 id = 0;
@@ -48,7 +75,7 @@ namespace ELMS.Class.DataAccess
                                                                           DOCTOR_ID,
                                                                           INSERT_USER)
                                                     VALUES(:inBRANCHID,
-                                                           :inFULL_NAME,
+                                                           :inFULLNAME,
                                                            :inLOGINNAME,
                                                            :inPASSWORD, 
                                                            :inBIRTHDAY,
@@ -61,7 +88,7 @@ namespace ELMS.Class.DataAccess
                                                            :inINSERTUSER) RETURNING ID INTO :outID";
             
             command.Parameters.Add(new OracleParameter("inBRANCHID", user.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", user.FULL_NAME));
+            command.Parameters.Add(new OracleParameter("inFULLNAME", user.FULL_NAME));
             command.Parameters.Add(new OracleParameter("inLOGINNAME", user.LOGIN_NAME));
             command.Parameters.Add(new OracleParameter("inPASSWORD", user.PASSWORD));            
             command.Parameters.Add(new OracleParameter("inBIRTHDAY", user.BIRTHDAY));
@@ -89,7 +116,7 @@ namespace ELMS.Class.DataAccess
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"UPDATE ELMS_USER.SYSTEM_USER SET BRANCH_ID = :inBRANCHID,
-                                                                          FULL_NAME = :inFULL_NAME,
+                                                                          FULL_NAME = :inFULLNAME,
                                                                           LOGIN_NAME = :inLOGINNAME,
                                                                           PASSWORD = :inPASSWORD, 
                                                                           BIRTHDAY = :inBIRTHDAY,
@@ -104,7 +131,7 @@ namespace ELMS.Class.DataAccess
                                         WHERE ID = :inID";
 
             command.Parameters.Add(new OracleParameter("inBRANCHID", user.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", user.FULL_NAME));
+            command.Parameters.Add(new OracleParameter("inFULLNAME", user.FULL_NAME));
             command.Parameters.Add(new OracleParameter("inLOGINNAME", user.LOGIN_NAME));
             command.Parameters.Add(new OracleParameter("inPASSWORD", user.PASSWORD));
             command.Parameters.Add(new OracleParameter("inBIRTHDAY", user.BIRTHDAY));

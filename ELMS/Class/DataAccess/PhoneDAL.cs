@@ -59,7 +59,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static DataTable SelectPhoneByOwnerID(int? ownerID, PhoneOwnerEnum ownerType, int? id = null)
+        public static DataTable SelectPhoneByOwnerID(int ownerID, PhoneOwnerEnum ownerType, int? id = null)
         {
             string sql = $@"SELECT P.ID,
                                    P.OWNER_TYPE,
@@ -214,7 +214,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static void DeletePhone(int phoneID, int ownerID, PhoneOwnerEnum phoneOwner)
+        public static void DeletePhone(int phoneID, int? ownerID, PhoneOwnerEnum phoneOwner)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())

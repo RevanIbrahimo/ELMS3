@@ -26,7 +26,7 @@ namespace ELMS
         private static class NavigationNameClass
         {
             public static readonly string Customer = "Müştərilər";
-            public static readonly string Order = "Sifarişlər";            
+            public static readonly string Order = "Müraciətlər";            
         }
 
         public MainForm()
@@ -87,7 +87,7 @@ namespace ELMS
                     {
                         if (document.Caption == NavigationNameClass.Order)
                             accordionControl.SelectedElement = ordersAccordionControlElement;
-                        if (document.Caption == NavigationNameClass.Customer)
+                       if (document.Caption == NavigationNameClass.Customer)
                             accordionControl.SelectedElement = customerAccordionControlElement;                        
                     }
                 }

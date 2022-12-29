@@ -456,7 +456,6 @@ C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\de\DevExpress.XtraGauges.v17
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\es\DevExpress.XtraGauges.v17.1.Core.resources.dll
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\ja\DevExpress.XtraGauges.v17.1.Core.resources.dll
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\ru\DevExpress.XtraGauges.v17.1.Core.resources.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.csprojAssemblyReference.cache
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Customer.FCardAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Customer.FCustomerAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Dictionaries.FBranchAddEdit.resources
@@ -471,7 +470,6 @@ C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Dictionaries.FPro
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Dictionaries.FProfessionAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Phone.FPhoneAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.MainForm.resources
-C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.DentalSplashScreen.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.FLoginSystem.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.FPrintableCheck.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Properties.Resources.resources
@@ -489,8 +487,14 @@ C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Option.FUsers.res
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FUserAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FUserGroupAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FImageCrop.resources
-C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FMailAddEdit.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FUsersGroups.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.WaitForms.FWait.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FListOfAutomaticAdd.resources
 C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.FPermissionAddEdit.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.csprojAssemblyReference.cache
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Customer.FWorkAddEdit.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.General.ProjectSplashScreen.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Mail.FMailAddEdit.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Order.FOrderAddEdit.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.Forms.Order.FProductCardAddEdit.resources
+C:\Users\user\Documents\Github\ELMS3\ELMS\obj\Debug\ELMS.UserControls.OrderUserControl.resources

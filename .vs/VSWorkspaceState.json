@@ -3,12 +3,14 @@
     "",
     "\\ELMS",
     "\\ELMS\\Class",
+    "\\ELMS\\Class\\DataAccess",
+    "\\ELMS\\Class\\Tables",
     "\\ELMS\\Forms",
     "\\ELMS\\Forms\\Image",
     "\\ELMS\\Forms\\Mail",
     "\\ELMS\\Forms\\Option",
     "\\packages"
   ],
-  "SelectedNode": "\\ELMS\\Forms\\Option\\FListOfAutomaticAdd.cs",
+  "SelectedNode": "\\ELMS\\Forms\\Option\\FUserGroupAddEdit.cs",
   "PreviewInSolutionExplorer": false
 }

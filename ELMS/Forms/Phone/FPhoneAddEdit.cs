@@ -42,7 +42,7 @@ namespace ELMS.Forms.Phone
 
         private void LoadDetail()
         {
-            DataTable dt = PhoneDAL.SelectPhoneByOwnerID(OwnerID, PhoneOwner, PhoneID);
+            DataTable dt = PhoneDAL.SelectPhoneByOwnerID((int)OwnerID, PhoneOwner, PhoneID);
 
             if (dt.Rows.Count > 0)
             {
