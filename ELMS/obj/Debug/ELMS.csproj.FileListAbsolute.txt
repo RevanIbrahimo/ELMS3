@@ -320,21 +320,6 @@ F:\project\Sadiq\Elloni\ELMS\ELMS\obj\Debug\ELMS.Forms.Customer.FCardAddEdit.res
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\Elloni Management System.exe.config
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\Elloni Management System.exe
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\Elloni Management System.pdb
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.BonusSkins.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Data.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.ExpressApp.TreeListEditors.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Images.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Printing.v17.1.Core.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Sparkline.v17.1.Core.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Utils.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Xpo.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.XtraBars.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.XtraEditors.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.XtraGrid.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.XtraPivotGrid.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.XtraTreeList.v17.1.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\Oracle.ManagedDataAccess.dll
-C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\Tulpep.NotificationWindow.dll
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.ExpressApp.v17.1.dll
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Persistent.Base.v17.1.dll
 C:\Users\user\Documents\Github\ELMS3\ELMS\bin\Debug\DevExpress.Pdf.v17.1.Core.dll

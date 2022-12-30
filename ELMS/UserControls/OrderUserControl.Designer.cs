@@ -64,13 +64,11 @@
             this.Customer_Address = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Customer_Note = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Customer_UsedUserID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.RepositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.CustomerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.OrderPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RepositoryItemPictureEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustomerPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // BarManager
@@ -316,8 +314,6 @@
             this.OrderGridControl.Location = new System.Drawing.Point(0, 47);
             this.OrderGridControl.MainView = this.OrderGridView;
             this.OrderGridControl.Name = "OrderGridControl";
-            this.OrderGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.RepositoryItemPictureEdit});
             this.OrderGridControl.Size = new System.Drawing.Size(1430, 566);
             this.OrderGridControl.TabIndex = 56;
             this.OrderGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -396,8 +392,8 @@
             // 
             // Customer_RegisteredAddress
             // 
-            this.Customer_RegisteredAddress.Caption = "Qeydiyyatdadır";
-            this.Customer_RegisteredAddress.FieldName = "REGISTERED_ADDRESS";
+            this.Customer_RegisteredAddress.Caption = "Qeydiyyat nömrəsi";
+            this.Customer_RegisteredAddress.FieldName = "REGISTER_NUMBER";
             this.Customer_RegisteredAddress.Name = "Customer_RegisteredAddress";
             this.Customer_RegisteredAddress.OptionsColumn.FixedWidth = true;
             this.Customer_RegisteredAddress.Visible = true;
@@ -409,8 +405,8 @@
             this.Customer_Country.AppearanceCell.Options.UseTextOptions = true;
             this.Customer_Country.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Customer_Country.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Customer_Country.Caption = "Ölkə";
-            this.Customer_Country.FieldName = "COUNTRY_NAME";
+            this.Customer_Country.Caption = "Ünvan";
+            this.Customer_Country.FieldName = "ADDRESS";
             this.Customer_Country.Name = "Customer_Country";
             this.Customer_Country.OptionsColumn.FixedWidth = true;
             this.Customer_Country.Visible = true;
@@ -418,8 +414,8 @@
             // 
             // Customer_FullName
             // 
-            this.Customer_FullName.Caption = "Tam adı";
-            this.Customer_FullName.FieldName = "FULL_NAME";
+            this.Customer_FullName.Caption = "Filial";
+            this.Customer_FullName.FieldName = "BRANCH_NAME";
             this.Customer_FullName.Name = "Customer_FullName";
             this.Customer_FullName.OptionsColumn.FixedWidth = true;
             this.Customer_FullName.Visible = true;
@@ -431,8 +427,8 @@
             this.Customer_SexName.AppearanceCell.Options.UseTextOptions = true;
             this.Customer_SexName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Customer_SexName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Customer_SexName.Caption = "Cinsi";
-            this.Customer_SexName.FieldName = "SEX_NAME";
+            this.Customer_SexName.Caption = "Müddət";
+            this.Customer_SexName.FieldName = "TIME";
             this.Customer_SexName.Name = "Customer_SexName";
             this.Customer_SexName.OptionsColumn.FixedWidth = true;
             this.Customer_SexName.Visible = true;
@@ -444,31 +440,31 @@
             this.Customer_BirthPlace.AppearanceCell.Options.UseTextOptions = true;
             this.Customer_BirthPlace.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Customer_BirthPlace.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Customer_BirthPlace.Caption = "Doğulduğu yer";
-            this.Customer_BirthPlace.FieldName = "BIRTH_PLACE";
+            this.Customer_BirthPlace.Caption = "Sifarişin mənbəyi";
+            this.Customer_BirthPlace.FieldName = "ORDER_SOURCE";
             this.Customer_BirthPlace.Name = "Customer_BirthPlace";
             this.Customer_BirthPlace.OptionsColumn.FixedWidth = true;
             this.Customer_BirthPlace.Visible = true;
             this.Customer_BirthPlace.VisibleIndex = 5;
-            this.Customer_BirthPlace.Width = 50;
+            this.Customer_BirthPlace.Width = 130;
             // 
             // Customer_Address
             // 
-            this.Customer_Address.Caption = "Ünvanı";
-            this.Customer_Address.FieldName = "ADDRESS";
+            this.Customer_Address.Caption = "İlkin ödəniş";
+            this.Customer_Address.FieldName = "FIRST_PAYMENT";
             this.Customer_Address.Name = "Customer_Address";
             this.Customer_Address.Visible = true;
             this.Customer_Address.VisibleIndex = 6;
-            this.Customer_Address.Width = 388;
+            this.Customer_Address.Width = 437;
             // 
             // Customer_Note
             // 
-            this.Customer_Note.Caption = "Qeyd";
-            this.Customer_Note.FieldName = "NOTE";
+            this.Customer_Note.Caption = "Məbləğ";
+            this.Customer_Note.FieldName = "ORDER_AMOUNT";
             this.Customer_Note.Name = "Customer_Note";
             this.Customer_Note.Visible = true;
             this.Customer_Note.VisibleIndex = 7;
-            this.Customer_Note.Width = 213;
+            this.Customer_Note.Width = 241;
             // 
             // Customer_UsedUserID
             // 
@@ -477,15 +473,9 @@
             this.Customer_UsedUserID.Name = "Customer_UsedUserID";
             this.Customer_UsedUserID.OptionsColumn.AllowShowHide = false;
             // 
-            // RepositoryItemPictureEdit
+            // OrderPopupMenu
             // 
-            this.RepositoryItemPictureEdit.Name = "RepositoryItemPictureEdit";
-            this.RepositoryItemPictureEdit.NullText = " ";
-            this.RepositoryItemPictureEdit.ZoomAccelerationFactor = 1D;
-            // 
-            // CustomerPopupMenu
-            // 
-            this.CustomerPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.OrderPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewBarButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditBarButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteBarButton),
@@ -494,8 +484,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.HistroryBarButton, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintBarButton, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExportBarButton)});
-            this.CustomerPopupMenu.Manager = this.BarManager;
-            this.CustomerPopupMenu.Name = "CustomerPopupMenu";
+            this.OrderPopupMenu.Manager = this.BarManager;
+            this.OrderPopupMenu.Name = "OrderPopupMenu";
             // 
             // OrderUserControl
             // 
@@ -514,8 +504,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RepositoryItemPictureEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustomerPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,11 +540,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn Customer_BirthPlace;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_Address;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_Note;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit RepositoryItemPictureEdit;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_SexName;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_UsedUserID;
         private DevExpress.XtraBars.BarButtonItem RtfBarButton;
-        private DevExpress.XtraBars.PopupMenu CustomerPopupMenu;
+        private DevExpress.XtraBars.PopupMenu OrderPopupMenu;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_ID;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_RegisteredAddress;
         private DevExpress.XtraGrid.Columns.GridColumn Customer_Country;

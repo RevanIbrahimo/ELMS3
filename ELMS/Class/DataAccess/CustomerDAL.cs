@@ -124,6 +124,37 @@ namespace ELMS.Class.DataAccess
             }
         }
 
+
+        public static DataTable SelectCustomerData(string code)
+        {
+            string s = $@"SELECT CU.ID,
+                               CU.FULL_NAME,                          
+                               CU.ADDRESS,                               
+                               CU.CLOSED_DATE,
+                               CU.NOTE,
+                               CU.INSERT_DATE,
+                               CU.USED_USER_ID
+                          FROM ELMS_USER.CUSTOMER CU,
+                               ELMS_USER.CUSTOMER_CARDS CC
+                          WHERE  CU.ID = CC.CUSTOMER_ID AND CC.PINCODE = {code}
+                        ORDER BY CU.ID";
+
+            try
+            {
+                using (OracleDataAdapter da = new OracleDataAdapter(s, GlobalFunctions.GetConnectionString()))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception exx)
+            {
+                GlobalProcedures.LogWrite("Musterinin məlumatları açılmadı.", s, GlobalVariables.V_UserName, "CustomerDAL", "SelectViewData", exx);
+                return null;
+            }
+        }
+
         public static Int32 InsertCustomer(OracleTransaction tran, Customer customer)
         {
             Int32 id = 0;

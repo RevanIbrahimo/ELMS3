@@ -24,8 +24,8 @@ namespace ELMS.UserControls
         {
             InitializeComponent();
         }
-        int topindex, old_row_id, customerID;
-        string customerName;
+        int topindex, old_row_id, orderID;
+        string orderName;
 
         private void OrderUserControl_Load(object sender, EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace ELMS.UserControls
             FOrderAddEdit fc = new FOrderAddEdit()
             {
                 TransactionType = transaction,
-                CustomerID = 5
+                OrderID = id,
             };
             fc.RefreshDataGridView += new FOrderAddEdit.DoEvent(RefreshCustomer);
             fc.ShowDialog();
@@ -93,7 +93,7 @@ namespace ELMS.UserControls
 
         void UpdateCustomer()
         {
-            LoadFCustomerAddEdit(TransactionTypeEnum.Update, customerID);
+            LoadFCustomerAddEdit(TransactionTypeEnum.Update, orderID);
         }
 
         private void EditBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -104,7 +104,7 @@ namespace ELMS.UserControls
 
         private void OrderGridView_MouseUp(object sender, MouseEventArgs e)
         {
-            GlobalProcedures.GridMouseUpForPopupMenu(OrderGridView, CustomerPopupMenu, e);
+            GlobalProcedures.GridMouseUpForPopupMenu(OrderGridView, OrderPopupMenu, e);
         }
 
         private void OrderGridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
@@ -164,8 +164,7 @@ namespace ELMS.UserControls
 
         private void OrderGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            customerID = Convert.ToInt32(GlobalFunctions.GetGridRowCellValue((sender as GridView), "ID"));
-            customerName = GlobalFunctions.GetGridRowCellValue((sender as GridView), "FULL_NAME").ToString();
+            orderID = Convert.ToInt32(GlobalFunctions.GetGridRowCellValue((sender as GridView), "ID"));
         }
 
         private void HistroryBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -13,7 +13,7 @@ namespace ELMS.Class.DataAccess
     class ProductCardDAL
     {
 
-        public static DataSet SelectCustomerCardByID(int? typeID)
+        public static DataSet SelectProductCardByID(int? typeID)
         {
             string sql = null;
             if (typeID == null)
@@ -54,7 +54,7 @@ namespace ELMS.Class.DataAccess
             }
             catch (Exception exx)
             {
-                GlobalProcedures.LogWrite("Sənəd növü açılmadı.", sql, GlobalVariables.V_UserName, "CustomerCardDAL", "SelectCustomerCardByID", exx);
+                GlobalProcedures.LogWrite("Sənəd növü açılmadı.", sql, GlobalVariables.V_UserName, "ProductCardDAL", "SelectProductCardByID", exx);
                 return null;
             }
         }
@@ -85,12 +85,12 @@ namespace ELMS.Class.DataAccess
             }
             catch (Exception exx)
             {
-                GlobalProcedures.LogWrite("Musterinin məlumatları açılmadı.", s, GlobalVariables.V_UserName, "CustomerCardDAL", "SelectViewData", exx);
+                GlobalProcedures.LogWrite("Musterinin məlumatları açılmadı.", s, GlobalVariables.V_UserName, "ProductCardDAL", "SelectViewData", exx);
                 return null;
             }
         }
 
-        public static void InsertCustomerCard(CustomerCard customer)
+        public static void InsertProductCard(ProductCard customer)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())
@@ -124,14 +124,14 @@ namespace ELMS.Class.DataAccess
                                                            :inPINCODE,
                                                            :inCARDISSUINGID,
                                                            :inCUSTOMER_ID)";
-                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.CARD_NUMBER));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.DOCUMENT_GROUP_ID));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.DOCUMENT_TYPE_ID));
-                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.ISSUE_DATE));
-                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.RELIABLE_DATE));
-                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PINCODE));
-                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.CARD_ISSUING_ID));
-                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.CUSTOMER_ID));
+                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.ID));
+                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.PRODUCT_ID));
+                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.PRODUCT_COUNT));
+                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.TOTAL));
+                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.PRODUCT_NAME));
+                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PRICE));
+                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.IMEI));
+                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.ORDER_TAB_ID));
                         commandSql = command.CommandText;
                         command.ExecuteNonQuery();
                         transaction.Commit();
@@ -141,7 +141,7 @@ namespace ELMS.Class.DataAccess
                 catch (Exception exx)
                 {
                     transaction.Rollback();
-                    GlobalProcedures.LogWrite("Sənəd bazaya daxil edilmədi.", commandSql, GlobalVariables.V_UserName, "CustomerCardDAL", "InsertCustomerCard", exx);
+                    GlobalProcedures.LogWrite("Sənəd bazaya daxil edilmədi.", commandSql, GlobalVariables.V_UserName, "ProductCardDAL", "InsertProductCard", exx);
                 }
                 finally
                 {
@@ -151,7 +151,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static void UpdateCustomerCard(CustomerCard customer)
+        public static void UpdateProductCard(ProductCard customer)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())
@@ -179,16 +179,16 @@ namespace ELMS.Class.DataAccess
                                                                                                 USED_USER_ID = :inUSEDUSERID,
                                                                                                 IS_CHANGE = :inISCHANGE
                                                             WHERE CUSTOMER_ID = :inCUSTOMER_ID AND ID = :inID";
-                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.CARD_NUMBER));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.DOCUMENT_GROUP_ID));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.DOCUMENT_TYPE_ID));
-                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.ISSUE_DATE));
-                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.RELIABLE_DATE));
-                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PINCODE));
-                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.CARD_ISSUING_ID));
+                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.PRODUCT_NAME));
+                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.PRODUCT_NAME));
+                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.PRODUCT_NAME));
+                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.PRODUCT_NAME));
+                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.PRICE));
+                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PRODUCT_COUNT));
+                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.TOTAL));
                         command.Parameters.Add(new OracleParameter("inUSEDUSERID", GlobalVariables.V_UserID));
                         command.Parameters.Add(new OracleParameter("inISCHANGE", customer.IS_CHANGE));
-                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.CUSTOMER_ID));
+                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.ORDER_TAB_ID));
                         command.Parameters.Add(new OracleParameter("inID", customer.ID));
                         commandSql = command.CommandText;
                         command.ExecuteNonQuery();
@@ -199,7 +199,7 @@ namespace ELMS.Class.DataAccess
                 catch (Exception exx)
                 {
                     transaction.Rollback();
-                    GlobalProcedures.LogWrite("Sənəd bazada dəyişdirilmədi.", commandSql, GlobalVariables.V_UserName, "CustomerCardDAL", "UpdateCustomerCard", exx);
+                    GlobalProcedures.LogWrite("Sənəd bazada dəyişdirilmədi.", commandSql, GlobalVariables.V_UserName, "ProductCardDAL", "UpdateProductCard", exx);
                 }
                 finally
                 {
@@ -209,7 +209,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static void DeleteCustomerCard(int phoneID, int ownerID)
+        public static void DeleteProductCard(int phoneID, int ownerID)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())
@@ -241,7 +241,7 @@ namespace ELMS.Class.DataAccess
                 catch (Exception exx)
                 {
                     transaction.Rollback();
-                    GlobalProcedures.LogWrite("Sənəd temp cədvəldən silinmədi.", commandSql, GlobalVariables.V_UserName, "CustomerCardDAL", "DeleteCustomerCard", exx);
+                    GlobalProcedures.LogWrite("Sənəd temp cədvəldən silinmədi.", commandSql, GlobalVariables.V_UserName, "ProductCardDAL", "DeleteProductCard", exx);
                 }
                 finally
                 {

@@ -11,7 +11,7 @@ namespace ELMS.Class.DataAccess
 {
     class OrderDAL
     {
-        public static DataSet SelectCustomerByID(int? ID)
+        public static DataSet SelectOrderByID(int? ID)
         {
             string sql = null;
             if (ID == null)
@@ -76,7 +76,7 @@ namespace ELMS.Class.DataAccess
             }
             catch (Exception exx)
             {
-                GlobalProcedures.LogWrite("Müştərinin məlumatları açılmadı.", sql, GlobalVariables.V_UserName, "CustomerDAL", "SelectCustomerByID", exx);
+                GlobalProcedures.LogWrite("Müştərinin məlumatları açılmadı.", sql, GlobalVariables.V_UserName, "OrderDAL", "SelectOrderByID", exx);
                 return null;
             }
         }
@@ -84,27 +84,23 @@ namespace ELMS.Class.DataAccess
         public static DataTable SelectViewData(int? ID)
         {
             string s = $@"SELECT CU.ID,
-                               CU.FULL_NAME,                               
+                               CU.REGISTER_NUMBER,                               
                                B.NAME BRANCH_NAME,
-                               C.NAME COUNTRY_NAME,
-                               CU.BIRTH_PLACE,
-                               CU.REGISTERED_ADDRESS,                            
-                               CU.BIRTHDAY,
-                               SE.NAME SEX_NAME,                               
-                               CU.ADDRESS,                               
-                               CU.CLOSED_DATE,
+                               S.NAME ORDER_SOURCE,
+                               T.NAME TIME,                           
+                               CU.ORDER_DATE,                              
+                               CU.ADDRESS,
+                               CU.FIRST_PAYMENT,
+                               CU.ORDER_AMOUNT,
                                CU.NOTE,
                                CU.INSERT_DATE,
-                               CI.IMAGE,
                                CU.USED_USER_ID
                           FROM ELMS_USER.ORDER_TAB CU,
-                               ELMS_USER.SEX SE,
-                               ELMS_USER.COUNTRY C,
-                               ELMS_USER.ORDER_TAB_IMAGE CI,
-                               ELMS_USER.BRANCH B
-                          WHERE     CU.COUNTRY_ID = C.ID
-                               AND CU.SEX_ID = SE.ID
-                               AND CU.ID = CI.ORDER_TAB_ID
+                               ELMS_USER.BRANCH B,
+                               ELMS_USER.TIMES T,
+                               ELMS_USER.FUNDS_SOURCES S
+                          WHERE     CU.SOURCE_ID = S.ID
+                               AND CU.TIME_ID = T.ID
                                AND CU.BRANCH_ID = B.ID {(ID.HasValue ? $@" AND CU.ID = {ID}" : null)}
                         ORDER BY CU.ID";
 
@@ -119,12 +115,12 @@ namespace ELMS.Class.DataAccess
             }
             catch (Exception exx)
             {
-                GlobalProcedures.LogWrite("Musterinin məlumatları açılmadı.", s, GlobalVariables.V_UserName, "CustomerDAL", "SelectViewData", exx);
+                GlobalProcedures.LogWrite("Musterinin məlumatları açılmadı.", s, GlobalVariables.V_UserName, "OrderDAL", "SelectViewData", exx);
                 return null;
             }
         }
 
-        public static Int32 InsertCustomer(OracleTransaction tran, Order customer)
+        public static Int32 InsertOrder(OracleTransaction tran, Order order)
         {
             Int32 id = 0;
             OracleCommand command = tran.Connection.CreateCommand();
@@ -146,15 +142,15 @@ namespace ELMS.Class.DataAccess
                                                            :inBIRTH_PLACE,                                                           
                                                            :inADDRESS,                                                        
                                                            :inNOTE) RETURNING ID INTO :outID";
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", customer.FULL_NAME));
-            command.Parameters.Add(new OracleParameter("inBRANCH_ID", customer.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", customer.COUNTRY_ID));
-            command.Parameters.Add(new OracleParameter("inSEXID", customer.SEX_ID));
-            command.Parameters.Add(new OracleParameter("inBIRTHDAY", customer.BIRTHDAY));
-            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", customer.REGISTERED_ADDRESS));
-            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", customer.BIRTH_PLACE));
-            command.Parameters.Add(new OracleParameter("inADDRESS", customer.ADDRESS));
-            command.Parameters.Add(new OracleParameter("inNOTE", customer.NOTE));
+            command.Parameters.Add(new OracleParameter("inFULL_NAME", order.REGISTER_NUMBER));
+            command.Parameters.Add(new OracleParameter("inBRANCH_ID", order.BRANCH_ID));
+            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", order.SOURCE_ID));
+            command.Parameters.Add(new OracleParameter("inSEXID", order.TIME_ID));
+            command.Parameters.Add(new OracleParameter("inBIRTHDAY", order.ORDER_DATE));
+            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", order.ADDRESS));
+            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", order.FIRST_PAYMENT));
+            command.Parameters.Add(new OracleParameter("inADDRESS", order.ADDRESS));
+            command.Parameters.Add(new OracleParameter("inNOTE", order.NOTE));
             command.Parameters.Add(new OracleParameter("outID", OracleDbType.Int32, ParameterDirection.Output));
 
             if (tran != null)
@@ -168,7 +164,7 @@ namespace ELMS.Class.DataAccess
             return id;
         }
 
-        public static void UpdateCustomer(OracleTransaction tran, Order customer)
+        public static void UpdateOrder(OracleTransaction tran, Order order)
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"UPDATE ELMS_USER.ORDER_TAB SET FULL_NAME = :inFULL_NAME,
@@ -184,18 +180,18 @@ namespace ELMS.Class.DataAccess
                                                                         UPDATE_USER = :inUPDATEUSER,
                                                                         UPDATE_DATE = SYSDATE
                                                             WHERE ID = :inID";
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", customer.FULL_NAME));
-            command.Parameters.Add(new OracleParameter("inBRANCH_ID", customer.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", customer.COUNTRY_ID));
-            command.Parameters.Add(new OracleParameter("inSEXID", customer.SEX_ID));
-            command.Parameters.Add(new OracleParameter("inBIRTHDAY", customer.BIRTHDAY));
-            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", customer.REGISTERED_ADDRESS));
-            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", customer.BIRTH_PLACE));
-            command.Parameters.Add(new OracleParameter("inADDRESS", customer.ADDRESS));
-            command.Parameters.Add(new OracleParameter("inNOTE", customer.NOTE));
-            command.Parameters.Add(new OracleParameter("inUSEDUSERID", customer.USED_USER_ID));
+            command.Parameters.Add(new OracleParameter("inFULL_NAME", order.REGISTER_NUMBER));
+            command.Parameters.Add(new OracleParameter("inBRANCH_ID", order.BRANCH_ID));
+            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", order.SOURCE_ID));
+            command.Parameters.Add(new OracleParameter("inSEXID", order.TIME_ID));
+            command.Parameters.Add(new OracleParameter("inBIRTHDAY", order.ORDER_DATE));
+            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", order.FIRST_PAYMENT));
+            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", order.ORDER_AMOUNT));
+            command.Parameters.Add(new OracleParameter("inADDRESS", order.ADDRESS));
+            command.Parameters.Add(new OracleParameter("inNOTE", order.NOTE));
+            command.Parameters.Add(new OracleParameter("inUSEDUSERID", order.USED_USER_ID));
             command.Parameters.Add(new OracleParameter("inUPDATEUSER", GlobalVariables.V_UserID));
-            command.Parameters.Add(new OracleParameter("inID", customer.ID));
+            command.Parameters.Add(new OracleParameter("inID", order.ID));
 
             if (tran != null)
                 command.Transaction = tran;
@@ -204,7 +200,7 @@ namespace ELMS.Class.DataAccess
             command.Dispose();
         }
 
-        public static void DeleteCustomer(int doctorID)
+        public static void DeleteOrder(int doctorID)
         {
             GlobalProcedures.ExecuteProcedureWithParametr("ELMS_USER_TEMP.PROC_DELETE_ORDER_TAB_CARDS", "P_ORDER_TAB_ID", doctorID, "Müştəri bazadan silinmədi.");
         }

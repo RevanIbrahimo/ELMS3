@@ -23,7 +23,7 @@ namespace ELMS.Forms.Order
         }
 
         public TransactionTypeEnum TransactionType;
-        public int? CustomerID;
+        public int? OrderID;
         public int? CardID;
 
         public delegate void DoEvent();
@@ -78,7 +78,7 @@ namespace ELMS.Forms.Order
         private void LoadDetails()
         {
 
-            DataTable dt = CustomerCardDAL.SelectViewData(CustomerID);
+            DataTable dt = CustomerCardDAL.SelectViewData(OrderID);
 
             if (dt.Rows.Count > 0)
             {
@@ -115,7 +115,7 @@ namespace ELMS.Forms.Order
                 CARD_NUMBER = NumberText.Text.Trim(),
                 ISSUE_DATE = DateOfIssueDate.DateTime,
                 RELIABLE_DATE = ReliableDate.DateTime,
-                CUSTOMER_ID = CustomerID.Value
+                CUSTOMER_ID = OrderID.Value
             };
             CustomerCardDAL.InsertCustomerCard(customerCard);
         }
@@ -134,7 +134,7 @@ namespace ELMS.Forms.Order
                 ISSUE_DATE = DateOfIssueDate.DateTime,
                 RELIABLE_DATE = ReliableDate.DateTime,
                 ID = CardID.Value,
-                CUSTOMER_ID = CustomerID.Value,
+                CUSTOMER_ID = OrderID.Value,
                 USED_USER_ID = -1,
                 IS_CHANGE = (int)ChangeTypeEnum.Change
             };

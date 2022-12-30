@@ -11,9 +11,9 @@ namespace ELMS.Class.DataAccess
 {
     class OrderImageDAL
     {
-        public static DataSet SelectCustomerImage(int customerID)
+        public static DataSet SelectOrderImage(int orderID)
         {
-            string sql = $@"SELECT ID,IMAGE FROM ELMS_USER.ORDER_TAB_IMAGE WHERE ORDER_TAB_ID = {customerID}";
+            string sql = $@"SELECT ID,IMAGE FROM ELMS_USER.ORDER_TAB_IMAGE WHERE ORDER_TAB_ID = {orderID}";
 
             try
             {
@@ -26,12 +26,12 @@ namespace ELMS.Class.DataAccess
             }
             catch (Exception exx)
             {
-                GlobalProcedures.LogWrite("Müştərinin şəkli açılmadı.", sql, GlobalVariables.V_UserName, "CustomerImageDAL", "SelectCustomerImage", exx);
+                GlobalProcedures.LogWrite("Müştərinin şəkli açılmadı.", sql, GlobalVariables.V_UserName, "OrderImageDAL", "SelectOrderImage", exx);
                 return null;
             }
         }
 
-        public static void InsertCustomerImage(OracleTransaction tran, OrderImage image)
+        public static void InsertOrderImage(OracleTransaction tran, OrderImage image)
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"INSERT INTO ELMS_USER.ORDER_TAB_IMAGE(ORDER_TAB_ID,
@@ -51,7 +51,7 @@ namespace ELMS.Class.DataAccess
             command.Dispose();
         }
 
-        public static void UpdateCustomerImage(OracleTransaction tran, OrderImage image)
+        public static void UpdateOrderImage(OracleTransaction tran, OrderImage image)
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"UPDATE ELMS_USER.ORDER_TAB_IMAGE SET IMAGE = :inIMAGE,
@@ -69,11 +69,11 @@ namespace ELMS.Class.DataAccess
             command.Dispose();
         }
 
-        public static void DeleteCustomerImage(OracleTransaction tran, int customerID)
+        public static void DeleteOrderImage(OracleTransaction tran, int orderID)
         {
             OracleCommand command = tran.Connection.CreateCommand();
             command.CommandText = $@"DELETE ELMS_USER.ORDER_TAB_IMAGE WHERE ORDER_TAB_ID = :inCUSTOMERID";
-            command.Parameters.Add(new OracleParameter("inCUSTOMERID", customerID));
+            command.Parameters.Add(new OracleParameter("inCUSTOMERID", orderID));
 
             if (tran != null)
                 command.Transaction = tran;
