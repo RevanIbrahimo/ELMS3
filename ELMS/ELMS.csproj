@@ -648,6 +648,11 @@
     <Content Include="bin\Debug\ja\DevExpress.XtraPrinting.v17.1.resources.dll" />
     <Content Include="bin\Debug\ja\DevExpress.XtraReports.v17.1.resources.dll" />
     <Content Include="bin\Debug\ja\DevExpress.XtraTreeList.v17.1.resources.dll" />
+    <Content Include="bin\Debug\Logs\ErrorLog_20221223.txt" />
+    <Content Include="bin\Debug\Logs\ErrorLog_20221224.txt" />
+    <Content Include="bin\Debug\Logs\ErrorLog_20221225.txt" />
+    <Content Include="bin\Debug\Logs\ErrorLog_20221226.txt" />
+    <Content Include="bin\Debug\Logs\ErrorLog_20221227.txt" />
     <Content Include="bin\Debug\Oracle.ManagedDataAccess.dll" />
     <Content Include="bin\Debug\ru\DevExpress.Data.v17.1.resources.dll" />
     <Content Include="bin\Debug\ru\DevExpress.DataAccess.v17.1.resources.dll" />

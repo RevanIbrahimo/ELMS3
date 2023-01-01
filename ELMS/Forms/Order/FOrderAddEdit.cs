@@ -25,7 +25,7 @@ namespace ELMS.Forms.Order
         }
 
         public TransactionTypeEnum TransactionType;
-        public int? OrderID, CustomerID;
+        public int? OrderID, CustomerID = 1;
 
         bool CurrentStatus = false, Used = false, isClickBOK = false;
         int UsedUserID = -1, orderID,
@@ -169,8 +169,7 @@ namespace ELMS.Forms.Order
 
             if (dt.Rows.Count > 0)
             {
-                RegisterCodeText.EditValue = dt.Rows[0]["REGISTER_NUMBER"];
-                ActualAddressText.EditValue = dt.Rows[0]["ADDRESS"];
+                RegisterCodeText.EditValue = dt.Rows[0]["ID"];
                 NoteText.EditValue = dt.Rows[0]["NOTE"];
                 OrderDate.EditValue = dt.Rows[0]["ORDER_DATE"];
                 if (OrderDate.DateTime == DateTime.MinValue)
@@ -200,7 +199,7 @@ namespace ELMS.Forms.Order
         private void ComponentEnabled(bool status)
         {
             NameText.Enabled =
-                BirthPlaceText.Enabled =
+                PhoneAllText.Enabled =
                 BOK.Visible = !status;
         }
 
@@ -215,7 +214,7 @@ namespace ELMS.Forms.Order
         {
             Class.Tables.Order order = new Class.Tables.Order
             {
-                REGISTER_NUMBER = Convert.ToInt32(RegisterCodeText.Text.Trim()),
+                CUSTOMER_ID = CustomerID.Value,
                 BRANCH_ID = branchID,
                 ORDER_DATE = OrderDate.DateTime,
                 SOURCE_ID = sourceID,
@@ -233,7 +232,7 @@ namespace ELMS.Forms.Order
             isClickBOK = true;
             Class.Tables.Order order = new Class.Tables.Order
             {
-                REGISTER_NUMBER = Convert.ToInt32(RegisterCodeText.Text.Trim()),
+                CUSTOMER_ID = CustomerID.Value,
                 BRANCH_ID = branchID,
                 ORDER_DATE = OrderDate.DateTime,
                 SOURCE_ID = sourceID,
@@ -250,8 +249,11 @@ namespace ELMS.Forms.Order
 
         private void BOK_Click(object sender, EventArgs e)
         {
+            if (ControlCardDetails())
+            {
             GlobalFunctions.RunInOneTransaction<int>(tran =>
             {
+            
                 if (TransactionType == TransactionTypeEnum.Insert)
                 {
                     InsertOrder(tran);
@@ -260,17 +262,35 @@ namespace ELMS.Forms.Order
                 {
                     UpdateOrder(tran);
                 }
-                GlobalProcedures.ExecuteProcedureWithParametr(tran, "ELMS_USER.PROC_INSERT_CUSTOMER_CARD", "P_CUSTOMER_ID", OrderID.Value);
-                GlobalProcedures.ExecuteProcedureWithParametr(tran, "ELMS_USER.PROC_INSERT_WORKPLACE_TEMP", "P_CUSTOMER_ID", OrderID.Value);
-                GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser(tran, "ELMS_USER.PROC_INSERT_PHONE", "P_OWNER_ID", OrderID.Value, "P_OWNER_TYPE", (int)PhoneOwnerEnum.Customer);
+                //GlobalProcedures.ExecuteProcedureWithParametr(tran, "ELMS_USER.PROC_INSERT_CUSTOMER_CARD", "P_CUSTOMER_ID", OrderID.Value);
+                //GlobalProcedures.ExecuteProcedureWithParametr(tran, "ELMS_USER.PROC_INSERT_WORKPLACE_TEMP", "P_CUSTOMER_ID", OrderID.Value);
+                //GlobalProcedures.ExecuteProcedureWithTwoParametrAndUser(tran, "ELMS_USER.PROC_INSERT_PHONE", "P_OWNER_ID", OrderID.Value, "P_OWNER_TYPE", (int)PhoneOwnerEnum.Customer);
 
 
                 return 1;
             }, TransactionType == TransactionTypeEnum.Insert ? "Müştərinin məlumatları bazaya daxil edilmədi." : "Müştərinin məlumatları bazada dəyişdirilmədi.");
             this.Close();
+            }
         }
 
-        
+        private bool ControlCardDetails()
+        {
+
+            bool b = false;
+
+            if (CustomerID.Value == 0)
+            {
+                FinCodeSearch.BackColor = Color.Red;
+                GlobalProcedures.ShowErrorMessage("Müştəri seçilməyib.");
+                FinCodeSearch.Focus();
+                FinCodeSearch.BackColor = GlobalFunctions.ElementColor();
+                return false;
+            }
+            else
+                b = true;
+
+            return b;
+        }
 
         void RefreshDictionaries(int index)
         {
@@ -437,6 +457,33 @@ namespace ELMS.Forms.Order
            branchID = GlobalFunctions.GetLookUpID(sender);
         }
 
+        private void NewCustomerButton_Click(object sender, EventArgs e)
+        {
+            LoadFCustomerAddEdit(TransactionTypeEnum.Insert, null);
+        }
+
+        private void LoadFCustomerAddEdit(TransactionTypeEnum transaction, int? id)
+        {
+            
+            Customer.FCustomerAddEdit fc = new Customer.FCustomerAddEdit()
+            {
+                TransactionType = transaction,
+                CustomerID = id
+            };
+            fc.RefreshDataGridView += new Customer.FCustomerAddEdit.DoEvent(LoadCustomerDetails);
+            fc.ShowDialog();
+        }
+
+        private void EditCustomerLabel_Click(object sender, EventArgs e)
+        {
+            LoadFCustomerAddEdit(TransactionTypeEnum.Update, CustomerID);
+        }
+
+        private void FinCodeSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void SourceLookUp_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
@@ -446,19 +493,31 @@ namespace ELMS.Forms.Order
         private void FinCodeSearch_EditValueChanged(object sender, EventArgs e)
         {
             pinCode = ("0"+FinCodeSearch.Text.Trim());
+            EditCustomerLabel.Visible = false;
             LoadCustomerDetails();
         }
 
         private void LoadCustomerDetails()
         {
             DataTable dt = CustomerDAL.SelectCustomerData(pinCode);
+            if (FinCodeSearch.Text.Length != 7)
+            {
+                    NameText.Text =
+                    ActualAddressText.Text =
+                    PhoneAllText.Text  = null;
+                
+                CustomerID = 0;
 
-            if (dt.Rows.Count > 0)
+                PictureEdit.Image = null;
+            }
+                if (dt.Rows.Count > 0)
             {
                 NameText.EditValue = dt.Rows[0]["FULL_NAME"];
                 ActualAddressText.EditValue = dt.Rows[0]["ADDRESS"];
+                PhoneAllText.EditValue = dt.Rows[0]["PHONE"];
                 UsedUserID = Convert.ToInt16(dt.Rows[0]["USED_USER_ID"]);
                 CustomerID = Convert.ToInt32(dt.Rows[0]["ID"]);
+                EditCustomerLabel.Visible = true;
 
                 LoadImage();
             }

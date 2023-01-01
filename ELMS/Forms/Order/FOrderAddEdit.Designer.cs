@@ -56,6 +56,8 @@
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.PersonalDetailsGroupBox = new DevExpress.XtraEditors.GroupControl();
+            this.EditCustomerLabel = new DevExpress.XtraEditors.LabelControl();
+            this.NewCustomerButton = new DevExpress.XtraEditors.SimpleButton();
             this.RegistrationLabel = new DevExpress.XtraEditors.LabelControl();
             this.FinCodeSearch = new DevExpress.XtraEditors.SearchControl();
             this.PhoneBarManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -88,11 +90,8 @@
             this.Address2Label = new DevExpress.XtraEditors.LabelControl();
             this.PictureEdit = new DevExpress.XtraEditors.PictureEdit();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.BirthPlaceText = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.PhoneAllText = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.NameText = new DevExpress.XtraEditors.TextEdit();
             this.NameLabel = new DevExpress.XtraEditors.LabelControl();
             this.SourceLookUp = new DevExpress.XtraEditors.LookUpEdit();
@@ -208,7 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActualAddressText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BirthPlaceText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneAllText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourceLookUp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -252,24 +251,46 @@
             this.PersonalDetailsGroupBox.AppearanceCaption.ForeColor = System.Drawing.Color.Maroon;
             this.PersonalDetailsGroupBox.AppearanceCaption.Options.UseFont = true;
             this.PersonalDetailsGroupBox.AppearanceCaption.Options.UseForeColor = true;
+            this.PersonalDetailsGroupBox.Controls.Add(this.EditCustomerLabel);
+            this.PersonalDetailsGroupBox.Controls.Add(this.NewCustomerButton);
             this.PersonalDetailsGroupBox.Controls.Add(this.RegistrationLabel);
             this.PersonalDetailsGroupBox.Controls.Add(this.FinCodeSearch);
             this.PersonalDetailsGroupBox.Controls.Add(this.ActualAddressText);
             this.PersonalDetailsGroupBox.Controls.Add(this.Address2Label);
             this.PersonalDetailsGroupBox.Controls.Add(this.PictureEdit);
             this.PersonalDetailsGroupBox.Controls.Add(this.separatorControl1);
-            this.PersonalDetailsGroupBox.Controls.Add(this.labelControl8);
-            this.PersonalDetailsGroupBox.Controls.Add(this.BirthPlaceText);
-            this.PersonalDetailsGroupBox.Controls.Add(this.labelControl6);
+            this.PersonalDetailsGroupBox.Controls.Add(this.PhoneAllText);
             this.PersonalDetailsGroupBox.Controls.Add(this.labelControl5);
-            this.PersonalDetailsGroupBox.Controls.Add(this.labelControl1);
             this.PersonalDetailsGroupBox.Controls.Add(this.NameText);
             this.PersonalDetailsGroupBox.Controls.Add(this.NameLabel);
-            this.PersonalDetailsGroupBox.Location = new System.Drawing.Point(434, 12);
+            this.PersonalDetailsGroupBox.Location = new System.Drawing.Point(380, 12);
             this.PersonalDetailsGroupBox.Name = "PersonalDetailsGroupBox";
-            this.PersonalDetailsGroupBox.Size = new System.Drawing.Size(439, 194);
+            this.PersonalDetailsGroupBox.Size = new System.Drawing.Size(493, 194);
             this.PersonalDetailsGroupBox.TabIndex = 1;
             this.PersonalDetailsGroupBox.Text = "Müştərinin məlumatları";
+            // 
+            // EditCustomerLabel
+            // 
+            this.EditCustomerLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.EditCustomerLabel.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.EditCustomerLabel.Appearance.Options.UseFont = true;
+            this.EditCustomerLabel.Appearance.Options.UseForeColor = true;
+            this.EditCustomerLabel.Location = new System.Drawing.Point(298, 35);
+            this.EditCustomerLabel.Name = "EditCustomerLabel";
+            this.EditCustomerLabel.Size = new System.Drawing.Size(26, 13);
+            this.EditCustomerLabel.TabIndex = 29;
+            this.EditCustomerLabel.Text = "Dəyiş";
+            this.EditCustomerLabel.Visible = false;
+            this.EditCustomerLabel.Click += new System.EventHandler(this.EditCustomerLabel_Click);
+            // 
+            // NewCustomerButton
+            // 
+            this.NewCustomerButton.Location = new System.Drawing.Point(219, 34);
+            this.NewCustomerButton.Name = "NewCustomerButton";
+            this.NewCustomerButton.Size = new System.Drawing.Size(71, 19);
+            this.NewCustomerButton.TabIndex = 28;
+            this.NewCustomerButton.Text = "Yeni Müştəri";
+            this.NewCustomerButton.Click += new System.EventHandler(this.NewCustomerButton_Click);
             // 
             // RegistrationLabel
             // 
@@ -308,6 +329,7 @@
             this.FinCodeSearch.SuperTip = superToolTip2;
             this.FinCodeSearch.TabIndex = 26;
             this.FinCodeSearch.EditValueChanged += new System.EventHandler(this.FinCodeSearch_EditValueChanged);
+            this.FinCodeSearch.Click += new System.EventHandler(this.FinCodeSearch_Click);
             // 
             // PhoneBarManager
             // 
@@ -590,6 +612,7 @@
             this.ActualAddressText.Location = new System.Drawing.Point(103, 88);
             this.ActualAddressText.Margin = new System.Windows.Forms.Padding(4);
             this.ActualAddressText.Name = "ActualAddressText";
+            this.ActualAddressText.Properties.ReadOnly = true;
             this.ActualAddressText.Size = new System.Drawing.Size(160, 20);
             this.ActualAddressText.TabIndex = 25;
             // 
@@ -605,7 +628,7 @@
             // PictureEdit
             // 
             this.PictureEdit.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PictureEdit.Location = new System.Drawing.Point(302, 23);
+            this.PictureEdit.Location = new System.Drawing.Point(356, 23);
             this.PictureEdit.Name = "PictureEdit";
             this.PictureEdit.Properties.NullText = "Müştərinin şəkli";
             this.PictureEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -626,42 +649,21 @@
             // separatorControl1
             // 
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(276, 23);
+            this.separatorControl1.Location = new System.Drawing.Point(330, 22);
             this.separatorControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.separatorControl1.Size = new System.Drawing.Size(20, 163);
             this.separatorControl1.TabIndex = 17;
             // 
-            // labelControl8
+            // PhoneAllText
             // 
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(91, 119);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(6, 13);
-            this.labelControl8.TabIndex = 16;
-            this.labelControl8.Text = "*";
-            // 
-            // BirthPlaceText
-            // 
-            this.BirthPlaceText.Location = new System.Drawing.Point(103, 116);
-            this.BirthPlaceText.Margin = new System.Windows.Forms.Padding(4);
-            this.BirthPlaceText.Name = "BirthPlaceText";
-            this.BirthPlaceText.Size = new System.Drawing.Size(160, 20);
-            this.BirthPlaceText.TabIndex = 14;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(91, 91);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(6, 13);
-            this.labelControl6.TabIndex = 12;
-            this.labelControl6.Text = "*";
+            this.PhoneAllText.Location = new System.Drawing.Point(103, 116);
+            this.PhoneAllText.Margin = new System.Windows.Forms.Padding(4);
+            this.PhoneAllText.Name = "PhoneAllText";
+            this.PhoneAllText.Properties.ReadOnly = true;
+            this.PhoneAllText.Size = new System.Drawing.Size(160, 20);
+            this.PhoneAllText.TabIndex = 14;
             // 
             // labelControl5
             // 
@@ -672,17 +674,6 @@
             this.labelControl5.TabIndex = 11;
             this.labelControl5.Text = "Telefon";
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(91, 63);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(6, 13);
-            this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "*";
-            // 
             // NameText
             // 
             this.NameText.Location = new System.Drawing.Point(103, 60);
@@ -690,6 +681,7 @@
             this.NameText.Name = "NameText";
             this.NameText.Properties.NullValuePrompt = "Soyadı, adı və atasının adını daxil edin";
             this.NameText.Properties.NullValuePromptShowForEmptyValue = true;
+            this.NameText.Properties.ReadOnly = true;
             this.NameText.Size = new System.Drawing.Size(160, 20);
             toolTipTitleItem6.Text = "<color=255,0,0>Müştərinin tam adı</color>";
             toolTipItem4.LeftIndent = 6;
@@ -1682,7 +1674,7 @@
             this.groupControl1.Controls.Add(this.BranchLookUp);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(416, 194);
+            this.groupControl1.Size = new System.Drawing.Size(362, 194);
             this.groupControl1.TabIndex = 20;
             this.groupControl1.Text = "Müraciətin rekvizitləri";
             // 
@@ -1690,7 +1682,7 @@
             // 
             this.BChangeCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BChangeCode.ImageOptions.Image = global::ELMS.Properties.Resources.edit_16;
-            this.BChangeCode.Location = new System.Drawing.Point(251, 31);
+            this.BChangeCode.Location = new System.Drawing.Point(201, 31);
             this.BChangeCode.Name = "BChangeCode";
             this.BChangeCode.Size = new System.Drawing.Size(21, 21);
             superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
@@ -1738,7 +1730,7 @@
             this.RegisterCodeText.Location = new System.Drawing.Point(135, 32);
             this.RegisterCodeText.MenuManager = this.DocumentBarManager;
             this.RegisterCodeText.Name = "RegisterCodeText";
-            this.RegisterCodeText.Size = new System.Drawing.Size(110, 20);
+            this.RegisterCodeText.Size = new System.Drawing.Size(60, 20);
             this.RegisterCodeText.TabIndex = 2;
             // 
             // labelControl14
@@ -2000,7 +1992,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActualAddressText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BirthPlaceText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhoneAllText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourceLookUp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDate.Properties.CalendarTimeProperties)).EndInit();
@@ -2050,15 +2042,12 @@
         private DevExpress.XtraEditors.GroupControl PersonalDetailsGroupBox;
         private DevExpress.XtraEditors.PictureEdit PictureEdit;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.TextEdit BirthPlaceText;
+        private DevExpress.XtraEditors.TextEdit PhoneAllText;
         private DevExpress.XtraEditors.LookUpEdit SourceLookUp;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.DateEdit OrderDate;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LookUpEdit BranchLookUp;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit NameText;
         private DevExpress.XtraEditors.LabelControl NameLabel;
         private DevExpress.XtraEditors.TextEdit ActualAddressText;
@@ -2191,5 +2180,7 @@
         private DevExpress.XtraEditors.TextEdit NoteText;
         private DevExpress.XtraEditors.LabelControl NoteLabel;
         private DevExpress.XtraEditors.SimpleButton BChangeCode;
+        private DevExpress.XtraEditors.LabelControl EditCustomerLabel;
+        private DevExpress.XtraEditors.SimpleButton NewCustomerButton;
     }
 }

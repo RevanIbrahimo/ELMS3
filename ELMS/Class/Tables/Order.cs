@@ -9,8 +9,7 @@ namespace ELMS.Class.Tables
     class Order
     {
         public int ID { get; set; }
-        public int REGISTER_NUMBER { get; set; }
-        public string ADDRESS { get; set; }
+        public int CUSTOMER_ID { get; set; }
         public string NOTE { get; set; }
         public DateTime ORDER_DATE { get; set; }
         public int BRANCH_ID { get; set; }

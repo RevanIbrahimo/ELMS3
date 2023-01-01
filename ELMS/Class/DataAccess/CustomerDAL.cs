@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ELMS.Class.Enum;
 
 namespace ELMS.Class.DataAccess
 {
@@ -128,6 +129,7 @@ namespace ELMS.Class.DataAccess
         public static DataTable SelectCustomerData(string code)
         {
             string s = $@"SELECT CU.ID,
+                               P.PHONE,
                                CU.FULL_NAME,                          
                                CU.ADDRESS,                               
                                CU.CLOSED_DATE,
@@ -135,8 +137,11 @@ namespace ELMS.Class.DataAccess
                                CU.INSERT_DATE,
                                CU.USED_USER_ID
                           FROM ELMS_USER.CUSTOMER CU,
-                               ELMS_USER.CUSTOMER_CARDS CC
-                          WHERE  CU.ID = CC.CUSTOMER_ID AND CC.PINCODE = {code}
+                               ELMS_USER.CUSTOMER_CARDS CC,
+                               (SELECT * FROM ELMS_USER.V_PHONE WHERE OWNER_TYPE = {(int)PhoneOwnerEnum.Customer}) P
+                          WHERE  CU.ID = CC.CUSTOMER_ID
+                                 AND CU.ID = P.OWNER_ID(+)
+                                 AND CC.PINCODE = {code}
                         ORDER BY CU.ID";
 
             try

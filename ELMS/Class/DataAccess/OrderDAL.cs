@@ -124,32 +124,29 @@ namespace ELMS.Class.DataAccess
         {
             Int32 id = 0;
             OracleCommand command = tran.Connection.CreateCommand();
-            command.CommandText = $@"INSERT INTO ELMS_USER.ORDER_TAB(FULL_NAME,
-                                                                    BRANCH_ID,
-                                                                    COUNTRY_ID,
-                                                                    SEX_ID,
-                                                                    BIRTHDAY,                                                                     
-                                                                    REGISTERED_ADDRESS,
-                                                                    BIRTH_PLACE,
-                                                                    ADDRESS,
-                                                                    NOTE)
-                                                    VALUES(:inFULL_NAME,
+            command.CommandText = $@"INSERT INTO ELMS_USER.ORDER_TAB(CUSTOMER_ID,                               
+                                                            BRANCH_ID,
+                                                            SOURCE_ID,
+                                                            TIME_ID,                           
+                                                            ORDER_DATE,
+                                                            FIRST_PAYMENT,
+                                                            ORDER_AMOUNT,
+                                                            NOTE)
+                                                    VALUES(:inCUSTOMER_ID,
                                                            :inBRANCH_ID,
-                                                           :inCOUNTRY_ID,
-                                                           :inSEXID,
-                                                           :inBIRTHDAY,
-                                                           :inREGISTERED_ADDRESS,                                                           
-                                                           :inBIRTH_PLACE,                                                           
-                                                           :inADDRESS,                                                        
+                                                           :inSOURCE_ID,
+                                                           :inTIME_ID,
+                                                           :inORDER_DATE,
+                                                           :inFIRST_PAYMENT,                                                           
+                                                           :inORDER_AMOUNT,                                                        
                                                            :inNOTE) RETURNING ID INTO :outID";
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", order.REGISTER_NUMBER));
+            command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", order.CUSTOMER_ID));
             command.Parameters.Add(new OracleParameter("inBRANCH_ID", order.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", order.SOURCE_ID));
-            command.Parameters.Add(new OracleParameter("inSEXID", order.TIME_ID));
-            command.Parameters.Add(new OracleParameter("inBIRTHDAY", order.ORDER_DATE));
-            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", order.ADDRESS));
-            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", order.FIRST_PAYMENT));
-            command.Parameters.Add(new OracleParameter("inADDRESS", order.ADDRESS));
+            command.Parameters.Add(new OracleParameter("inSOURCE_ID", order.SOURCE_ID));
+            command.Parameters.Add(new OracleParameter("inTIME_ID", order.TIME_ID));
+            command.Parameters.Add(new OracleParameter("inORDER_DATE", order.ORDER_DATE));
+            command.Parameters.Add(new OracleParameter("inFIRST_PAYMENT", order.FIRST_PAYMENT));
+            command.Parameters.Add(new OracleParameter("inORDER_AMOUNT", order.ORDER_AMOUNT));
             command.Parameters.Add(new OracleParameter("inNOTE", order.NOTE));
             command.Parameters.Add(new OracleParameter("outID", OracleDbType.Int32, ParameterDirection.Output));
 
@@ -167,27 +164,25 @@ namespace ELMS.Class.DataAccess
         public static void UpdateOrder(OracleTransaction tran, Order order)
         {
             OracleCommand command = tran.Connection.CreateCommand();
-            command.CommandText = $@"UPDATE ELMS_USER.ORDER_TAB SET FULL_NAME = :inFULL_NAME,
+            command.CommandText = $@"UPDATE ELMS_USER.ORDER_TAB SET CUSTOMER_ID = :inCUSTOMER_ID,
                                                                         BRANCH_ID = :inBRANCH_ID,
-                                                                        COUNTRY_ID = :inCOUNTRY_ID,
-                                                                        SEX_ID = :inSEXID,
-                                                                        BIRTHDAY = :inBIRTHDAY,
-                                                                        REGISTERED_ADDRESS = :inREGISTERED_ADDRESS,                                                                   
-                                                                        BIRTH_PLACE = :inBIRTH_PLACE,
-                                                                        ADDRESS = :inADDRESS,
+                                                                        SOURCE_ID = :inSOURCE_ID,
+                                                                        TIME_ID = :inTIME_ID,
+                                                                        ORDER_DATE = :inORDER_DATE,
+                                                                        FIRST_PAYMENT = :inFIRST_PAYMENT,                                                                   
+                                                                        ORDER_AMOUNT = :inORDER_AMOUNT,
                                                                         NOTE = :inNOTE,
                                                                         USED_USER_ID = :inUSEDUSERID,
                                                                         UPDATE_USER = :inUPDATEUSER,
                                                                         UPDATE_DATE = SYSDATE
                                                             WHERE ID = :inID";
-            command.Parameters.Add(new OracleParameter("inFULL_NAME", order.REGISTER_NUMBER));
+            command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", order.CUSTOMER_ID));
             command.Parameters.Add(new OracleParameter("inBRANCH_ID", order.BRANCH_ID));
-            command.Parameters.Add(new OracleParameter("inCOUNTRY_ID", order.SOURCE_ID));
-            command.Parameters.Add(new OracleParameter("inSEXID", order.TIME_ID));
-            command.Parameters.Add(new OracleParameter("inBIRTHDAY", order.ORDER_DATE));
-            command.Parameters.Add(new OracleParameter("inREGISTERED_ADDRESS", order.FIRST_PAYMENT));
-            command.Parameters.Add(new OracleParameter("inBIRTH_PLACE", order.ORDER_AMOUNT));
-            command.Parameters.Add(new OracleParameter("inADDRESS", order.ADDRESS));
+            command.Parameters.Add(new OracleParameter("inSOURCE_ID", order.SOURCE_ID));
+            command.Parameters.Add(new OracleParameter("inTIME_ID", order.TIME_ID));
+            command.Parameters.Add(new OracleParameter("inORDER_DATE", order.ORDER_DATE));
+            command.Parameters.Add(new OracleParameter("inFIRST_PAYMENT", order.FIRST_PAYMENT));
+            command.Parameters.Add(new OracleParameter("inORDER_AMOUNT", order.ORDER_AMOUNT));
             command.Parameters.Add(new OracleParameter("inNOTE", order.NOTE));
             command.Parameters.Add(new OracleParameter("inUSEDUSERID", order.USED_USER_ID));
             command.Parameters.Add(new OracleParameter("inUPDATEUSER", GlobalVariables.V_UserID));
