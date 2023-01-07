@@ -9,6 +9,14 @@ namespace ELMS.Class
 {
     public class Enum
     {
+        public enum OperationTypeEnum
+        {
+            Yeni_muraciet = 1,
+            Tesdiq_edildi = 2,
+            Tesdiq_edilmedi = 3,
+            Zaminlikle_qayitdi = 4
+        }
+
         public enum TransactionTypeEnum
         {
             Insert = 1,
@@ -59,7 +67,7 @@ namespace ELMS.Class
         public enum PhoneOwnerEnum
         {
             User = 1,
-            Doctor = 2,
+            Relative = 2,
             Technician = 3,
             Customer = 4
         }

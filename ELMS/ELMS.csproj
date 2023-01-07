@@ -93,6 +93,7 @@
     <Compile Include="Class\DataAccess\FundsSourcesDAL.cs" />
     <Compile Include="Class\DataAccess\KindShipDAL.cs" />
     <Compile Include="Class\DataAccess\MailDAL.cs" />
+    <Compile Include="Class\DataAccess\OperationDAL.cs" />
     <Compile Include="Class\DataAccess\OrderDAL.cs" />
     <Compile Include="Class\DataAccess\OrderImageDAL.cs" />
     <Compile Include="Class\DataAccess\PermissionDAL.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Class\DataAccess\ProfessionDAL.cs" />
     <Compile Include="Class\DataAccess\RelativeCardDAL.cs" />
     <Compile Include="Class\DataAccess\SexDAL.cs" />
+    <Compile Include="Class\DataAccess\SourceDAL.cs" />
     <Compile Include="Class\DataAccess\TimesDAL.cs" />
     <Compile Include="Class\DataAccess\UserDAL.cs" />
     <Compile Include="Class\DataAccess\UserListDAL.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Class\Tables\Customer.cs" />
     <Compile Include="Class\Tables\CustomerCard.cs" />
     <Compile Include="Class\Tables\CustomerImage.cs" />
+    <Compile Include="Class\Tables\CustomerRelative.cs" />
     <Compile Include="Class\Tables\CustomerWork.cs" />
     <Compile Include="Class\Tables\DocumentGroup.cs" />
     <Compile Include="Class\Tables\DocumentType.cs" />
@@ -131,6 +134,7 @@
     <Compile Include="Class\Tables\Mail.cs" />
     <Compile Include="Class\Tables\Order.cs" />
     <Compile Include="Class\Tables\OrderImage.cs" />
+    <Compile Include="Class\Tables\OrderOperation.cs" />
     <Compile Include="Class\Tables\Permission.cs" />
     <Compile Include="Class\Tables\PersonType.cs" />
     <Compile Include="Class\Tables\Phone.cs" />
@@ -140,6 +144,7 @@
     <Compile Include="Class\Tables\ProductCard.cs" />
     <Compile Include="Class\Tables\Profession.cs" />
     <Compile Include="Class\Tables\Sex.cs" />
+    <Compile Include="Class\Tables\Source.cs" />
     <Compile Include="Class\Tables\Times.cs" />
     <Compile Include="Class\Tables\UserList.cs" />
     <Compile Include="Class\Tables\Users.cs" />
@@ -155,6 +160,12 @@
     </Compile>
     <Compile Include="Forms\Customer\FCustomerAddEdit.Designer.cs">
       <DependentUpon>FCustomerAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer\FRelativeAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\FRelativeAddEdit.Designer.cs">
+      <DependentUpon>FRelativeAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer\FWorkAddEdit.cs">
       <SubType>Form</SubType>
@@ -222,6 +233,30 @@
     <Compile Include="Forms\Dictionaries\FProfessionAddEdit.Designer.cs">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dictionaries\FSourceAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dictionaries\FSourceAddEdit.Designer.cs">
+      <DependentUpon>FSourceAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dictionaries\FTimesAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dictionaries\FTimesAddEdit.Designer.cs">
+      <DependentUpon>FTimesAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\General\FLoginSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\General\FLoginSystem.Designer.cs">
+      <DependentUpon>FLoginSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\General\FPrintableCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\General\FPrintableCheck.designer.cs">
+      <DependentUpon>FPrintableCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\General\ProjectSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +311,12 @@
     <Compile Include="Forms\Option\FUsersGroups.Designer.cs">
       <DependentUpon>FUsersGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Order\FConfirmAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Order\FConfirmAddEdit.Designer.cs">
+      <DependentUpon>FConfirmAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Order\FOrderAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,18 +340,6 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\General\FLoginSystem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\General\FLoginSystem.Designer.cs">
-      <DependentUpon>FLoginSystem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\General\FPrintableCheck.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\General\FPrintableCheck.designer.cs">
-      <DependentUpon>FPrintableCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -356,6 +385,9 @@
     <EmbeddedResource Include="Forms\Customer\FCustomerAddEdit.resx">
       <DependentUpon>FCustomerAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\FRelativeAddEdit.resx">
+      <DependentUpon>FRelativeAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\FWorkAddEdit.resx">
       <DependentUpon>FWorkAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +421,18 @@
     <EmbeddedResource Include="Forms\Dictionaries\FProfessionAddEdit.resx">
       <DependentUpon>FProfessionAddEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dictionaries\FSourceAddEdit.resx">
+      <DependentUpon>FSourceAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dictionaries\FTimesAddEdit.resx">
+      <DependentUpon>FTimesAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\General\FLoginSystem.resx">
+      <DependentUpon>FLoginSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\General\FPrintableCheck.resx">
+      <DependentUpon>FPrintableCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\General\ProjectSplashScreen.resx">
       <DependentUpon>ProjectSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +460,9 @@
     <EmbeddedResource Include="Forms\Option\FUsersGroups.resx">
       <DependentUpon>FUsersGroups.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Order\FConfirmAddEdit.resx">
+      <DependentUpon>FConfirmAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Order\FOrderAddEdit.resx">
       <DependentUpon>FOrderAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,12 +474,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\General\FLoginSystem.resx">
-      <DependentUpon>FLoginSystem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\General\FPrintableCheck.resx">
-      <DependentUpon>FPrintableCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

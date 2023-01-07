@@ -66,7 +66,7 @@ namespace ELMS.Class.DataAccess
                                    CC.TOTAL,
                                    CC.PRICE,
                                    CC.PRODUCT_COUNT,
-                                   CC.IMEI,
+                                   CC.NOTE,
                                    CC.USED_USER_ID
                               FROM ELMS_USER_TEMP.PRODUCT_CARDS_TEMP CC,
                                    ELMS_USER.PRODUCT P
@@ -90,7 +90,27 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static void InsertProductCard(ProductCard customer)
+        public static DataTable SelectTotal(int? ID)
+        {
+            string s = $@"SELECT SUM(TOTAL) ORDER_AMOUNT FROM ELMS_USER_TEMP.PRODUCT_CARDS_TEMP";
+
+            try
+            {
+                using (OracleDataAdapter da = new OracleDataAdapter(s, GlobalFunctions.GetConnectionString()))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception exx)
+            {
+                GlobalProcedures.LogWrite("Məbləğ açılmadı.", s, GlobalVariables.V_UserName, "ProductCardDAL", "SelectTotal", exx);
+                return null;
+            }
+        }
+
+        public static void InsertProductCard(ProductCard product)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())
@@ -108,30 +128,24 @@ namespace ELMS.Class.DataAccess
                     {
                         transaction = connection.BeginTransaction();
                         command.Transaction = transaction;
-                        command.CommandText = $@"INSERT INTO ELMS_USER_TEMP.CUSTOMER_CARDS_TEMP(CARD_NUMBER,
-                                                                                                DOCUMENT_GROUP_ID,
-                                                                                                DOCUMENT_TYPE_ID,
-                                                                                                ISSUE_DATE,
-                                                                                                RELIABLE_DATE,
-                                                                                                PINCODE,
-                                                                                                CARD_ISSUING_ID,
-                                                                                                CUSTOMER_ID)
-                                                    VALUES(:inCARDNUMBER,
-                                                           :inDOCUMENTGROUPID,
-                                                           :inDOCUMENTTYPEID,
-                                                           :inISSUEDATE,
-                                                           :inRELIABLEDATE,
-                                                           :inPINCODE,
-                                                           :inCARDISSUINGID,
-                                                           :inCUSTOMER_ID)";
-                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.ID));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.PRODUCT_ID));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.PRODUCT_COUNT));
-                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.TOTAL));
-                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.PRODUCT_NAME));
-                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PRICE));
-                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.IMEI));
-                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.ORDER_TAB_ID));
+                        command.CommandText = $@"INSERT INTO ELMS_USER_TEMP.PRODUCT_CARDS_TEMP(PRODUCT_ID,
+                                                                                                TOTAL,
+                                                                                                PRICE,
+                                                                                                PRODUCT_COUNT,
+                                                                                                NOTE,
+                                                                                                ORDER_TAB_ID)
+                                                    VALUES(:inPRODUCT_ID,
+                                                           :inTOTAL,
+                                                           :inPRICE,
+                                                           :inPRODUCT_COUNT,
+                                                           :inNOTE,
+                                                           :inORDER_TAB_ID)";
+                        command.Parameters.Add(new OracleParameter("inPRODUCT_ID", product.PRODUCT_ID));
+                        command.Parameters.Add(new OracleParameter("inTOTAL", product.TOTAL));
+                        command.Parameters.Add(new OracleParameter("inPRICE", product.PRICE));
+                        command.Parameters.Add(new OracleParameter("inPRODUCT_COUNT", product.PRODUCT_COUNT));
+                        command.Parameters.Add(new OracleParameter("inNOTE", product.NOTE));
+                        command.Parameters.Add(new OracleParameter("inORDER_TAB_ID", product.ORDER_TAB_ID));
                         commandSql = command.CommandText;
                         command.ExecuteNonQuery();
                         transaction.Commit();
@@ -151,7 +165,7 @@ namespace ELMS.Class.DataAccess
             }
         }
 
-        public static void UpdateProductCard(ProductCard customer)
+        public static void UpdateProductCard(ProductCard product)
         {
             string commandSql = null;
             using (OracleConnection connection = new OracleConnection())
@@ -169,27 +183,23 @@ namespace ELMS.Class.DataAccess
                     {
                         transaction = connection.BeginTransaction();
                         command.Transaction = transaction;
-                        command.CommandText = $@"UPDATE ELMS_USER_TEMP.CUSTOMER_CARDS_TEMP SET CARD_NUMBER = :inCARDNUMBER,
-                                                                                                DOCUMENT_GROUP_ID = :inDOCUMENTGROUPID,
-                                                                                                DOCUMENT_TYPE_ID = :inDOCUMENTTYPEID,
-                                                                                                ISSUE_DATE = :inISSUEDATE,
-                                                                                                RELIABLE_DATE = :inRELIABLEDATE,                                                                   
-                                                                                                PINCODE = :inPINCODE,
-                                                                                                CARD_ISSUING_ID = :inCARDISSUINGID,
+                        command.CommandText = $@"UPDATE ELMS_USER_TEMP.PRODUCT_CARDS_TEMP SET   PRODUCT_ID = :inPRODUCT_ID,
+                                                                                                TOTAL = :inTOTAL,
+                                                                                                PRICE = :inPRICE,
+                                                                                                PRODUCT_COUNT = :inPRODUCT_COUNT,
+                                                                                                NOTE = :inNOTE,
                                                                                                 USED_USER_ID = :inUSEDUSERID,
                                                                                                 IS_CHANGE = :inISCHANGE
-                                                            WHERE CUSTOMER_ID = :inCUSTOMER_ID AND ID = :inID";
-                        command.Parameters.Add(new OracleParameter("inCARDNUMBER", customer.PRODUCT_NAME));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTGROUPID", customer.PRODUCT_NAME));
-                        command.Parameters.Add(new OracleParameter("inDOCUMENTTYPEID", customer.PRODUCT_NAME));
-                        command.Parameters.Add(new OracleParameter("inISSUEDATE", customer.PRODUCT_NAME));
-                        command.Parameters.Add(new OracleParameter("inRELIABLEDATE", customer.PRICE));
-                        command.Parameters.Add(new OracleParameter("inPINCODE", customer.PRODUCT_COUNT));
-                        command.Parameters.Add(new OracleParameter("inCARDISSUINGID", customer.TOTAL));
+                                                            WHERE ORDER_TAB_ID = :inORDER_TAB_ID AND ID = :inID";
+                        command.Parameters.Add(new OracleParameter("inPRODUCT_ID", product.PRODUCT_ID));
+                        command.Parameters.Add(new OracleParameter("inTOTAL", product.TOTAL));
+                        command.Parameters.Add(new OracleParameter("inPRICE", product.PRICE));
+                        command.Parameters.Add(new OracleParameter("inPRODUCT_COUNT", product.PRODUCT_COUNT));
+                        command.Parameters.Add(new OracleParameter("inNOTE", product.NOTE));
                         command.Parameters.Add(new OracleParameter("inUSEDUSERID", GlobalVariables.V_UserID));
-                        command.Parameters.Add(new OracleParameter("inISCHANGE", customer.IS_CHANGE));
-                        command.Parameters.Add(new OracleParameter("inCUSTOMER_ID", customer.ORDER_TAB_ID));
-                        command.Parameters.Add(new OracleParameter("inID", customer.ID));
+                        command.Parameters.Add(new OracleParameter("inISCHANGE", product.IS_CHANGE));
+                        command.Parameters.Add(new OracleParameter("inORDER_TAB_ID", product.ORDER_TAB_ID));
+                        command.Parameters.Add(new OracleParameter("inID", product.ID));
                         commandSql = command.CommandText;
                         command.ExecuteNonQuery();
                         transaction.Commit();
@@ -227,10 +237,10 @@ namespace ELMS.Class.DataAccess
                     {
                         transaction = connection.BeginTransaction();
                         command.Transaction = transaction;
-                        command.CommandText = $@"UPDATE ELMS_USER_TEMP.CUSTOMER_CARDS_TEMP SET IS_CHANGE = {(int)ChangeTypeEnum.Delete}
-                                                        WHERE  CUSTOMER_ID = :inCUSTOMERID
+                        command.CommandText = $@"UPDATE ELMS_USER_TEMP.PRODUCT_CARDS_TEMP SET IS_CHANGE = {(int)ChangeTypeEnum.Delete}
+                                                        WHERE  ORDER_TAB_ID = :inORDER_TAB_ID
                                                           AND ID = :inID";
-                        command.Parameters.Add(new OracleParameter("inCUSTOMERID", ownerID));
+                        command.Parameters.Add(new OracleParameter("inORDER_TAB_ID", ownerID));
                         command.Parameters.Add(new OracleParameter("inID", phoneID));
                         commandSql = command.CommandText;
                         command.ExecuteNonQuery();

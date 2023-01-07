@@ -24,7 +24,7 @@ namespace ELMS.UserControls
         {
             InitializeComponent();
         }
-        int topindex, old_row_id, orderID;
+        int topindex, old_row_id, orderID, typeID;
         string orderName;
 
         private void OrderUserControl_Load(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace ELMS.UserControls
 
         private void LoadCustomerData()
         {
-            OrderGridControl.DataSource = OrderDAL.SelectViewData(null);
+            OrderGridControl.DataSource = OrderDAL.SelectConfirmData(null);
 
             //EnabledButton();
         }
@@ -145,6 +145,15 @@ namespace ELMS.UserControls
 
         private void OrderGridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
+            if ((e.RowHandle >= 0) && (int.Parse(OrderGridView.GetRowCellDisplayText(e.RowHandle, OrderGridView.Columns["TYPE_ID"])) == 1))
+            {
+                e.Appearance.BackColor = Color.Yellow;
+            }
+            else if ((e.RowHandle >= 0) && (int.Parse(OrderGridView.GetRowCellDisplayText(e.RowHandle, OrderGridView.Columns["TYPE_ID"])) == 3))
+            {
+                e.Appearance.BackColor = Color.Gray;
+            }
+            
             GlobalProcedures.GridRowCellStyleForBlock((sender as GridView), e);
         }
 
@@ -160,6 +169,41 @@ namespace ELMS.UserControls
         private void ScheduleBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadFScheduleAddEdit();
+        }
+        
+        private void ExcelBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "xls");
+        }
+
+        private void PdfBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "pdf");
+        }
+
+        private void RtfBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "rtf");
+        }
+
+        private void HtmlBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "html");
+        }
+
+        private void TxtBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "txt");
+        }
+
+        private void CsvBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "csv");
+        }
+
+        private void MhtBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(OrderGridControl, "mht");
         }
 
         private void OrderGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

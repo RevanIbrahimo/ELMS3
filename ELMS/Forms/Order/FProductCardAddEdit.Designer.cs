@@ -32,14 +32,6 @@
             ManiXButton.Office2010Blue office2010Blue1 = new ManiXButton.Office2010Blue();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.PanelOption = new DevExpress.XtraEditors.PanelControl();
             this.BCancel = new ManiXButton.XButton();
             this.BOK = new ManiXButton.XButton();
@@ -47,38 +39,26 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.DocumentGroupLookUp = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.PinCodeStarLabel = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.DocumentTypeLookUp = new DevExpress.XtraEditors.LookUpEdit();
-            this.NumberText = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.OldCardExampleLabel = new DevExpress.XtraEditors.LabelControl();
-            this.PinCodeText = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.IssuingLookUp = new DevExpress.XtraEditors.LookUpEdit();
-            this.DateOfIssueDate = new DevExpress.XtraEditors.DateEdit();
-            this.ReliableDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.ProductLookUp = new DevExpress.XtraEditors.LookUpEdit();
+            this.NoteText = new DevExpress.XtraEditors.TextEdit();
+            this.PriceValue = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.LiquidLabel = new DevExpress.XtraEditors.LabelControl();
+            this.TotalPriceValue = new DevExpress.XtraEditors.CalcEdit();
+            this.CountValue = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelOption)).BeginInit();
             this.PanelOption.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentGroupLookUp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentTypeLookUp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberText.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PinCodeText.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IssuingLookUp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DateOfIssueDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DateOfIssueDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReliableDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReliableDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductLookUp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NoteText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalPriceValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountValue.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelOption
@@ -87,7 +67,7 @@
             this.PanelOption.Controls.Add(this.BOK);
             this.PanelOption.Controls.Add(this.labelControl1);
             this.PanelOption.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelOption.Location = new System.Drawing.Point(0, 212);
+            this.PanelOption.Location = new System.Drawing.Point(0, 123);
             this.PanelOption.Name = "PanelOption";
             this.PanelOption.Size = new System.Drawing.Size(651, 50);
             this.PanelOption.TabIndex = 0;
@@ -170,89 +150,33 @@
             this.labelControl2.Location = new System.Drawing.Point(12, 14);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(69, 13);
+            this.labelControl2.Size = new System.Drawing.Size(16, 13);
             this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Sənədin qrupu";
+            this.labelControl2.Text = "Mal";
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(12, 42);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(65, 13);
+            this.labelControl3.Size = new System.Drawing.Size(18, 13);
             this.labelControl3.TabIndex = 2;
-            this.labelControl3.Text = "Sənədin növü";
+            this.labelControl3.Text = "Say";
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 70);
+            this.labelControl4.Location = new System.Drawing.Point(12, 69);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(78, 13);
+            this.labelControl4.Size = new System.Drawing.Size(34, 13);
             this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "Sənədin nömrəsi";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(12, 98);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(40, 13);
-            this.labelControl5.TabIndex = 4;
-            this.labelControl5.Text = "Fin kodu";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 126);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(119, 13);
-            this.labelControl6.TabIndex = 5;
-            this.labelControl6.Text = "Sənədi verən orqanın adı";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(12, 154);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(61, 13);
-            this.labelControl7.TabIndex = 6;
-            this.labelControl7.Text = "Verilmə tarixi";
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(12, 182);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(53, 13);
-            this.labelControl8.TabIndex = 7;
-            this.labelControl8.Text = "Bitmə tarixi";
-            // 
-            // DocumentGroupLookUp
-            // 
-            this.DocumentGroupLookUp.Location = new System.Drawing.Point(167, 11);
-            this.DocumentGroupLookUp.Margin = new System.Windows.Forms.Padding(4);
-            this.DocumentGroupLookUp.Name = "DocumentGroupLookUp";
-            this.DocumentGroupLookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DocumentGroupLookUp.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Name")});
-            this.DocumentGroupLookUp.Properties.DisplayMember = "NAME";
-            this.DocumentGroupLookUp.Properties.NullText = "";
-            this.DocumentGroupLookUp.Properties.NullValuePrompt = "Sənədin qurupunu seçin";
-            this.DocumentGroupLookUp.Properties.NullValuePromptShowForEmptyValue = true;
-            this.DocumentGroupLookUp.Properties.ShowHeader = false;
-            this.DocumentGroupLookUp.Properties.ValueMember = "ID";
-            this.DocumentGroupLookUp.Size = new System.Drawing.Size(470, 20);
-            this.DocumentGroupLookUp.TabIndex = 0;
-            this.DocumentGroupLookUp.EditValueChanged += new System.EventHandler(this.DocumentGroupLookUp_EditValueChanged);
+            this.labelControl4.Text = "Qiymət";
             // 
             // labelControl9
             // 
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(155, 14);
+            this.labelControl9.Location = new System.Drawing.Point(79, 14);
             this.labelControl9.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(6, 13);
@@ -263,7 +187,7 @@
             // 
             this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(155, 41);
+            this.labelControl10.Location = new System.Drawing.Point(79, 42);
             this.labelControl10.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(6, 13);
@@ -274,202 +198,152 @@
             // 
             this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(155, 70);
+            this.labelControl11.Location = new System.Drawing.Point(79, 69);
             this.labelControl11.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(6, 13);
             this.labelControl11.TabIndex = 11;
             this.labelControl11.Text = "*";
             // 
-            // PinCodeStarLabel
+            // ProductLookUp
             // 
-            this.PinCodeStarLabel.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.PinCodeStarLabel.Appearance.Options.UseForeColor = true;
-            this.PinCodeStarLabel.Location = new System.Drawing.Point(155, 98);
-            this.PinCodeStarLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.PinCodeStarLabel.Name = "PinCodeStarLabel";
-            this.PinCodeStarLabel.Size = new System.Drawing.Size(6, 13);
-            this.PinCodeStarLabel.TabIndex = 12;
-            this.PinCodeStarLabel.Text = "*";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(155, 126);
-            this.labelControl13.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(6, 13);
-            this.labelControl13.TabIndex = 13;
-            this.labelControl13.Text = "*";
-            // 
-            // DocumentTypeLookUp
-            // 
-            this.DocumentTypeLookUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DocumentTypeLookUp.Location = new System.Drawing.Point(167, 39);
-            this.DocumentTypeLookUp.Margin = new System.Windows.Forms.Padding(4);
-            this.DocumentTypeLookUp.Name = "DocumentTypeLookUp";
-            this.DocumentTypeLookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ProductLookUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProductLookUp.Location = new System.Drawing.Point(93, 11);
+            this.ProductLookUp.Margin = new System.Windows.Forms.Padding(4);
+            this.ProductLookUp.Name = "ProductLookUp";
+            this.ProductLookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Siyahını aç"),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Düzəliş etmək üçün sənədlərin növlərinin siyahısını aç")});
-            this.DocumentTypeLookUp.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Düzəliş etmək üçün məhsulların siyahısını aç")});
+            this.ProductLookUp.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Name")});
-            this.DocumentTypeLookUp.Properties.DisplayMember = "NAME";
-            this.DocumentTypeLookUp.Properties.NullText = "";
-            this.DocumentTypeLookUp.Properties.NullValuePrompt = "Sənədin növünü seçin";
-            this.DocumentTypeLookUp.Properties.NullValuePromptShowForEmptyValue = true;
-            this.DocumentTypeLookUp.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.DocumentTypeLookUp.Properties.ShowHeader = false;
-            this.DocumentTypeLookUp.Properties.ThrowExceptionOnInvalidLookUpEditValueType = true;
-            this.DocumentTypeLookUp.Properties.ValidateOnEnterKey = true;
-            this.DocumentTypeLookUp.Properties.ValueMember = "ID";
-            this.DocumentTypeLookUp.Size = new System.Drawing.Size(470, 20);
-            this.DocumentTypeLookUp.TabIndex = 1;
-            this.DocumentTypeLookUp.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DocumentTypeLookUp_ButtonClick);
-            this.DocumentTypeLookUp.EditValueChanged += new System.EventHandler(this.DocumentTypeLookUp_EditValueChanged);
+            this.ProductLookUp.Properties.DisplayMember = "NAME";
+            this.ProductLookUp.Properties.NullText = "";
+            this.ProductLookUp.Properties.NullValuePrompt = "Malı seçin";
+            this.ProductLookUp.Properties.NullValuePromptShowForEmptyValue = true;
+            this.ProductLookUp.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.ProductLookUp.Properties.ShowHeader = false;
+            this.ProductLookUp.Properties.ThrowExceptionOnInvalidLookUpEditValueType = true;
+            this.ProductLookUp.Properties.ValidateOnEnterKey = true;
+            this.ProductLookUp.Properties.ValueMember = "ID";
+            this.ProductLookUp.Size = new System.Drawing.Size(544, 20);
+            this.ProductLookUp.TabIndex = 0;
+            this.ProductLookUp.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ProductLookUp_ButtonClick);
+            this.ProductLookUp.EditValueChanged += new System.EventHandler(this.ProductLookUp_EditValueChanged);
             // 
-            // NumberText
+            // NoteText
             // 
-            this.NumberText.Location = new System.Drawing.Point(167, 67);
-            this.NumberText.Margin = new System.Windows.Forms.Padding(4);
-            this.NumberText.Name = "NumberText";
-            this.NumberText.Size = new System.Drawing.Size(147, 20);
-            this.NumberText.TabIndex = 2;
+            this.NoteText.Location = new System.Drawing.Point(93, 93);
+            this.NoteText.Margin = new System.Windows.Forms.Padding(4);
+            this.NoteText.Name = "NoteText";
+            this.NoteText.Properties.NullValuePrompt = "Qeydi daxil edin";
+            this.NoteText.Properties.NullValuePromptShowForEmptyValue = true;
+            this.NoteText.Size = new System.Drawing.Size(544, 20);
+            this.NoteText.TabIndex = 3;
             // 
-            // labelControl16
+            // PriceValue
             // 
-            this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic);
-            this.labelControl16.Appearance.ForeColor = System.Drawing.Color.Maroon;
-            this.labelControl16.Appearance.Options.UseFont = true;
-            this.labelControl16.Appearance.Options.UseForeColor = true;
-            this.labelControl16.Location = new System.Drawing.Point(320, 67);
-            this.labelControl16.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(7, 13);
-            this.labelControl16.TabIndex = 18;
-            this.labelControl16.Text = "0";
-            // 
-            // OldCardExampleLabel
-            // 
-            this.OldCardExampleLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.OldCardExampleLabel.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.OldCardExampleLabel.Appearance.Options.UseFont = true;
-            this.OldCardExampleLabel.Appearance.Options.UseForeColor = true;
-            this.OldCardExampleLabel.Location = new System.Drawing.Point(598, 66);
-            this.OldCardExampleLabel.Name = "OldCardExampleLabel";
-            this.OldCardExampleLabel.Size = new System.Drawing.Size(39, 13);
-            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem1.Text = "<color=255,0,0>Vəsiqənin rekvizitlərinin nümunəsi</color>\r\n";
-            toolTipItem1.Appearance.Image = global::ELMS.Properties.Resources.sexsiyyet_vesiqesi;
-            toolTipItem1.Appearance.Options.UseImage = true;
-            toolTipItem1.Image = global::ELMS.Properties.Resources.sexsiyyet_vesiqesi;
-            toolTipItem1.LeftIndent = 6;
-            toolTipTitleItem2.LeftIndent = 6;
-            toolTipTitleItem2.Text = "<color=104,0,0>Fin kod nədir?</color> \r\n<i>Fin kod - şəxsiyyət vəsiqənizin sağ aş" +
-    "ağı küncündəki, axırdan birinci rəqəmi çıxmaqla, sonrakı 7 rəqəm və hərflərdən i" +
-    "barət kod.</i> \r\n";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipTitleItem2);
-            this.OldCardExampleLabel.SuperTip = superToolTip1;
-            this.OldCardExampleLabel.TabIndex = 19;
-            this.OldCardExampleLabel.Text = "Nümunə";
-            // 
-            // PinCodeText
-            // 
-            this.PinCodeText.Location = new System.Drawing.Point(167, 95);
-            this.PinCodeText.Margin = new System.Windows.Forms.Padding(4);
-            this.PinCodeText.Name = "PinCodeText";
-            this.PinCodeText.Size = new System.Drawing.Size(147, 20);
-            this.PinCodeText.TabIndex = 3;
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic);
-            this.labelControl17.Appearance.ForeColor = System.Drawing.Color.Maroon;
-            this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Appearance.Options.UseForeColor = true;
-            this.labelControl17.Location = new System.Drawing.Point(320, 96);
-            this.labelControl17.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(7, 13);
-            this.labelControl17.TabIndex = 21;
-            this.labelControl17.Text = "0";
-            // 
-            // IssuingLookUp
-            // 
-            this.IssuingLookUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.IssuingLookUp.Location = new System.Drawing.Point(167, 123);
-            this.IssuingLookUp.Margin = new System.Windows.Forms.Padding(4);
-            this.IssuingLookUp.Name = "IssuingLookUp";
-            this.IssuingLookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Siyahını aç"),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Düzəliş etmək üçün sənəd verən orqanların siyahısını aç")});
-            this.IssuingLookUp.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Name")});
-            this.IssuingLookUp.Properties.DisplayMember = "NAME";
-            this.IssuingLookUp.Properties.NullValuePrompt = "Sənədi verən orqanın adını seçin";
-            this.IssuingLookUp.Properties.NullValuePromptShowForEmptyValue = true;
-            this.IssuingLookUp.Properties.ShowHeader = false;
-            this.IssuingLookUp.Properties.ValueMember = "ID";
-            this.IssuingLookUp.Size = new System.Drawing.Size(470, 20);
-            this.IssuingLookUp.TabIndex = 4;
-            this.IssuingLookUp.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.IssuingLookUp_ButtonClick);
-            this.IssuingLookUp.EditValueChanged += new System.EventHandler(this.IssuingLookUp_EditValueChanged);
-            // 
-            // DateOfIssueDate
-            // 
-            this.DateOfIssueDate.EditValue = null;
-            this.DateOfIssueDate.Location = new System.Drawing.Point(167, 151);
-            this.DateOfIssueDate.Margin = new System.Windows.Forms.Padding(4);
-            this.DateOfIssueDate.Name = "DateOfIssueDate";
-            this.DateOfIssueDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Kalendarı aç")});
-            this.DateOfIssueDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.PriceValue.Location = new System.Drawing.Point(93, 66);
+            this.PriceValue.Name = "PriceValue";
+            this.PriceValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DateOfIssueDate.Properties.NullValuePrompt = "dd.mm.yyyy";
-            this.DateOfIssueDate.Properties.NullValuePromptShowForEmptyValue = true;
-            this.DateOfIssueDate.Size = new System.Drawing.Size(100, 20);
-            this.DateOfIssueDate.TabIndex = 5;
+            this.PriceValue.Properties.Precision = 2;
+            this.PriceValue.Size = new System.Drawing.Size(116, 20);
+            this.PriceValue.TabIndex = 2;
+            this.PriceValue.EditValueChanged += new System.EventHandler(this.CountValue_EditValueChanged);
             // 
-            // ReliableDate
+            // labelControl5
             // 
-            this.ReliableDate.EditValue = null;
-            this.ReliableDate.Location = new System.Drawing.Point(167, 179);
-            this.ReliableDate.Margin = new System.Windows.Forms.Padding(4);
-            this.ReliableDate.Name = "ReliableDate";
-            this.ReliableDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), "Kalendarı aç")});
-            this.ReliableDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.labelControl5.Location = new System.Drawing.Point(12, 96);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(26, 13);
+            this.labelControl5.TabIndex = 4;
+            this.labelControl5.Text = "Qeyd";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(215, 42);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(24, 13);
+            this.labelControl7.TabIndex = 194;
+            this.labelControl7.Text = "ədəd";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(215, 69);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(20, 13);
+            this.labelControl6.TabIndex = 195;
+            this.labelControl6.Text = "AZN";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(617, 67);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(20, 13);
+            this.labelControl18.TabIndex = 198;
+            this.labelControl18.Text = "AZN";
+            // 
+            // LiquidLabel
+            // 
+            this.LiquidLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.LiquidLabel.Appearance.Options.UseFont = true;
+            this.LiquidLabel.Location = new System.Drawing.Point(412, 67);
+            this.LiquidLabel.Name = "LiquidLabel";
+            this.LiquidLabel.Size = new System.Drawing.Size(78, 13);
+            this.LiquidLabel.TabIndex = 197;
+            this.LiquidLabel.Text = "Yekun qiymət";
+            // 
+            // TotalPriceValue
+            // 
+            this.TotalPriceValue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TotalPriceValue.Location = new System.Drawing.Point(497, 64);
+            this.TotalPriceValue.Margin = new System.Windows.Forms.Padding(4);
+            this.TotalPriceValue.Name = "TotalPriceValue";
+            this.TotalPriceValue.Properties.DisplayFormat.FormatString = "n2";
+            this.TotalPriceValue.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TotalPriceValue.Properties.EditFormat.FormatString = "n2";
+            this.TotalPriceValue.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TotalPriceValue.Properties.Mask.EditMask = "n2";
+            this.TotalPriceValue.Properties.NullValuePrompt = "0.00";
+            this.TotalPriceValue.Properties.NullValuePromptShowForEmptyValue = true;
+            this.TotalPriceValue.Properties.Precision = 2;
+            this.TotalPriceValue.Properties.ReadOnly = true;
+            this.TotalPriceValue.Size = new System.Drawing.Size(113, 20);
+            this.TotalPriceValue.TabIndex = 196;
+            // 
+            // CountValue
+            // 
+            this.CountValue.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CountValue.Location = new System.Drawing.Point(93, 39);
+            this.CountValue.Margin = new System.Windows.Forms.Padding(4);
+            this.CountValue.Name = "CountValue";
+            this.CountValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ReliableDate.Properties.NullValuePrompt = "dd.mm.yyyy";
-            this.ReliableDate.Properties.NullValuePromptShowForEmptyValue = true;
-            this.ReliableDate.Size = new System.Drawing.Size(100, 20);
-            this.ReliableDate.TabIndex = 6;
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl14.Appearance.Options.UseForeColor = true;
-            this.labelControl14.Location = new System.Drawing.Point(155, 154);
-            this.labelControl14.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(6, 13);
-            this.labelControl14.TabIndex = 14;
-            this.labelControl14.Text = "*";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(155, 182);
-            this.labelControl15.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(6, 13);
-            this.labelControl15.TabIndex = 15;
-            this.labelControl15.Text = "*";
+            this.CountValue.Properties.MaxValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.CountValue.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CountValue.Size = new System.Drawing.Size(115, 20);
+            this.CountValue.TabIndex = 1;
+            this.CountValue.EditValueChanged += new System.EventHandler(this.CountValue_EditValueChanged);
             // 
             // FProductCardAddEdit
             // 
@@ -477,27 +351,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BCancel;
-            this.ClientSize = new System.Drawing.Size(651, 262);
-            this.Controls.Add(this.ReliableDate);
-            this.Controls.Add(this.DateOfIssueDate);
-            this.Controls.Add(this.IssuingLookUp);
-            this.Controls.Add(this.labelControl17);
-            this.Controls.Add(this.PinCodeText);
-            this.Controls.Add(this.OldCardExampleLabel);
-            this.Controls.Add(this.labelControl16);
-            this.Controls.Add(this.NumberText);
-            this.Controls.Add(this.DocumentTypeLookUp);
-            this.Controls.Add(this.labelControl15);
-            this.Controls.Add(this.labelControl14);
-            this.Controls.Add(this.labelControl13);
-            this.Controls.Add(this.PinCodeStarLabel);
+            this.ClientSize = new System.Drawing.Size(651, 173);
+            this.Controls.Add(this.CountValue);
+            this.Controls.Add(this.labelControl18);
+            this.Controls.Add(this.LiquidLabel);
+            this.Controls.Add(this.TotalPriceValue);
+            this.Controls.Add(this.labelControl6);
+            this.Controls.Add(this.labelControl7);
+            this.Controls.Add(this.PriceValue);
+            this.Controls.Add(this.NoteText);
+            this.Controls.Add(this.ProductLookUp);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.DocumentGroupLookUp);
-            this.Controls.Add(this.labelControl8);
-            this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
@@ -511,21 +377,17 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Şəxsiyyəti təsdiq edən sənədin əlavə/düzəliş edilməsi";
+            this.Text = "Sifarişlərin əlavə/düzəliş edilməsi";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FCardAddEdit_FormClosing);
             this.Load += new System.EventHandler(this.FCardAddEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PanelOption)).EndInit();
             this.PanelOption.ResumeLayout(false);
             this.PanelOption.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentGroupLookUp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentTypeLookUp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberText.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PinCodeText.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IssuingLookUp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DateOfIssueDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DateOfIssueDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReliableDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReliableDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductLookUp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NoteText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalPriceValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountValue.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,26 +402,18 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LookUpEdit DocumentGroupLookUp;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.LabelControl PinCodeStarLabel;
-        private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.LookUpEdit DocumentTypeLookUp;
-        private DevExpress.XtraEditors.TextEdit NumberText;
-        private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.LabelControl OldCardExampleLabel;
-        private DevExpress.XtraEditors.TextEdit PinCodeText;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.LookUpEdit IssuingLookUp;
-        private DevExpress.XtraEditors.DateEdit DateOfIssueDate;
-        private DevExpress.XtraEditors.DateEdit ReliableDate;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LookUpEdit ProductLookUp;
+        private DevExpress.XtraEditors.TextEdit NoteText;
+        private DevExpress.XtraEditors.CalcEdit PriceValue;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl LiquidLabel;
+        private DevExpress.XtraEditors.CalcEdit TotalPriceValue;
+        private DevExpress.XtraEditors.SpinEdit CountValue;
     }
 }

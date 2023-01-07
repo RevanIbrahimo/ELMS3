@@ -62,6 +62,8 @@
             this.ProductStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BranchStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.ProfessionStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.TimesStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.SourceStandaloneBarDockControl = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.UpSenedTypeBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.DownSenedTypeBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.NewCountriesBarButton = new DevExpress.XtraBars.BarButtonItem();
@@ -101,6 +103,8 @@
             this.RefreshBranchBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.UpBranchBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.DownBranchBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.UpTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.DownTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.CountriesGridControl = new DevExpress.XtraGrid.GridControl();
             this.CountriesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -209,6 +213,33 @@
             this.barDockControl26 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl27 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl28 = new DevExpress.XtraBars.BarDockControl();
+            this.backstageViewClientControl9 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+            this.TimesGridControl = new DevExpress.XtraGrid.GridControl();
+            this.TimesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Times_SS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Times_Period = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Times_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Times_Note = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Times_UsedUserId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Times_Percent = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TimesBarManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar5 = new DevExpress.XtraBars.Bar();
+            this.NewTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.EditTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.DeleteTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.RefreshTimesBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControl29 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl30 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl31 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl32 = new DevExpress.XtraBars.BarDockControl();
+            this.backstageViewClientControl10 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+            this.SourceGridControl = new DevExpress.XtraGrid.GridControl();
+            this.SourceGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Source_SS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Source_Name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Source_Note = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Source_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Source_UsedUserId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DocumentTypeBackstageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.CountriesBackstageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.CardIssuingBackstageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
@@ -217,6 +248,8 @@
             this.ProductBackStageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.BranchBackStageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.ProfessionBackStageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
+            this.TimesBackStageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
+            this.SourceBackStageViewTab = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -228,6 +261,20 @@
             this.BranchPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ProductPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ProfessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.TimesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.SourceBarManager = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar6 = new DevExpress.XtraBars.Bar();
+            this.NewSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.EditSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.DeleteSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.RefreshSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.UpSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.DownSourceBarButton = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControl33 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl34 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl35 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl36 = new DevExpress.XtraBars.BarDockControl();
+            this.SourcePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BackstageViewControl)).BeginInit();
             this.BackstageViewControl.SuspendLayout();
             this.backstageViewClientControl1.SuspendLayout();
@@ -262,6 +309,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionBarManager)).BeginInit();
+            this.backstageViewClientControl9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesBarManager)).BeginInit();
+            this.backstageViewClientControl10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentTypePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountriesPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CardIssuingPopupMenu)).BeginInit();
@@ -270,6 +324,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BranchPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceBarManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourcePopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // BackstageViewControl
@@ -282,6 +339,8 @@
             this.BackstageViewControl.Controls.Add(this.backstageViewClientControl6);
             this.BackstageViewControl.Controls.Add(this.backstageViewClientControl7);
             this.BackstageViewControl.Controls.Add(this.backstageViewClientControl8);
+            this.BackstageViewControl.Controls.Add(this.backstageViewClientControl9);
+            this.BackstageViewControl.Controls.Add(this.backstageViewClientControl10);
             this.BackstageViewControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackstageViewControl.Items.Add(this.DocumentTypeBackstageViewTab);
             this.BackstageViewControl.Items.Add(this.CountriesBackstageViewTab);
@@ -291,11 +350,13 @@
             this.BackstageViewControl.Items.Add(this.ProductBackStageViewTab);
             this.BackstageViewControl.Items.Add(this.BranchBackStageViewTab);
             this.BackstageViewControl.Items.Add(this.ProfessionBackStageViewTab);
+            this.BackstageViewControl.Items.Add(this.TimesBackStageViewTab);
+            this.BackstageViewControl.Items.Add(this.SourceBackStageViewTab);
             this.BackstageViewControl.Location = new System.Drawing.Point(0, 0);
             this.BackstageViewControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BackstageViewControl.Name = "BackstageViewControl";
-            this.BackstageViewControl.SelectedTab = this.DocumentTypeBackstageViewTab;
-            this.BackstageViewControl.SelectedTabIndex = 0;
+            this.BackstageViewControl.SelectedTab = this.TimesBackStageViewTab;
+            this.BackstageViewControl.SelectedTabIndex = 8;
             this.BackstageViewControl.Size = new System.Drawing.Size(1119, 585);
             this.BackstageViewControl.TabIndex = 0;
             this.BackstageViewControl.Text = "backstageViewControl1";
@@ -452,6 +513,8 @@
             this.DocumentTypeBarManager.DockControls.Add(this.ProductStandaloneBarDockControl);
             this.DocumentTypeBarManager.DockControls.Add(this.BranchStandaloneBarDockControl);
             this.DocumentTypeBarManager.DockControls.Add(this.ProfessionStandaloneBarDockControl);
+            this.DocumentTypeBarManager.DockControls.Add(this.TimesStandaloneBarDockControl);
+            this.DocumentTypeBarManager.DockControls.Add(this.SourceStandaloneBarDockControl);
             this.DocumentTypeBarManager.Form = this;
             this.DocumentTypeBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.NewDocumentTypeBarButton,
@@ -498,9 +561,11 @@
             this.DeleteBranchBarButton,
             this.RefreshBranchBarButton,
             this.UpBranchBarButton,
-            this.DownBranchBarButton});
+            this.DownBranchBarButton,
+            this.UpTimesBarButton,
+            this.DownTimesBarButton});
             this.DocumentTypeBarManager.MainMenu = this.DocumentTypeToolBar;
-            this.DocumentTypeBarManager.MaxItemId = 54;
+            this.DocumentTypeBarManager.MaxItemId = 56;
             // 
             // DocumentTypeToolBar
             // 
@@ -686,6 +751,26 @@
             this.ProfessionStandaloneBarDockControl.Name = "ProfessionStandaloneBarDockControl";
             this.ProfessionStandaloneBarDockControl.Size = new System.Drawing.Size(953, 29);
             this.ProfessionStandaloneBarDockControl.Text = "standaloneBarDockControl1";
+            // 
+            // TimesStandaloneBarDockControl
+            // 
+            this.TimesStandaloneBarDockControl.CausesValidation = false;
+            this.TimesStandaloneBarDockControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TimesStandaloneBarDockControl.Location = new System.Drawing.Point(0, 0);
+            this.TimesStandaloneBarDockControl.Manager = this.DocumentTypeBarManager;
+            this.TimesStandaloneBarDockControl.Name = "TimesStandaloneBarDockControl";
+            this.TimesStandaloneBarDockControl.Size = new System.Drawing.Size(953, 29);
+            this.TimesStandaloneBarDockControl.Text = "standaloneBarDockControl1";
+            // 
+            // SourceStandaloneBarDockControl
+            // 
+            this.SourceStandaloneBarDockControl.CausesValidation = false;
+            this.SourceStandaloneBarDockControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SourceStandaloneBarDockControl.Location = new System.Drawing.Point(0, 0);
+            this.SourceStandaloneBarDockControl.Manager = this.DocumentTypeBarManager;
+            this.SourceStandaloneBarDockControl.Name = "SourceStandaloneBarDockControl";
+            this.SourceStandaloneBarDockControl.Size = new System.Drawing.Size(953, 29);
+            this.SourceStandaloneBarDockControl.Text = "standaloneBarDockControl1";
             // 
             // UpSenedTypeBarButton
             // 
@@ -1016,6 +1101,24 @@
             this.DownBranchBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DownBranchBarButton.ImageOptions.LargeImage")));
             this.DownBranchBarButton.Name = "DownBranchBarButton";
             this.DownBranchBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DownBranchBarButton_ItemClick);
+            // 
+            // UpTimesBarButton
+            // 
+            this.UpTimesBarButton.Caption = "YeriniYuxarıDəyiş";
+            this.UpTimesBarButton.Id = 54;
+            this.UpTimesBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UpTimesBarButton.ImageOptions.Image")));
+            this.UpTimesBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("UpTimesBarButton.ImageOptions.LargeImage")));
+            this.UpTimesBarButton.Name = "UpTimesBarButton";
+            this.UpTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpTimesBarButton_ItemClick);
+            // 
+            // DownTimesBarButton
+            // 
+            this.DownTimesBarButton.Caption = "YeriniAşağıDəyiş";
+            this.DownTimesBarButton.Id = 55;
+            this.DownTimesBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DownTimesBarButton.ImageOptions.Image")));
+            this.DownTimesBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DownTimesBarButton.ImageOptions.LargeImage")));
+            this.DownTimesBarButton.Name = "DownTimesBarButton";
+            this.DownTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DownTimesBarButton_ItemClick);
             // 
             // backstageViewClientControl2
             // 
@@ -2346,12 +2449,349 @@
             this.barDockControl28.Manager = this.ProfessionBarManager;
             this.barDockControl28.Size = new System.Drawing.Size(0, 585);
             // 
+            // backstageViewClientControl9
+            // 
+            this.backstageViewClientControl9.Controls.Add(this.TimesGridControl);
+            this.backstageViewClientControl9.Controls.Add(this.TimesStandaloneBarDockControl);
+            this.backstageViewClientControl9.Location = new System.Drawing.Point(166, 0);
+            this.backstageViewClientControl9.Name = "backstageViewClientControl9";
+            this.backstageViewClientControl9.Size = new System.Drawing.Size(953, 585);
+            this.backstageViewClientControl9.TabIndex = 9;
+            // 
+            // TimesGridControl
+            // 
+            this.TimesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimesGridControl.Location = new System.Drawing.Point(0, 29);
+            this.TimesGridControl.MainView = this.TimesGridView;
+            this.TimesGridControl.MenuManager = this.TimesBarManager;
+            this.TimesGridControl.Name = "TimesGridControl";
+            this.TimesGridControl.Size = new System.Drawing.Size(953, 556);
+            this.TimesGridControl.TabIndex = 1;
+            this.TimesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.TimesGridView});
+            // 
+            // TimesGridView
+            // 
+            this.TimesGridView.Appearance.FooterPanel.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.TimesGridView.Appearance.FooterPanel.Options.UseFont = true;
+            this.TimesGridView.Appearance.FooterPanel.Options.UseTextOptions = true;
+            this.TimesGridView.Appearance.FooterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimesGridView.Appearance.FooterPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.TimesGridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.TimesGridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimesGridView.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.TimesGridView.Appearance.ViewCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.TimesGridView.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TimesGridView.Appearance.ViewCaption.Options.UseFont = true;
+            this.TimesGridView.Appearance.ViewCaption.Options.UseForeColor = true;
+            this.TimesGridView.Appearance.ViewCaption.Options.UseTextOptions = true;
+            this.TimesGridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimesGridView.Appearance.ViewCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.TimesGridView.Appearance.ViewCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.TimesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Times_SS,
+            this.Times_Period,
+            this.Times_ID,
+            this.Times_Note,
+            this.Times_UsedUserId,
+            this.Times_Percent});
+            this.TimesGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.TimesGridView.GridControl = this.TimesGridControl;
+            this.TimesGridView.Name = "TimesGridView";
+            this.TimesGridView.OptionsBehavior.AutoExpandAllGroups = true;
+            this.TimesGridView.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.TimesGridView.OptionsBehavior.Editable = false;
+            this.TimesGridView.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.TimesGridView.OptionsFind.FindDelay = 100;
+            this.TimesGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.TimesGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.TimesGridView.OptionsView.ShowFooter = true;
+            this.TimesGridView.OptionsView.ShowGroupPanel = false;
+            this.TimesGridView.OptionsView.ShowIndicator = false;
+            this.TimesGridView.OptionsView.ShowViewCaption = true;
+            this.TimesGridView.PaintStyleName = "Skin";
+            this.TimesGridView.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.LiveVertScroll;
+            this.TimesGridView.ViewCaption = "Müddətlər";
+            this.TimesGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.TimesGridView_RowCellStyle);
+            this.TimesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.TimesGridView_FocusedRowObjectChanged);
+            this.TimesGridView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.TimesGridView_CustomUnboundColumnData);
+            this.TimesGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TimesGridView_MouseUp);
+            this.TimesGridView.DoubleClick += new System.EventHandler(this.TimesGridView_DoubleClick);
+            // 
+            // Times_SS
+            // 
+            this.Times_SS.AppearanceCell.Options.UseTextOptions = true;
+            this.Times_SS.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Times_SS.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.Times_SS.Caption = "S/s";
+            this.Times_SS.FieldName = "Times_SS";
+            this.Times_SS.Name = "Times_SS";
+            this.Times_SS.OptionsColumn.FixedWidth = true;
+            this.Times_SS.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Times_SS", "{0}")});
+            this.Times_SS.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.Times_SS.Visible = true;
+            this.Times_SS.VisibleIndex = 0;
+            this.Times_SS.Width = 50;
+            // 
+            // Times_Period
+            // 
+            this.Times_Period.Caption = "Müddət";
+            this.Times_Period.FieldName = "PERIOD";
+            this.Times_Period.Name = "Times_Period";
+            this.Times_Period.Visible = true;
+            this.Times_Period.VisibleIndex = 1;
+            // 
+            // Times_ID
+            // 
+            this.Times_ID.Caption = "Times_ID";
+            this.Times_ID.FieldName = "ID";
+            this.Times_ID.Name = "Times_ID";
+            // 
+            // Times_Note
+            // 
+            this.Times_Note.Caption = "Qeyd";
+            this.Times_Note.FieldName = "NOTE";
+            this.Times_Note.Name = "Times_Note";
+            this.Times_Note.Visible = true;
+            this.Times_Note.VisibleIndex = 3;
+            // 
+            // Times_UsedUserId
+            // 
+            this.Times_UsedUserId.Caption = "Times_UsedUserId";
+            this.Times_UsedUserId.FieldName = "USED_USER_ID";
+            this.Times_UsedUserId.Name = "Times_UsedUserId";
+            // 
+            // Times_Percent
+            // 
+            this.Times_Percent.Caption = "Faiz";
+            this.Times_Percent.FieldName = "PERCENT";
+            this.Times_Percent.Name = "Times_Percent";
+            this.Times_Percent.Visible = true;
+            this.Times_Percent.VisibleIndex = 2;
+            // 
+            // TimesBarManager
+            // 
+            this.TimesBarManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar5});
+            this.TimesBarManager.DockControls.Add(this.barDockControl29);
+            this.TimesBarManager.DockControls.Add(this.barDockControl30);
+            this.TimesBarManager.DockControls.Add(this.barDockControl31);
+            this.TimesBarManager.DockControls.Add(this.barDockControl32);
+            this.TimesBarManager.Form = this;
+            this.TimesBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.NewTimesBarButton,
+            this.EditTimesBarButton,
+            this.DeleteTimesBarButton,
+            this.RefreshTimesBarButton});
+            this.TimesBarManager.MainMenu = this.bar5;
+            this.TimesBarManager.MaxItemId = 4;
+            // 
+            // bar5
+            // 
+            this.bar5.BarName = "Main menu";
+            this.bar5.DockCol = 0;
+            this.bar5.DockRow = 0;
+            this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.UpTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DownTimesBarButton)});
+            this.bar5.OptionsBar.DrawBorder = false;
+            this.bar5.OptionsBar.DrawDragBorder = false;
+            this.bar5.OptionsBar.MultiLine = true;
+            this.bar5.OptionsBar.UseWholeRow = true;
+            this.bar5.StandaloneBarDockControl = this.TimesStandaloneBarDockControl;
+            this.bar5.Text = "Main menu";
+            // 
+            // NewTimesBarButton
+            // 
+            this.NewTimesBarButton.Caption = "Yeni";
+            this.NewTimesBarButton.Id = 0;
+            this.NewTimesBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.plus_16;
+            this.NewTimesBarButton.Name = "NewTimesBarButton";
+            this.NewTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewTimesBarButton_ItemClick);
+            // 
+            // EditTimesBarButton
+            // 
+            this.EditTimesBarButton.Caption = "Dəyiş";
+            this.EditTimesBarButton.Id = 1;
+            this.EditTimesBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.edit_16;
+            this.EditTimesBarButton.Name = "EditTimesBarButton";
+            this.EditTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditTimesBarButton_ItemClick);
+            // 
+            // DeleteTimesBarButton
+            // 
+            this.DeleteTimesBarButton.Caption = "Sil";
+            this.DeleteTimesBarButton.Id = 2;
+            this.DeleteTimesBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeleteTimesBarButton.ImageOptions.Image")));
+            this.DeleteTimesBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DeleteTimesBarButton.ImageOptions.LargeImage")));
+            this.DeleteTimesBarButton.Name = "DeleteTimesBarButton";
+            this.DeleteTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteTimesBarButton_ItemClick);
+            // 
+            // RefreshTimesBarButton
+            // 
+            this.RefreshTimesBarButton.Caption = "Təzələ";
+            this.RefreshTimesBarButton.Id = 3;
+            this.RefreshTimesBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefreshTimesBarButton.ImageOptions.Image")));
+            this.RefreshTimesBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("RefreshTimesBarButton.ImageOptions.LargeImage")));
+            this.RefreshTimesBarButton.Name = "RefreshTimesBarButton";
+            this.RefreshTimesBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefreshTimesBarButton_ItemClick);
+            // 
+            // barDockControl29
+            // 
+            this.barDockControl29.CausesValidation = false;
+            this.barDockControl29.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl29.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl29.Manager = this.TimesBarManager;
+            this.barDockControl29.Size = new System.Drawing.Size(1119, 0);
+            // 
+            // barDockControl30
+            // 
+            this.barDockControl30.CausesValidation = false;
+            this.barDockControl30.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl30.Location = new System.Drawing.Point(0, 585);
+            this.barDockControl30.Manager = this.TimesBarManager;
+            this.barDockControl30.Size = new System.Drawing.Size(1119, 0);
+            // 
+            // barDockControl31
+            // 
+            this.barDockControl31.CausesValidation = false;
+            this.barDockControl31.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl31.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl31.Manager = this.TimesBarManager;
+            this.barDockControl31.Size = new System.Drawing.Size(0, 585);
+            // 
+            // barDockControl32
+            // 
+            this.barDockControl32.CausesValidation = false;
+            this.barDockControl32.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl32.Location = new System.Drawing.Point(1119, 0);
+            this.barDockControl32.Manager = this.TimesBarManager;
+            this.barDockControl32.Size = new System.Drawing.Size(0, 585);
+            // 
+            // backstageViewClientControl10
+            // 
+            this.backstageViewClientControl10.Controls.Add(this.SourceGridControl);
+            this.backstageViewClientControl10.Controls.Add(this.SourceStandaloneBarDockControl);
+            this.backstageViewClientControl10.Location = new System.Drawing.Point(166, 0);
+            this.backstageViewClientControl10.Name = "backstageViewClientControl10";
+            this.backstageViewClientControl10.Size = new System.Drawing.Size(953, 585);
+            this.backstageViewClientControl10.TabIndex = 10;
+            // 
+            // SourceGridControl
+            // 
+            this.SourceGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SourceGridControl.Location = new System.Drawing.Point(0, 29);
+            this.SourceGridControl.MainView = this.SourceGridView;
+            this.SourceGridControl.MenuManager = this.DocumentTypeBarManager;
+            this.SourceGridControl.Name = "SourceGridControl";
+            this.SourceGridControl.Size = new System.Drawing.Size(953, 556);
+            this.SourceGridControl.TabIndex = 1;
+            this.SourceGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.SourceGridView});
+            // 
+            // SourceGridView
+            // 
+            this.SourceGridView.Appearance.FooterPanel.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.SourceGridView.Appearance.FooterPanel.Options.UseFont = true;
+            this.SourceGridView.Appearance.FooterPanel.Options.UseTextOptions = true;
+            this.SourceGridView.Appearance.FooterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.SourceGridView.Appearance.FooterPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.SourceGridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.SourceGridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.SourceGridView.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.SourceGridView.Appearance.ViewCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.SourceGridView.Appearance.ViewCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SourceGridView.Appearance.ViewCaption.Options.UseFont = true;
+            this.SourceGridView.Appearance.ViewCaption.Options.UseForeColor = true;
+            this.SourceGridView.Appearance.ViewCaption.Options.UseTextOptions = true;
+            this.SourceGridView.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.SourceGridView.Appearance.ViewCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.SourceGridView.Appearance.ViewCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.SourceGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Source_SS,
+            this.Source_Name,
+            this.Source_Note,
+            this.Source_ID,
+            this.Source_UsedUserId});
+            this.SourceGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.SourceGridView.GridControl = this.SourceGridControl;
+            this.SourceGridView.Name = "SourceGridView";
+            this.SourceGridView.OptionsBehavior.AutoExpandAllGroups = true;
+            this.SourceGridView.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.SourceGridView.OptionsBehavior.Editable = false;
+            this.SourceGridView.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.SourceGridView.OptionsFind.FindDelay = 100;
+            this.SourceGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.SourceGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.SourceGridView.OptionsView.ShowFooter = true;
+            this.SourceGridView.OptionsView.ShowGroupPanel = false;
+            this.SourceGridView.OptionsView.ShowIndicator = false;
+            this.SourceGridView.OptionsView.ShowViewCaption = true;
+            this.SourceGridView.PaintStyleName = "Skin";
+            this.SourceGridView.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.LiveVertScroll;
+            this.SourceGridView.ViewCaption = "Sifarişin mənbələri";
+            this.SourceGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.SourceGridView_RowCellStyle);
+            this.SourceGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SourceGridView_FocusedRowObjectChanged);
+            this.SourceGridView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.SourceGridView_CustomUnboundColumnData);
+            this.SourceGridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SourceGridView_MouseUp);
+            this.SourceGridView.DoubleClick += new System.EventHandler(this.SourceGridView_DoubleClick);
+            // 
+            // Source_SS
+            // 
+            this.Source_SS.AppearanceCell.Options.UseTextOptions = true;
+            this.Source_SS.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Source_SS.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.Source_SS.Caption = "S/s";
+            this.Source_SS.FieldName = "Source_SS";
+            this.Source_SS.Name = "Source_SS";
+            this.Source_SS.OptionsColumn.FixedWidth = true;
+            this.Source_SS.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Source_SS", "{0}")});
+            this.Source_SS.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.Source_SS.Visible = true;
+            this.Source_SS.VisibleIndex = 0;
+            this.Source_SS.Width = 50;
+            // 
+            // Source_Name
+            // 
+            this.Source_Name.Caption = "Adı";
+            this.Source_Name.FieldName = "NAME";
+            this.Source_Name.Name = "Source_Name";
+            this.Source_Name.Visible = true;
+            this.Source_Name.VisibleIndex = 1;
+            this.Source_Name.Width = 450;
+            // 
+            // Source_Note
+            // 
+            this.Source_Note.Caption = "Qeyd";
+            this.Source_Note.FieldName = "NOTE";
+            this.Source_Note.Name = "Source_Note";
+            this.Source_Note.Visible = true;
+            this.Source_Note.VisibleIndex = 2;
+            this.Source_Note.Width = 451;
+            // 
+            // Source_ID
+            // 
+            this.Source_ID.Caption = "Source_ID";
+            this.Source_ID.FieldName = "ID";
+            this.Source_ID.Name = "Source_ID";
+            // 
+            // Source_UsedUserId
+            // 
+            this.Source_UsedUserId.Caption = "Source_UsedUserId";
+            this.Source_UsedUserId.FieldName = "USED_USER_ID";
+            this.Source_UsedUserId.Name = "Source_UsedUserId";
+            // 
             // DocumentTypeBackstageViewTab
             // 
             this.DocumentTypeBackstageViewTab.Caption = "Sənədin növləri";
             this.DocumentTypeBackstageViewTab.ContentControl = this.backstageViewClientControl1;
             this.DocumentTypeBackstageViewTab.Name = "DocumentTypeBackstageViewTab";
-            this.DocumentTypeBackstageViewTab.Selected = true;
             // 
             // CountriesBackstageViewTab
             // 
@@ -2394,6 +2834,19 @@
             this.ProfessionBackStageViewTab.Caption = "Peşələr";
             this.ProfessionBackStageViewTab.ContentControl = this.backstageViewClientControl8;
             this.ProfessionBackStageViewTab.Name = "ProfessionBackStageViewTab";
+            // 
+            // TimesBackStageViewTab
+            // 
+            this.TimesBackStageViewTab.Caption = "Müddətlər";
+            this.TimesBackStageViewTab.ContentControl = this.backstageViewClientControl9;
+            this.TimesBackStageViewTab.Name = "TimesBackStageViewTab";
+            this.TimesBackStageViewTab.Selected = true;
+            // 
+            // SourceBackStageViewTab
+            // 
+            this.SourceBackStageViewTab.Caption = "Sifarişin mənbələri";
+            this.SourceBackStageViewTab.ContentControl = this.backstageViewClientControl10;
+            this.SourceBackStageViewTab.Name = "SourceBackStageViewTab";
             // 
             // bar3
             // 
@@ -2512,6 +2965,153 @@
             this.ProfessionPopupMenu.Manager = this.DocumentTypeBarManager;
             this.ProfessionPopupMenu.Name = "ProfessionPopupMenu";
             // 
+            // TimesPopupMenu
+            // 
+            this.TimesPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.UpTimesBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DownTimesBarButton)});
+            this.TimesPopupMenu.Manager = this.TimesBarManager;
+            this.TimesPopupMenu.Name = "TimesPopupMenu";
+            // 
+            // SourceBarManager
+            // 
+            this.SourceBarManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar6});
+            this.SourceBarManager.DockControls.Add(this.barDockControl33);
+            this.SourceBarManager.DockControls.Add(this.barDockControl34);
+            this.SourceBarManager.DockControls.Add(this.barDockControl35);
+            this.SourceBarManager.DockControls.Add(this.barDockControl36);
+            this.SourceBarManager.Form = this;
+            this.SourceBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.NewSourceBarButton,
+            this.EditSourceBarButton,
+            this.DeleteSourceBarButton,
+            this.RefreshSourceBarButton,
+            this.UpSourceBarButton,
+            this.DownSourceBarButton});
+            this.SourceBarManager.MainMenu = this.bar6;
+            this.SourceBarManager.MaxItemId = 6;
+            // 
+            // bar6
+            // 
+            this.bar6.BarName = "Main menu";
+            this.bar6.DockCol = 0;
+            this.bar6.DockRow = 0;
+            this.bar6.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.UpSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DownSourceBarButton)});
+            this.bar6.OptionsBar.DrawBorder = false;
+            this.bar6.OptionsBar.DrawDragBorder = false;
+            this.bar6.OptionsBar.MultiLine = true;
+            this.bar6.OptionsBar.UseWholeRow = true;
+            this.bar6.StandaloneBarDockControl = this.SourceStandaloneBarDockControl;
+            this.bar6.Text = "Main menu";
+            // 
+            // NewSourceBarButton
+            // 
+            this.NewSourceBarButton.Caption = "Yeni";
+            this.NewSourceBarButton.Id = 0;
+            this.NewSourceBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.plus_16;
+            this.NewSourceBarButton.Name = "NewSourceBarButton";
+            this.NewSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewSourceBarButton_ItemClick);
+            // 
+            // EditSourceBarButton
+            // 
+            this.EditSourceBarButton.Caption = "Dəyiş";
+            this.EditSourceBarButton.Id = 1;
+            this.EditSourceBarButton.ImageOptions.Image = global::ELMS.Properties.Resources.edit_16;
+            this.EditSourceBarButton.Name = "EditSourceBarButton";
+            this.EditSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditSourceBarButton_ItemClick);
+            // 
+            // DeleteSourceBarButton
+            // 
+            this.DeleteSourceBarButton.Caption = "Sil";
+            this.DeleteSourceBarButton.Id = 2;
+            this.DeleteSourceBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeleteSourceBarButton.ImageOptions.Image")));
+            this.DeleteSourceBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DeleteSourceBarButton.ImageOptions.LargeImage")));
+            this.DeleteSourceBarButton.Name = "DeleteSourceBarButton";
+            this.DeleteSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteSourceBarButton_ItemClick);
+            // 
+            // RefreshSourceBarButton
+            // 
+            this.RefreshSourceBarButton.Caption = "Təzələ";
+            this.RefreshSourceBarButton.Id = 3;
+            this.RefreshSourceBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefreshSourceBarButton.ImageOptions.Image")));
+            this.RefreshSourceBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("RefreshSourceBarButton.ImageOptions.LargeImage")));
+            this.RefreshSourceBarButton.Name = "RefreshSourceBarButton";
+            this.RefreshSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefreshSourceBarButton_ItemClick);
+            // 
+            // UpSourceBarButton
+            // 
+            this.UpSourceBarButton.Caption = "YeriniYuxarıDəyiş";
+            this.UpSourceBarButton.Id = 4;
+            this.UpSourceBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UpSourceBarButton.ImageOptions.Image")));
+            this.UpSourceBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("UpSourceBarButton.ImageOptions.LargeImage")));
+            this.UpSourceBarButton.Name = "UpSourceBarButton";
+            this.UpSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpSourceBarButton_ItemClick);
+            // 
+            // DownSourceBarButton
+            // 
+            this.DownSourceBarButton.Caption = "YeriniAşağıDəyiş";
+            this.DownSourceBarButton.Id = 5;
+            this.DownSourceBarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DownSourceBarButton.ImageOptions.Image")));
+            this.DownSourceBarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DownSourceBarButton.ImageOptions.LargeImage")));
+            this.DownSourceBarButton.Name = "DownSourceBarButton";
+            this.DownSourceBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DownSourceBarButton_ItemClick);
+            // 
+            // barDockControl33
+            // 
+            this.barDockControl33.CausesValidation = false;
+            this.barDockControl33.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl33.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl33.Manager = this.SourceBarManager;
+            this.barDockControl33.Size = new System.Drawing.Size(1119, 0);
+            // 
+            // barDockControl34
+            // 
+            this.barDockControl34.CausesValidation = false;
+            this.barDockControl34.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl34.Location = new System.Drawing.Point(0, 585);
+            this.barDockControl34.Manager = this.SourceBarManager;
+            this.barDockControl34.Size = new System.Drawing.Size(1119, 0);
+            // 
+            // barDockControl35
+            // 
+            this.barDockControl35.CausesValidation = false;
+            this.barDockControl35.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl35.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl35.Manager = this.SourceBarManager;
+            this.barDockControl35.Size = new System.Drawing.Size(0, 585);
+            // 
+            // barDockControl36
+            // 
+            this.barDockControl36.CausesValidation = false;
+            this.barDockControl36.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl36.Location = new System.Drawing.Point(1119, 0);
+            this.barDockControl36.Manager = this.SourceBarManager;
+            this.barDockControl36.Size = new System.Drawing.Size(0, 585);
+            // 
+            // SourcePopupMenu
+            // 
+            this.SourcePopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefreshSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.UpSourceBarButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DownSourceBarButton)});
+            this.SourcePopupMenu.Manager = this.SourceBarManager;
+            this.SourcePopupMenu.Name = "SourcePopupMenu";
+            // 
             // FDictionaries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2550,12 +3150,21 @@
             this.Controls.Add(this.barDockControl28);
             this.Controls.Add(this.barDockControl26);
             this.Controls.Add(this.barDockControl25);
+            this.Controls.Add(this.barDockControl31);
+            this.Controls.Add(this.barDockControl32);
+            this.Controls.Add(this.barDockControl30);
+            this.Controls.Add(this.barDockControl29);
+            this.Controls.Add(this.barDockControl35);
+            this.Controls.Add(this.barDockControl36);
+            this.Controls.Add(this.barDockControl34);
+            this.Controls.Add(this.barDockControl33);
             this.MinimizeBox = false;
             this.Name = "FDictionaries";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Soraqçalar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FDictionaries_FormClosing);
             this.Load += new System.EventHandler(this.FDictionaries_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BackstageViewControl)).EndInit();
             this.BackstageViewControl.ResumeLayout(false);
@@ -2591,6 +3200,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionBarManager)).EndInit();
+            this.backstageViewClientControl9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TimesGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesBarManager)).EndInit();
+            this.backstageViewClientControl10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SourceGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentTypePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountriesPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CardIssuingPopupMenu)).EndInit();
@@ -2599,6 +3215,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BranchPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfessionPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimesPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceBarManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourcePopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2803,5 +3422,52 @@
         private DevExpress.XtraBars.BarButtonItem DownBranchBarButton;
         private DevExpress.XtraBars.PopupMenu ProductPopupMenu;
         private DevExpress.XtraBars.PopupMenu ProfessionPopupMenu;
+        private DevExpress.XtraBars.StandaloneBarDockControl TimesStandaloneBarDockControl;
+        private DevExpress.XtraBars.BarDockControl barDockControl31;
+        private DevExpress.XtraBars.BarManager TimesBarManager;
+        private DevExpress.XtraBars.Bar bar5;
+        private DevExpress.XtraBars.BarDockControl barDockControl29;
+        private DevExpress.XtraBars.BarDockControl barDockControl30;
+        private DevExpress.XtraBars.BarDockControl barDockControl32;
+        private DevExpress.XtraBars.Ribbon.BackstageViewClientControl backstageViewClientControl9;
+        private DevExpress.XtraBars.Ribbon.BackstageViewClientControl backstageViewClientControl10;
+        private DevExpress.XtraBars.Ribbon.BackstageViewTabItem TimesBackStageViewTab;
+        private DevExpress.XtraBars.Ribbon.BackstageViewTabItem SourceBackStageViewTab;
+        private DevExpress.XtraBars.BarButtonItem NewTimesBarButton;
+        private DevExpress.XtraBars.PopupMenu TimesPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem EditTimesBarButton;
+        private DevExpress.XtraBars.BarButtonItem DeleteTimesBarButton;
+        private DevExpress.XtraBars.BarButtonItem RefreshTimesBarButton;
+        private DevExpress.XtraBars.BarButtonItem UpTimesBarButton;
+        private DevExpress.XtraBars.BarButtonItem DownTimesBarButton;
+        private DevExpress.XtraBars.StandaloneBarDockControl SourceStandaloneBarDockControl;
+        private DevExpress.XtraBars.BarDockControl barDockControl35;
+        private DevExpress.XtraBars.BarManager SourceBarManager;
+        private DevExpress.XtraBars.Bar bar6;
+        private DevExpress.XtraBars.BarDockControl barDockControl33;
+        private DevExpress.XtraBars.BarDockControl barDockControl34;
+        private DevExpress.XtraBars.BarDockControl barDockControl36;
+        private DevExpress.XtraBars.PopupMenu SourcePopupMenu;
+        private DevExpress.XtraBars.BarButtonItem NewSourceBarButton;
+        private DevExpress.XtraBars.BarButtonItem EditSourceBarButton;
+        private DevExpress.XtraBars.BarButtonItem DeleteSourceBarButton;
+        private DevExpress.XtraBars.BarButtonItem RefreshSourceBarButton;
+        private DevExpress.XtraBars.BarButtonItem UpSourceBarButton;
+        private DevExpress.XtraBars.BarButtonItem DownSourceBarButton;
+        private DevExpress.XtraGrid.GridControl TimesGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView TimesGridView;
+        private DevExpress.XtraGrid.GridControl SourceGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView SourceGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_SS;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_Period;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_Note;
+        private DevExpress.XtraGrid.Columns.GridColumn Source_SS;
+        private DevExpress.XtraGrid.Columns.GridColumn Source_Name;
+        private DevExpress.XtraGrid.Columns.GridColumn Source_Note;
+        private DevExpress.XtraGrid.Columns.GridColumn Source_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn Source_UsedUserId;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_UsedUserId;
+        private DevExpress.XtraGrid.Columns.GridColumn Times_Percent;
     }
 }

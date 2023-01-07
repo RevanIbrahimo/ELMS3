@@ -38,7 +38,7 @@ namespace ELMS.UserControls
 
         private void LoadCustomerData()
         {
-            CustomerGridControl.DataSource = CustomerDAL.SelectViewData(null);
+            CustomerGridControl.DataSource = CustomerDAL.SelectViewCustomer(null);
 
             //EnabledButton();
         }
@@ -128,13 +128,16 @@ namespace ELMS.UserControls
         {
             GlobalProcedures.ShowGridPreview(CustomerGridControl);
         }
+        
 
         void DeleteCustomer()
         {
             int UsedUserID = Convert.ToInt16(GlobalFunctions.GetGridRowCellValue(CustomerGridView, "USED_USER_ID"));
             if (UsedUserID < 0)
             {
-                
+
+                if (GlobalFunctions.CallDialogResult("Seçilmiş müştərini silmək istəyirsiniz?", "Müştərinin silinməsi") == DialogResult.Yes)
+                    CustomerDAL.DeleteCustomerByID(customerID);
             }
             else
             {
@@ -174,6 +177,43 @@ namespace ELMS.UserControls
         {
             LoadFScheduleAddEdit();
         }
+
+        private void ExcelBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "xls");
+        }
+
+        private void PdfBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "pdf");
+        }
+
+        private void RtfBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "rtf");
+        }
+
+        private void HtmlBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "html");
+        }
+
+        private void TxtBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "txt");
+        }
+
+        private void CsvBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "csv");
+        }
+
+        private void MhtBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GlobalProcedures.GridExportToFile(CustomerGridControl, "mht");
+        }
+
+
 
         private void CustomerGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
